@@ -31,6 +31,7 @@ public class SBOLConverter {
         SBOLDocument Doc = SBOLFactory.createDocument();
         biobrick = rsbpmlData.toSbol();
         Doc.addContent(biobrick);
+        
         SBOLFactory.write(Doc, out);
 	}
 	
