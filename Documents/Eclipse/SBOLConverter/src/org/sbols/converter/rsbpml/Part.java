@@ -3,7 +3,9 @@
 	 */
 
     package org.sbols.converter.rsbpml;
-	import javax.xml.bind.annotation.XmlElement;
+	import java.net.URI;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -57,6 +59,7 @@ import org.sbolstandard.core.DnaComponent;
 	    }
 	    
 	    public DnaComponent toSbol(DnaComponent biobrick) {
+	    	biobrick.setURI(URI.create("http://example.com/MyDnaComponent"));
 	    	biobrick.setDisplayId(part_name);
 			return biobrick;
 	    }
