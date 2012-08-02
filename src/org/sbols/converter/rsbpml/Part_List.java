@@ -4,9 +4,8 @@
 
     package org.sbols.converter.rsbpml;
 	import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import org.sbolstandard.core.DnaComponent;
+	import javax.xml.bind.annotation.XmlRootElement;
+	import org.sbolstandard.core.DnaComponent;
 
 	@XmlRootElement(name="part_list")
 	public class Part_List {
@@ -27,8 +26,8 @@ import org.sbolstandard.core.DnaComponent;
 	        return "part_list [" + (part != null ? part : "") + "]";
 	    }
 	    
-	    public DnaComponent toSbol(DnaComponent newBiobrick) {
-	    	return part.toSbol(newBiobrick);
+	    public DnaComponent toSbol(DnaComponent biobrick) {
+	    	return part.toSbol(biobrick);
 	    }
 
 	}

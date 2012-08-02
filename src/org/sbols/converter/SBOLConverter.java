@@ -26,8 +26,8 @@ public class SBOLConverter {
 		
 		JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("Test1.xml"));
-        FileOutputStream out = new FileOutputStream("output.txt");
+        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("Test3.xml"));
+        FileOutputStream out = new FileOutputStream("output3.txt");
         
         System.out.println(rsbpmlData);
         
