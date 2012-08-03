@@ -1,4 +1,9 @@
+/*
+ * Defines DNA Sequence information contained in <dnaSequence>
+ */
+
 package org.sbols.converter.rsbpml;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 

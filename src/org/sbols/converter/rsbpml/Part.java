@@ -73,7 +73,11 @@
 	    	biobrick.setDisplayId(part_name);
 	    	biobrick.setDescription(part_short_desc);
 	    	biobrick.setName(part_nickname);
+	    	if(dna_sequence!=null){
 			return dna_sequence.toSbol(biobrick);
+	    	}else{
+	    		return biobrick;
+	    	}
 	    }
 
 	}

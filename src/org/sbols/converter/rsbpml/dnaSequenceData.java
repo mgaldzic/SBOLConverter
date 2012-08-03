@@ -1,3 +1,7 @@
+/*
+ * Defines the contents of DnaSequence and gets/sets nucleotide sequence
+ */
+
 package org.sbols.converter.rsbpml;
 
 import java.net.URI;
