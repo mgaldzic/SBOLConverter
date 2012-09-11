@@ -1,5 +1,5 @@
 /*
- * Tests the converter succesfully converts the simplest dna component, containing just a name.
+ * Tests the converter successfully converts the simplest dna component, containing just a name.
  */
 
 import java.io.FileInputStream;
@@ -15,7 +15,6 @@ import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SBOLValidationException;
-
 
 public class Test1_BasicValidPart {
 
