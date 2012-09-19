@@ -11,6 +11,13 @@
 					<seq_data>tccctatcagtgat</seq_data>
 				</DnaSequence>
 			</dnaSequence>
+			<deep_subparts>
+				<subpart>
+					<part_name>DC2</part_name>
+					<part_nickname>DnaComponent2</part_nickname>
+					<part_short_desc>Another DNA Component</part_short_desc>
+				</subpart>
+			</deep_subparts>
 		</part>
 	</part_list>
 </rsbpml>

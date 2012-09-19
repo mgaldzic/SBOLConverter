@@ -1,7 +1,3 @@
-/*
- * Tests the converter successfully converts the simplest dna component, containing just a name.
- */
-
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -15,20 +11,20 @@ import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
 
-public class Test1_BasicValidPart {
+
+public class Test2_BasicPartWithNickname {
 
 	@Test
 	public void test() throws JAXBException, IOException {
-		
 		JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("test/data/Test1.xml"));
+        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("test/data/Test2.xml"));
                 
         DnaComponent biobrick = SBOLFactory.createDnaComponent();
         SBOLDocument Doc = SBOLFactory.createDocument();
         biobrick = rsbpmlData.toSbol();
         Doc.addContent(biobrick);
         SBOLFactory.validate(Doc);
-        
-        }
+        	}
+
 }

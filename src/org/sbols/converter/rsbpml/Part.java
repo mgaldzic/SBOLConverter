@@ -4,11 +4,15 @@
 
     package org.sbols.converter.rsbpml;
 	import java.net.URI;
-	import javax.xml.bind.annotation.XmlElement;
-	import javax.xml.bind.annotation.XmlRootElement;
-	import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-	import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-	import org.sbolstandard.core.DnaComponent;
+import java.util.ArrayList;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import org.sbolstandard.core.DnaComponent;
 
 	@XmlRootElement(name="part")
 	public class Part {
@@ -17,6 +21,8 @@
 		private String part_name;
 		private String part_nickname;
 		private String part_short_desc;
+		private ArrayList<subpart> genericSubpart;
+		
 		
 		@XmlElement(name="dnaSequence")
 		public dnaSequenceContainer getSequence(){
@@ -58,14 +64,29 @@
 	        this.part_short_desc = part_short_desc;
 	    }
 	    
-	    @Override
+	    /*Here are the things I am making up*/
+	    
+	    @XmlElements( {@XmlElement(name="deep_subparts"), 
+	    			  @XmlElement(name="specified_subparts"),
+	    			  @XmlElement(name="specified_subscars")} )
+		public ArrayList<subpart> getSubpart(){
+			return genericSubpart;
+		}
+		
+		public void setSubpart(subpart newSubpart){
+			this.genericSubpart.add(newSubpart);
+		}
+	     
+	    /*End of things I am making up*/
+		
+	    @Override //need to edit this
 	    public String toString() {
 	        return "part [" + 
 	        			(part_name != null ? "part_name: " + part_name + ", " : "") + 
 	        			(part_nickname != null ? "part_nickname: " + part_nickname + ", " : "") + 
 	        			(part_short_desc != null ? "part_short_desc: " + part_short_desc: "") +
 	        			(dna_sequence != null ? "dna_sequence: " + dna_sequence: "")
-	        		 + "]";
+	        		 + "]" + "HEY, the length of the subpart list is" + genericSubpart.size();
 	    }
 	    
 	    public DnaComponent toSbol(DnaComponent biobrick) {
@@ -73,8 +94,14 @@
 	    	biobrick.setDisplayId(part_name);
 	    	biobrick.setDescription(part_short_desc);
 	    	biobrick.setName(part_nickname);
+	    	
+	    	//for each thing in generic subpart make new part
+	    	if(genericSubpart != null){
+	    		for(int i = 0; i < genericSubpart.size(); i++)
+	    		biobrick = genericSubpart.get(i).addSubcomponent(biobrick);
+	    	}
 	    	if(dna_sequence!=null){
-			return dna_sequence.toSbol(biobrick);
+	    		return dna_sequence.toSbol(biobrick);
 	    	}else{
 	    		return biobrick;
 	    	}

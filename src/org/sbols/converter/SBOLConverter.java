@@ -5,13 +5,11 @@
 
 package org.sbols.converter;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -22,68 +20,45 @@ import org.sbolstandard.core.SBOLValidationException;
 
 public class SBOLConverter {
 		
+	private SBOLConverter() {	
+	}
 	
+	private static void usage() {	
+	System.err.println("SBOLConverter version 0.1" /*SBOLVersion.getInstance().getVersionString()*/);
+	System.err.println("Converts Parts Registry XML (RSBPML) to SBOL:Core:rdf.");
+	System.err.println("\nUsage:");
+	System.err.println("\tjava -jar SBOLConverter.jar [--quiet] <filename.xml> <outputname.xml>");
+	System.exit(1);
+	}
 	
+	public static void main(String[] args) throws Exception {
+		String fileName = null;
+		String outputName = null;
+		
+	if (args.length < 2 || args.length > 3) {
+	usage();
+	}
 	
+	boolean quiet = args[0].equals("--quiet");
 	
+	if (quiet && args.length == 2) {
+	usage();
+	}
 	
+	if (quiet && args.length == 3){
+	fileName = args[quiet ? 2 : 1];
+	}
 	
+	if (!quiet && args.length == 2){
+	outputName = args[quiet ? 1 : 0];
+	}
 	
-	
-	
-	
-	
-	
-	
-/*
- * public class SBOLValidate {
-private SBOLValidate() {	
-}
-
-private static void usage() {	
-System.err.println("libSBOLj version " + SBOLVersion.getInstance().getVersionString());
-System.err.println("Description: Validates the contents of an SBOL document and prints the document contents if "
-+ "validation succeeds");
-System.err.println("Usage:");
-System.err.println("\tjava --jar libSBOLj.jar [--quiet] <filename.xml>");
-System.exit(1);
-}
-
-public static void main(String[] args) throws Exception {
-if (args.length < 1 || args.length > 2) {
-usage();
-}
-
-boolean quiet = args[0].equals("--quiet");
-
-if (quiet && args.length == 1) {
-usage();
-}
-
-String fileName = args[quiet ? 1 : 0];
-
-try {
-SBOLDocument doc = SBOLFactory.read(new FileInputStream(fileName));
-System.out.println("Validation successful, no errors.");
-if (!quiet) {
-new SBOLPrettyWriter().write(doc, System.out);
-}
-        }
-        catch (IOException e) {
-System.err.println("I/O ERROR: " + e.getMessage());
-        }
-        catch (SBOLValidationException e) {
-         System.err.println("Validation failed, error: " + e.getMessage());
-        }
-}
-}
- */
-	public static void main(String[] args) throws JAXBException, SBOLValidationException, IOException{
+	try { //Can we enter this with fileName and outputName being null? Need to make sure
 		
 		JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("test/data/Test1.xml"));
-        FileOutputStream out = new FileOutputStream("out/output1.txt");
+        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream(fileName + ".xml"));
+		FileOutputStream out = new FileOutputStream(outputName + ".txt");
         
         System.out.println(rsbpmlData);
         
@@ -93,6 +68,15 @@ System.err.println("I/O ERROR: " + e.getMessage());
         Doc.addContent(biobrick);
         
         SBOLFactory.write(Doc, out);
+	
+	        }
+	        catch (IOException e) {
+	        	System.err.println("I/O ERROR: " + e.getMessage());
+	        }
+	        catch (SBOLValidationException e) {
+	        	System.err.println("Validation failed, error: " + e.getMessage());
+	        }
 	}
+	
 	
 }
