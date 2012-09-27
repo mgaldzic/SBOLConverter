@@ -27,6 +27,7 @@ public class Test4_BasicPartwithBasicSubpart {
         Doc.addContent(biobrick);
         SBOLFactory.validate(Doc);
         
+        //Remove this later
         FileOutputStream out = new FileOutputStream("output4.txt");
         SBOLFactory.write(Doc, out);
         System.out.println(rsbpmlData);

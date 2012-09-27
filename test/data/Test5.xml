@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Parts from the MIT Registry of Standard Biological Parts-->
+<rsbpml>
+	<part_list>
+		<part>
+			<type>promoter</type>
+			<type>bidirectional_promoter</type>
+			<part_name>DC1</part_name>
+			<part_nickname>DnaComponent1</part_nickname>
+			<part_short_desc>A DnaComponent can optionally use multiple types from Sequence Ontology</part_short_desc>
+			<dnaSequence>
+				<DnaSequence>
+					<seq_data>tccctatcagtgat</seq_data>
+				</DnaSequence>
+			</dnaSequence>
+		</part>
+	</part_list>
+</rsbpml>

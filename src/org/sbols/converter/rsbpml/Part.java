@@ -79,7 +79,7 @@ import org.sbolstandard.core.DnaComponent;
 	     
 	    /*End of things I am making up*/
 		
-	    @Override //need to edit this
+	    @Override //need to edit this later to reflect changes
 	    public String toString() {
 	        return "part [" + 
 	        			(part_name != null ? "part_name: " + part_name + ", " : "") + 
@@ -95,7 +95,6 @@ import org.sbolstandard.core.DnaComponent;
 	    	biobrick.setDescription(part_short_desc);
 	    	biobrick.setName(part_nickname);
 	    	
-	    	//for each thing in generic subpart make new part
 	    	if(genericSubpart != null){
 	    		for(int i = 0; i < genericSubpart.size(); i++)
 	    		biobrick = genericSubpart.get(i).addSubcomponent(biobrick);
