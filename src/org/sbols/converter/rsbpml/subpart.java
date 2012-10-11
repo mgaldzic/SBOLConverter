@@ -11,7 +11,7 @@ import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
 
-@XmlRootElement(name="deep_subparts")
+@XmlRootElement(name="subpart")
 public class subpart {
 
 	private String part_name;
@@ -48,7 +48,7 @@ public class subpart {
         this.part_short_desc = part_short_desc;
     }
 	
-	public DnaComponent addSubcomponent(DnaComponent biobrick){
+	public DnaComponent toSbol(DnaComponent biobrick){
 		DnaComponent SubDnaComponent = SBOLFactory.createDnaComponent();
 		SubDnaComponent.setURI(URI.create("http://example.com/MyDnaComponent1")); //Need to make dynamic
 		SubDnaComponent.setDisplayId(part_name);

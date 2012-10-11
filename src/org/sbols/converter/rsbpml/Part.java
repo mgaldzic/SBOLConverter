@@ -19,7 +19,7 @@ import org.sbolstandard.core.DnaComponent;
 		private String part_nickname;
 		private String part_short_desc;
 		private subpart specifiedSubparts;
-		private subpart deepSubparts;
+		private deep_subparts deepSubparts;
 		private subpart specifiedSubscars;
 
 		
@@ -68,12 +68,11 @@ import org.sbolstandard.core.DnaComponent;
 	    //split into three different functions
 	    //need to define precedes
 	    @XmlElement(name="deep_subparts")
-		public subpart getDeepSubparts(){
-			System.out.println("hello?");
+		public deep_subparts getDeepSubparts(){
 			return deepSubparts;
 		}
 		
-		public void setDeepSubparts(subpart newSubpart){
+		public void setDeepSubparts(deep_subparts newSubpart){
 			this.deepSubparts = newSubpart;
 		}
 		/*
@@ -121,7 +120,7 @@ import org.sbolstandard.core.DnaComponent;
 	    		}
 	    	}*/if(deepSubparts != null){
 	    		//for(int i = 0; i < deepSubparts.size(); i++){
-	    			biobrick = deepSubparts.addSubcomponent(biobrick);
+	    		biobrick = deepSubparts.toSbol(biobrick);
 	    		//}
 	    	}/*if(specifiedSubscars != null){
 	    		for(int i = 0; i < specifiedSubscars.size(); i++){
