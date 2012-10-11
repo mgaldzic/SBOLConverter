@@ -64,9 +64,7 @@ import org.sbolstandard.core.DnaComponent;
 	        this.part_short_desc = part_short_desc;
 	    }
 	    
-	    /*Here are the things I am making up*/
-	    //split into three different functions
-	    //need to define precedes
+	    ////////////////////////////
 	    @XmlElement(name="deep_subparts")
 		public deep_subparts getDeepSubparts(){
 			return deepSubparts;
@@ -95,9 +93,7 @@ import org.sbolstandard.core.DnaComponent;
 		}
 		*/
 		/////////////////////
-	     
-	    /*End of things I am making up*/
-		
+	    		
 	    @Override //need to edit this later to reflect changes
 	    public String toString() {
 	        return "part [" + 
