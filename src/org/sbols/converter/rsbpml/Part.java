@@ -7,7 +7,6 @@
 import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -21,7 +20,10 @@ import org.sbolstandard.core.DnaComponent;
 		private String part_name;
 		private String part_nickname;
 		private String part_short_desc;
-		private ArrayList<subpart> genericSubpart;
+		private ArrayList<subpart> specifiedSubparts;
+		private ArrayList<subpart> deepSubparts;
+		private ArrayList<subpart> specifiedSubscars;
+
 		
 		
 		@XmlElement(name="dnaSequence")
@@ -65,17 +67,37 @@ import org.sbolstandard.core.DnaComponent;
 	    }
 	    
 	    /*Here are the things I am making up*/
-	    
-	    @XmlElements( {@XmlElement(name="deep_subparts"), 
-	    			  @XmlElement(name="specified_subparts"),
-	    			  @XmlElement(name="specified_subscars")} )
-		public ArrayList<subpart> getSubpart(){
-			return genericSubpart;
+	    //split into three different functions
+	    //need to define precedes
+	    @XmlElement(name="deep_subparts")
+		public ArrayList<subpart> getDeepSubparts(){
+			System.out.println("hello?");
+			return deepSubparts;
 		}
 		
-		public void setSubpart(subpart newSubpart){
-			this.genericSubpart.add(newSubpart);
+		public void setDeepSubparts(subpart newSubpart){
+			this.deepSubparts.add(newSubpart);
 		}
+		
+		@XmlElement(name="specified_subparts")
+		public ArrayList<subpart> getSpecifiedSubpart(){
+			return specifiedSubparts;
+		}
+		
+		public void setSpecifiedSubparts(subpart newSubpart){
+			this.specifiedSubparts.add(newSubpart);
+		}
+		
+		  @XmlElement(name="specified_subscars")
+		public ArrayList<subpart> getSpecifiedSubscars(){
+			return specifiedSubscars;
+		}
+		
+		public void setSpecifiedSubscars(subpart newSubpart){
+			this.specifiedSubscars.add(newSubpart);
+		}
+		
+		/////////////////////
 	     
 	    /*End of things I am making up*/
 		
@@ -86,7 +108,7 @@ import org.sbolstandard.core.DnaComponent;
 	        			(part_nickname != null ? "part_nickname: " + part_nickname + ", " : "") + 
 	        			(part_short_desc != null ? "part_short_desc: " + part_short_desc: "") +
 	        			(dna_sequence != null ? "dna_sequence: " + dna_sequence: "")
-	        		 + "]" + "HEY, the length of the subpart list is" + genericSubpart.size();
+	        		 + "]" + "HEY, the length of the subpart list is" + deepSubparts.size();
 	    }
 	    
 	    public DnaComponent toSbol(DnaComponent biobrick) {
@@ -95,15 +117,23 @@ import org.sbolstandard.core.DnaComponent;
 	    	biobrick.setDescription(part_short_desc);
 	    	biobrick.setName(part_nickname);
 	    	
-	    	if(genericSubpart != null){
-	    		for(int i = 0; i < genericSubpart.size(); i++)
-	    		biobrick = genericSubpart.get(i).addSubcomponent(biobrick);
+	    	if(specifiedSubparts != null){
+	    		for(int i = 0; i < specifiedSubparts.size(); i++){
+	    			biobrick = specifiedSubparts.get(i).addSubcomponent(biobrick);
+	    		}
+	    	}if(deepSubparts != null){
+	    		for(int i = 0; i < deepSubparts.size(); i++){
+	    			biobrick = deepSubparts.get(i).addSubcomponent(biobrick);
+	    		}
+	    	}if(specifiedSubscars != null){
+	    		for(int i = 0; i < specifiedSubscars.size(); i++){
+	    			biobrick = specifiedSubscars.get(i).addSubcomponent(biobrick);
+	    		}
 	    	}
 	    	if(dna_sequence!=null){
-	    		return dna_sequence.toSbol(biobrick);
-	    	}else{
-	    		return biobrick;
+	    		biobrick =  dna_sequence.toSbol(biobrick);
 	    	}
+	    	return biobrick;
 	    }
 
 	}

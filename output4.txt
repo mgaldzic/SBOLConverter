@@ -2,6 +2,7 @@
 <ns2:RDF xmlns="http://sbols.org/v1#" xmlns:ns2="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <DnaComponent ns2:about="http://example.com/MyDnaComponent">
         <displayId>DC1</displayId>
+        <name>DnaComponent1</name>
         <description>DnaComponent with only name and description</description>
         <dnaSequence>
             <DnaSequence ns2:about="http://example.com/MyDnaComponentSequence">
