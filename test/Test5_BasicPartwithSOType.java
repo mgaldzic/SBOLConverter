@@ -1,4 +1,5 @@
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.xml.bind.JAXBContext;
@@ -12,19 +13,24 @@ import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
 
 
-public class Test4_BasicPartwithBasicSubpart {
+public class Test5_BasicPartwithSOType {
 
 	@Test
 	public void test() throws JAXBException, IOException{
 		JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("test/data/Test4.xml"));
+        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("test/data/Test5.xml"));
         
         DnaComponent biobrick = SBOLFactory.createDnaComponent();
         SBOLDocument Doc = SBOLFactory.createDocument();
         biobrick = rsbpmlData.toSbol();
         Doc.addContent(biobrick);
         SBOLFactory.validate(Doc);
+        
+        //Remove this later
+        FileOutputStream out = new FileOutputStream("output5.txt");
+        SBOLFactory.write(Doc, out);
+        System.out.println(rsbpmlData);
 	}
-	
+
 }
