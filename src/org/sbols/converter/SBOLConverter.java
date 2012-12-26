@@ -13,6 +13,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
 import org.sbols.converter.rsbpml.Rsbpml;
+import org.sbols.converter.util.ReadXML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
@@ -55,9 +56,7 @@ public class SBOLConverter {
 	
 	try { //Can we enter this with fileName and outputName being null? Need to make sure
 		
-		JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream(fileName + ".xml"));
+		Rsbpml rsbpmlData = ReadXML.file(fileName + ".xml");
 		FileOutputStream out = new FileOutputStream(outputName + ".txt");
         
         System.out.println(rsbpmlData);
