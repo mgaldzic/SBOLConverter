@@ -17,7 +17,14 @@ import org.junit.runners.Suite;
  * @author mgaldzic
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({Test4_BasicPartwithBasicSubpart.class, Test3_BasicPartWithSequenceData.class, Test2_BasicPartWithNickname.class, Test5_BasicPartwithSOType.class, Test6_BasicPartwithSOTypes.class, Test1_BasicValidPart.class})
+@Suite.SuiteClasses({
+    Test1_BasicValidPart.class, 
+    Test2_BasicPartWithNickname.class, 
+    Test3_BasicPartWithSequenceData.class, 
+    Test4_BasicPartwithBasicSubpart.class,  
+    Test5_BasicPartwithSOType.class, 
+    Test6_BasicPartwithSOTypes.class
+})
 public class TestBasicParts {
 
     @BeforeClass
@@ -30,6 +37,7 @@ public class TestBasicParts {
 
     @Before
     public void setUp() throws Exception {
+        
     }
 
     @After
