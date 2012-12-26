@@ -1,11 +1,9 @@
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbolstandard.core.DnaComponent;
