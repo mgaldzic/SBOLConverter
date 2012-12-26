@@ -5,13 +5,8 @@
 
 package org.sbols.converter;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadXML;
 import org.sbolstandard.core.DnaComponent;
