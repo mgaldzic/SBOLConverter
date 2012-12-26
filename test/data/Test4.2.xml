@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--Parts from the MIT Registry of Standard Biological Parts-->
+<!--Basic Part with Basic Subpart with 2 specified_subparts-->
 <rsbpml>
 	<part_list>
 		<part>
