@@ -1,9 +1,9 @@
 package org.sbols.org.converter.rsbpml;
 
 /*
- * Tests the converter successfully converts the simplest dna component, containing just a name.
+ * Tests the converter successfully converts the simplest dna component,
+ * containing just a name.
  */
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBContext;
@@ -17,18 +17,18 @@ import org.sbolstandard.core.SBOLFactory;
 
 public class Test1_BasicValidPart {
 
-	@Test
-	public void test() throws JAXBException, IOException {
-		
-		JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
+    @Test
+    public void test() throws JAXBException, IOException {
+        System.out.println("Test1_BasicValidPart");
+        JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("test/data/Test1.xml"));
-                
+        Rsbpml rsbpmlData = (Rsbpml) unmarshaller.unmarshal(new FileInputStream("test/data/Test1.xml"));
+
         DnaComponent biobrick = SBOLFactory.createDnaComponent();
         SBOLDocument Doc = SBOLFactory.createDocument();
         biobrick = rsbpmlData.toSbol();
         Doc.addContent(biobrick);
         SBOLFactory.validate(Doc);
-        
-        }
+
+    }
 }

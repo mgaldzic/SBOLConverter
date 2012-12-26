@@ -16,6 +16,7 @@ public class Test3_BasicPartWithSequenceData {
 
 	@Test
 	public void test() throws JAXBException, IOException{
+            System.out.println("Test3_BasicPartWithSequenceData");
 		JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
         Rsbpml rsbpmlData = (Rsbpml)unmarshaller.unmarshal(new FileInputStream("test/data/Test3.xml"));
