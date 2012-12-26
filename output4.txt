@@ -9,5 +9,16 @@
                 <nucleotides>tccctatcagtgat</nucleotides>
             </DnaSequence>
         </dnaSequence>
+        <annotation>
+            <SequenceAnnotation ns2:about="http://sampleuri.com/NewAnnotation">
+                <subComponent>
+                    <DnaComponent ns2:about="http://example.com/MyDnaComponent1">
+                        <displayId>DC2</displayId>
+                        <name>DnaComponent2</name>
+                        <description>Another DNA Component</description>
+                    </DnaComponent>
+                </subComponent>
+            </SequenceAnnotation>
+        </annotation>
     </DnaComponent>
 </ns2:RDF>

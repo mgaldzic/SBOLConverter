@@ -1,9 +1,13 @@
-	/*
-	 * Defines contents of <part>
-	 */
+/*
+ * Defines contents of <part>
+ */
 
-    package org.sbols.converter.rsbpml;
-	import java.net.URI;
+package org.sbols.converter.rsbpml;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -11,18 +15,25 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.sbolstandard.core.DnaComponent;
 
-	@XmlRootElement(name="part")
-	public class Part {
+@XmlRootElement(name="part")
+public class Part {
+		
+		private static final String soURI = "http://purl.obolibrary.org/obo/";
+		private static final Map<String,String> SOtypes = setSOtypes();
 		
 		private dnaSequenceContainer dna_sequence;
 		private String part_name;
 		private String part_nickname;
 		private String part_short_desc;
-		private subpart specifiedSubparts;
-		private subpart deepSubparts;
-		private subpart specifiedSubscars;
-
+		private deep_subparts deepSubparts;
+		private ArrayList<String> types;
 		
+		public static Map<String, String> setSOtypes(){
+			Map<String,String> SOtypes = new HashMap<String,String>();
+			SOtypes.put("promoter",soURI + "SO_0000167");
+			SOtypes.put("bidirectional_promoter",soURI + "SO_0000568");
+			return SOtypes;
+		}
 		
 		@XmlElement(name="dnaSequence")
 		public dnaSequenceContainer getSequence(){
@@ -32,7 +43,6 @@ import org.sbolstandard.core.DnaComponent;
 		public void setSequence(dnaSequenceContainer newSequence){
 			this.dna_sequence = newSequence;
 		}
-		
 		
 		@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
 	    @XmlElement(name="part_name")
@@ -64,40 +74,23 @@ import org.sbolstandard.core.DnaComponent;
 	        this.part_short_desc = part_short_desc;
 	    }
 	    
-	    /*Here are the things I am making up*/
-	    //split into three different functions
-	    //need to define precedes
 	    @XmlElement(name="deep_subparts")
-		public subpart getDeepSubparts(){
-			System.out.println("hello?");
+		public deep_subparts getDeepSubparts(){
 			return deepSubparts;
 		}
 		
-		public void setDeepSubparts(subpart newSubpart){
+		public void setDeepSubparts(deep_subparts newSubpart){
 			this.deepSubparts = newSubpart;
 		}
-		/*
-		@XmlElement(name="specified_subparts")
-		public subpart getSpecifiedSubpart(){
-			return specifiedSubparts;
+
+		@XmlElement(name="type")
+		public ArrayList<String> getType (){
+			return types;
 		}
 		
-		public void setSpecifiedSubparts(subpart newSubpart){
-			this.specifiedSubparts = (newSubpart);
+		public void setType (String newType){
+			this.types.add(newType);
 		}
-		
-		  @XmlElement(name="specified_subscars")
-		public ArrayList<subpart> getSpecifiedSubscars(){
-			return specifiedSubscars;
-		}
-		
-		public void setSpecifiedSubscars(subpart newSubpart){
-			this.specifiedSubscars.add(newSubpart);
-		}
-		*/
-		/////////////////////
-	     
-	    /*End of things I am making up*/
 		
 	    @Override //need to edit this later to reflect changes
 	    public String toString() {
@@ -114,25 +107,20 @@ import org.sbolstandard.core.DnaComponent;
 	    	biobrick.setDisplayId(part_name);
 	    	biobrick.setDescription(part_short_desc);
 	    	biobrick.setName(part_nickname);
-	    	/*
-	    	if(specifiedSubparts != null){
-	    		for(int i = 0; i < specifiedSubparts.size(); i++){
-	    			biobrick = specifiedSubparts.get(i).addSubcomponent(biobrick);
-	    		}
-	    	}*/if(deepSubparts != null){
-	    		//for(int i = 0; i < deepSubparts.size(); i++){
-	    			biobrick = deepSubparts.addSubcomponent(biobrick);
-	    		//}
-	    	}/*if(specifiedSubscars != null){
-	    		for(int i = 0; i < specifiedSubscars.size(); i++){
-	    			biobrick = specifiedSubscars.get(i).addSubcomponent(biobrick);
-	    		}
-	    	}*/
+	    	
+	    	if(types!=null){
+		    	for(int i = 0; i < types.size(); i++){
+		    	String tempType = SOtypes.get(types.get(i));
+		    	biobrick.addType(URI.create(tempType));
+		    	}
+	    	}
+
 	    	if(dna_sequence!=null){
 	    		biobrick =  dna_sequence.toSbol(biobrick);
 	    	}
+	    	
 	    	return biobrick;
 	    }
 
-	}
+}
 

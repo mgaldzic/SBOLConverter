@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Parts from the MIT Registry of Standard Biological Parts-->
+<rsbpml>
+	<part_list>
+		<part>
+			<part_name>DC1</part_name>
+			<part_nickname>DnaComponent1</part_nickname>
+			<part_short_desc>DnaComponent with only name and description</part_short_desc>
+			<dnaSequence>
+				<DnaSequence>
+					<seq_data>tccctatcagtgat</seq_data>
+				</DnaSequence>
+			</dnaSequence>
+			<specified_subparts>
+				<subpart>
+					<part_name>DC2</part_name>
+					<part_nickname>DnaComponent2</part_nickname>
+					<part_short_desc>Duplicate DNA Component</part_short_desc>
+				</subpart>
+			</specified_subparts>
+			<specified_subscars>
+				<subpart>
+					<part_name>DC2</part_name>
+					<part_nickname>DnaComponent2</part_nickname>
+					<part_short_desc>Duplicate DNA Component</part_short_desc>
+				</subpart>
+			</specified_subscars>
+		</part>
+	</part_list>
+</rsbpml>
