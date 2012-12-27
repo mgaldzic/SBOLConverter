@@ -30,6 +30,7 @@ public class Expected_SequenceTest {
         Doc.addContent(biobrick);
         SBOLFactory.validate(Doc);
         FileOutputStream out = new FileOutputStream("test/data/rdfout/Expected_SequenceTest.sbol.xml");
+        //TODO the output file here is incomplete
         SBOLFactory.write(Doc, out);
         fail("The test case is stub, no actual test.");
     }
