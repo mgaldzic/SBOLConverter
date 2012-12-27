@@ -17,16 +17,10 @@ public class Valid_MultiSOTypesTest {
     public void Valid_MultiSOTypesTest() throws JAXBException, IOException {
         System.out.println("Valid_MultiSOTypesTest");
                 Rsbpml rsbpmlData = ReadXML.file("test/data/basic/Valid_MultiSOTypesTest.xml");
-//Rsbpml rsbpmlData = ReadXML.file("test/data/basic/Valid_SOTypeTest.xml");
 
         SBOLDocument Doc = SBOLFactory.createDocument();
         DnaComponent biobrick = rsbpmlData.toSbol();
         Doc.addContent(biobrick);
         SBOLFactory.validate(Doc);
-
-        //Remove this later
-        FileOutputStream out = new FileOutputStream("Valid_MultiSOTypesTestOutput.txt");
-        SBOLFactory.write(Doc, out);
-        System.out.println(rsbpmlData);
     }
 }
