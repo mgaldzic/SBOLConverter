@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Basic Part with Sequence data-->
+<rsbpml>
+	<part_list>
+		<part>
+			<part_name>DC1</part_name>
+			<part_nickname>DnaComponent1</part_nickname>
+			<part_short_desc>DnaComponent with only name and description</part_short_desc>
+			<dnaSequence>
+				<DnaSequence>
+					<seq_data>tccctatcagtgat</seq_data>
+				</DnaSequence>
+			</dnaSequence>
+		</part>
+	</part_list>
+</rsbpml>
