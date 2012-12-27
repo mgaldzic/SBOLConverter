@@ -6,6 +6,7 @@ package org.sbols.converter.rsbpml;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,7 +24,7 @@ public class Part {
     private String part_nickname;
     private String part_short_desc;
     private deep_subparts deepSubparts;
-    private ArrayList<String> types;
+    private List<String> types = new ArrayList<>();
 
     public static Map<String, String> setSOtypes() {
         Map<String, String> SOtypes = new HashMap<String, String>();
@@ -81,12 +82,12 @@ public class Part {
     }
 
     @XmlElement(name = "type")
-    public ArrayList<String> getType() {
+    public List<String> getTypes() {
         return types;
     }
 
-    public void setType(String newType) {
-        this.types.add(newType);
+    public void setTypes(List<String> newTypes) {
+        this.types = newTypes;
     }
 
     @Override //need to edit this later to reflect changes
