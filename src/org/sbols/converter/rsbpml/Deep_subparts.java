@@ -4,8 +4,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.sbolstandard.core.DnaComponent;
 
-@XmlRootElement(name = "specified_subscars")
-public class Specified_subscars {
+@XmlRootElement(name = "deep_subparts")
+public class Deep_subparts {
 
     private Subpart Subpart;
 

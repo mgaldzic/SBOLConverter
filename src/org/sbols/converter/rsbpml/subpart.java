@@ -10,7 +10,7 @@ import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
 
 @XmlRootElement(name = "subpart")
-public class subpart {
+public class Subpart {
 
     private String part_name;
     private String part_nickname;

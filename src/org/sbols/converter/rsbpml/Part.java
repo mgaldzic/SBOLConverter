@@ -19,11 +19,12 @@ public class Part {
 
     private static final String soURI = "http://purl.obolibrary.org/obo/";
     private static final Map<String, String> SOtypes = setSOtypes();
-    private dnaSequenceContainer dna_sequence;
+    private DnaSequenceContainer dna_sequence;
     private String part_name;
     private String part_nickname;
     private String part_short_desc;
-    private deep_subparts deepSubparts;
+    private Deep_subparts deepSubparts;
+    //private List<Reep_subparts> deepSubparts = new ArrayList<>();
     private List<String> types = new ArrayList<>();
 
     public static Map<String, String> setSOtypes() {
@@ -34,11 +35,11 @@ public class Part {
     }
 
     @XmlElement(name = "dnaSequence")
-    public dnaSequenceContainer getSequence() {
+    public DnaSequenceContainer getSequence() {
         return dna_sequence;
     }
 
-    public void setSequence(dnaSequenceContainer newSequence) {
+    public void setSequence(DnaSequenceContainer newSequence) {
         this.dna_sequence = newSequence;
     }
 
@@ -73,11 +74,11 @@ public class Part {
     }
 
     @XmlElement(name = "deep_subparts")
-    public deep_subparts getDeepSubparts() {
+    public Deep_subparts getDeepSubparts() {
         return deepSubparts;
     }
 
-    public void setDeepSubparts(deep_subparts newSubpart) {
+    public void setDeepSubparts(Deep_subparts newSubpart) {
         this.deepSubparts = newSubpart;
     }
 

@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.sbolstandard.core.DnaComponent;
 
 @XmlRootElement(name = "dnaSequence")
-public class dnaSequenceContainer {
+public class DnaSequenceContainer {
 
-    private dnaSequenceData dna_sequence;
+    private DnaSequenceData dna_sequence;
 
     @XmlElement(name = "DnaSequence")
-    public dnaSequenceData getSequence() {
+    public DnaSequenceData getSequence() {
         return dna_sequence;
     }
 
-    public void setSequence(dnaSequenceData newSequence) {
+    public void setSequence(DnaSequenceData newSequence) {
         this.dna_sequence = newSequence;
     }
 

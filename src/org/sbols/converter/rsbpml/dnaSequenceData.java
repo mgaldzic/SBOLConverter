@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.sbolstandard.core.DnaSequence;
 import org.sbolstandard.core.SBOLFactory;
 
-public class dnaSequenceData {
+public class DnaSequenceData {
 
     private DnaSequence sequenceObject = SBOLFactory.createDnaSequence();
     private String nucleotides;
