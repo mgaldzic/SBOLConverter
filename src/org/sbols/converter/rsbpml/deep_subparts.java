@@ -5,16 +5,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.sbolstandard.core.DnaComponent;
 
 @XmlRootElement(name = "deep_subparts")
-public class deep_subparts {
+public class Deep_subparts {
 
-    private subpart Subpart;
+    private Subpart Subpart;
 
     @XmlElement(name = "subpart")
-    public subpart getSubpart() {
+    public Subpart getSubpart() {
         return Subpart;
     }
 
-    public void setSubpart(subpart subpart) {
+    public void setSubpart(Subpart subpart) {
         this.Subpart = subpart;
     }
 
