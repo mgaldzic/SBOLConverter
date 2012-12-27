@@ -20,7 +20,7 @@ public class ValidCustomElementExtenedPartTest {
     @Test
     public void ValidCustomElementExtenedPartTest() throws JAXBException, FileNotFoundException {
         System.out.println("ValidCustomElementExtenedPartTest");
-        Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/ValidCustomElementExtenedPartTest.xml");
+        Rsbpml rsbpmlData = ReadXML.file("test/data/extendsSBOL/ValidCustomElementExtenedPartTest.xml");
         SBOLDocument Doc = SBOLFactory.createDocument();
         Doc.addContent(rsbpmlData.toSbol());
         SBOLFactory.validate(Doc);
