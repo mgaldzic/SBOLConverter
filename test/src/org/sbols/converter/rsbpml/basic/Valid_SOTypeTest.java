@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
-import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadXML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
@@ -18,9 +17,8 @@ public class Valid_SOTypeTest {
         System.out.println("Valid_SOTypeTest");
         Rsbpml rsbpmlData = ReadXML.file("test/data/basic/Valid_SOTypeTest.xml");
 
-        DnaComponent biobrick = SBOLFactory.createDnaComponent();
         SBOLDocument Doc = SBOLFactory.createDocument();
-        biobrick = rsbpmlData.toSbol();
+        DnaComponent biobrick = rsbpmlData.toSbol();
         Doc.addContent(biobrick);
         SBOLFactory.validate(Doc);
 
