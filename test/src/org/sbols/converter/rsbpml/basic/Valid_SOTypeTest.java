@@ -22,9 +22,5 @@ public class Valid_SOTypeTest {
         Doc.addContent(biobrick);
         SBOLFactory.validate(Doc);
 
-        //Remove this later
-        FileOutputStream out = new FileOutputStream("output5.txt");
-        SBOLFactory.write(Doc, out);
-        System.out.println(rsbpmlData);
     }
 }
