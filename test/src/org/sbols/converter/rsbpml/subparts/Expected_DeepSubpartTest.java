@@ -30,6 +30,7 @@ public class Expected_DeepSubpartTest {
         DnaComponent biobrick = rsbpmlData.toSbol();
         Doc.addContent(biobrick);
         FileOutputStream out = new FileOutputStream("test/data/rdfout/Expected_DeepSubpartTest.sbol.xml");
+        //TODO the output file here is incomplete
         SBOLFactory.write(Doc, out);
         fail("The test case is stub, no actual test.");
     }
