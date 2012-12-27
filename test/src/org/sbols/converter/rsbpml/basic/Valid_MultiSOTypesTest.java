@@ -1,10 +1,8 @@
 package org.sbols.converter.rsbpml.basic;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
-import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadXML;
 import org.sbolstandard.core.DnaComponent;
