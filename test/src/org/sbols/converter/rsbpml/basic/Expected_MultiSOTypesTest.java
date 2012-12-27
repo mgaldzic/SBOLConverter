@@ -7,6 +7,7 @@ package org.sbols.converter.rsbpml.basic;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
+import static org.junit.Assert.*;
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadXML;
@@ -29,6 +30,7 @@ public class Expected_MultiSOTypesTest {
         Doc.addContent(biobrick);
         FileOutputStream out = new FileOutputStream("test/data/rdfout/Expected_MultiSOTypesTest.sbol.xml");
         SBOLFactory.write(Doc, out);
+        fail("The test case is stub, no actual test.");
     }
     
 }
