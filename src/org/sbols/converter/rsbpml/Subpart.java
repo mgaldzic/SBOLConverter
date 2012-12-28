@@ -46,15 +46,23 @@ public class Subpart {
         this.part_short_desc = part_short_desc;
     }
 
+    @Override //need to edit this later to reflect changes
+    public String toString() {
+        return "\nsubpart [\n"
+                + (part_name != null ? "part_name: " + part_name + ", \n" : "")
+                + (part_short_desc != null ? "part_short_desc: " + part_short_desc + ", \n" : "")
+                + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "")                ;
+    }
+
     public DnaComponent toSbol(DnaComponent biobrick) {
         DnaComponent SubDnaComponent = SBOLFactory.createDnaComponent();
-        SubDnaComponent.setURI(URI.create("http://example.com/MyDnaComponent1")); //Need to make dynamic
+        SubDnaComponent.setURI(URI.create("http://example.com/DC_" + part_name)); //Need to make dynamic
         SubDnaComponent.setDisplayId(part_name);
         SubDnaComponent.setDescription(part_short_desc);
         SubDnaComponent.setName(part_nickname);
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
-        newAnnotation.setURI(URI.create("http://sampleuri.com/NewAnnotation"));
+        newAnnotation.setURI(URI.create("http://sampleuri.com/SA_" + part_name));
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }

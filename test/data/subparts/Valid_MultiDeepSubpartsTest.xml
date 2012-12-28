@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--Basic Part with Basic Subpart with 2 deep_subparts-->
 <rsbpml>
-	<part_list>
-		<part>
-			<part_name>DC1</part_name>
-			<part_nickname>DnaComponent1</part_nickname>
-			<part_short_desc>DnaComponent with only name and description</part_short_desc>
-			<dnaSequence>
-				<DnaSequence>
-					<seq_data>tccctatcagtgat</seq_data>
-				</DnaSequence>
-			</dnaSequence>
-			<deep_subparts>
-				<subpart>
-					<part_name>DC2</part_name>
-					<part_nickname>DnaComponent2</part_nickname>
-					<part_short_desc>Another DNA Component that is a deep_subpart</part_short_desc>
-				</subpart>
-			</deep_subparts>
-			<deep_subparts>
-				<subpart>
-					<part_name>DC3</part_name>
-					<part_nickname>DnaComponent3</part_nickname>
-					<part_short_desc>A third DNA Component that is a deep_subpart</part_short_desc>
-				</subpart>
-			</deep_subparts>
-		</part>
-	</part_list>
+    <part_list>
+        <part>
+            <part_name>DC1</part_name>
+            <part_nickname>DnaComponent1</part_nickname>
+            <part_short_desc>DnaComponent with only name and description</part_short_desc>
+            <dnaSequence>
+                <DnaSequence>
+                    <seq_data>tccctatcagtgat</seq_data>
+                </DnaSequence>
+            </dnaSequence>
+            <deep_subparts>
+                <subpart>
+                    <part_name>DC2</part_name>
+                    <part_nickname>DnaComponent2</part_nickname>
+                    <part_short_desc>A second DNA Component that is a deep_subpart</part_short_desc>
+                </subpart>
+                <subpart>
+                    <part_name>DC3</part_name>
+                    <part_nickname>DnaComponent3</part_nickname>
+                    <part_short_desc>A third DNA Component that is a deep_subpart</part_short_desc>
+                </subpart>
+            </deep_subparts>
+        </part>
+    </part_list>
 </rsbpml>
