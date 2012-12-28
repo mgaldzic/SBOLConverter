@@ -70,4 +70,10 @@ public class SBOLConverter {
             System.err.println("Validation failed, error: " + e.getMessage());
         }
     }
+    public static SBOLDocument convert(Rsbpml rsbpmlData){
+        SBOLDocument SbolDoc = SBOLFactory.createDocument();
+        SbolDoc.addContent(rsbpmlData.toSbol());
+        return SbolDoc;
+        
+    }
 }

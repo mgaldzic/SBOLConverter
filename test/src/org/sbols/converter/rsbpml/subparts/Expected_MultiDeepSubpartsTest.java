@@ -9,7 +9,9 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
+import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadXML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
@@ -22,20 +24,19 @@ import org.sbolstandard.core.SBOLFactory;
 public class Expected_MultiDeepSubpartsTest {
 
     @Test
-    public void Expected_MultiDeepSubpartTest() throws JAXBException, IOException {
-        System.out.println("Expected_MultiDeepSubpartTest");
+    public void Expected_MultiDeepSubpartsTest() throws JAXBException, IOException {
+        System.out.println("Expected_MultiDeepSubpartsTest");
+        //Get input for test
         Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_MultiDeepSubpartsTest.xml");
 
-        SBOLDocument Doc = SBOLFactory.createDocument();
-        DnaComponent biobrick = rsbpmlData.toSbol();
-        Doc.addContent(biobrick);
-        FileOutputStream fout = new FileOutputStream("test/data/rdfout/Expected_MultiDeepSubpartTest.sbol.xml");
+        //Do the test
+        SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
+        String actual = ReadFile.sbolDocToString(SbolDoc);
+        
+        //Get expected result
+        String expected = ReadFile.fromPath("test/data/subparts/Valid_MultiDeepSubpartsTest.sbol.xml");
 
-
-        SBOLFactory.write(Doc, fout);
-        SBOLFactory.write(Doc, System.out);
-        System.out.println(rsbpmlData);
-        //TODO the output file here is incomplete
-        fail("The test case is stub, no actual test.");
+        //Compare
+        assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }
 }

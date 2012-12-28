@@ -117,7 +117,7 @@ public class Part {
                 + (dna_sequence != null ? "dna_sequence: " + dna_sequence + "\n" : "")
                 //+ (deepSubparts != null ? "deepSubparts: " + deepSubparts + "\n" : "")
                 + (subpart != null ? "deepSubparts: " + subpart + "\n" : "")
-                + "subpart length: |" + subpart.size() + "| \n";
+                + (subpart != null ? "subpart length: |" + subpart.size() + "| \n" :"");
 
     }
 

@@ -9,7 +9,9 @@ import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
+import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadXML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
@@ -24,13 +26,17 @@ public class Expected_DeepSubpartTest {
     @Test
     public void Expected_DeepSubpartTest() throws JAXBException, IOException {
         System.out.println("Expected_DeepSubpartTest");
+        //Get input for test
         Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_DeepSubpartTest.xml");
 
-        SBOLDocument Doc = SBOLFactory.createDocument();
-        DnaComponent biobrick = rsbpmlData.toSbol();
-        Doc.addContent(biobrick);
-        FileOutputStream fout = new FileOutputStream("test/data/rdfout/Expected_DeepSubpartTest.sbol.xml");
-        //TODO the output file here is incomplete
-        fail("The test case is stub, no actual test.");
+        //Do the test
+        SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
+        String actual = ReadFile.sbolDocToString(SbolDoc);
+        
+        //Get expected result
+        String expected = ReadFile.fromPath("test/data/subparts/Valid_DeepSubpartTest.sbol.xml");
+
+        //Compare
+        assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }
 }

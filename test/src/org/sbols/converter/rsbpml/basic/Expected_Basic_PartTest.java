@@ -4,16 +4,15 @@
  */
 package org.sbols.converter.rsbpml.basic;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
+import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadXML;
-import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
-import org.sbolstandard.core.SBOLFactory;
 
 /**
  * Tests the converter successfully converts the simplest dna component,
@@ -26,14 +25,17 @@ public class Expected_Basic_PartTest {
     @Test
     public void Expected_BasicPartTest() throws JAXBException, IOException {
         System.out.println("Expected_BasicPartTest");
+        //Get input for test
         Rsbpml rsbpmlData = ReadXML.file("test/data/basic/Valid_BasicPartTest.xml");
 
-        SBOLDocument Doc = SBOLFactory.createDocument();
-        DnaComponent biobrick = rsbpmlData.toSbol();
-        Doc.addContent(biobrick);
+        //Do the test
+        SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
+        String actual = ReadFile.sbolDocToString(SbolDoc);
+        
+        //Get expected result
+        String expected = ReadFile.fromPath("test/data/basic/Valid_BasicPartTest.sbol.xml");
 
-        FileOutputStream out = new FileOutputStream("test/data/rdfout/Expected_Basic_PartTest.sbol.xml");
-        SBOLFactory.write(Doc, out);
-        fail("The test case is stub, no actual test.");
+        //Compare
+        assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }
 }
