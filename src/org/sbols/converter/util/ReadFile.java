@@ -17,14 +17,28 @@ import org.sbolstandard.core.SBOLFactory;
  * @author mgaldzic
  */
 public class ReadFile {
+    
+    public static String normalize_ws (String aString){
+        aString = aString.replaceAll("\\r\\n", "#@#@#");
+        aString = aString.replaceAll("\\r", "#@#@#");
+        aString = aString.replaceAll("\\n", "#@#@#");
+        aString = aString.replaceAll("\\s+", " ");
+        aString = aString.replaceAll("#@#@#", "\n");
+        return aString;
+    }
 
     public static Boolean compare(String expected, String actual) {
         StringBuilder text_diff = new StringBuilder();
         Boolean isEqual = true;
+        
+        expected = normalize_ws(expected);
+        actual = normalize_ws(actual);
 
         DiffMatchPatch dmp = new DiffMatchPatch();
-        LinkedList<DiffMatchPatch.Diff> diffs = dmp.diff_main(actual, expected, true);
-        dmp.diff_cleanupSemantic(diffs);
+        //LinkedList<DiffMatchPatch.Diff> diffs = dmp.diff_main(actual, expected, true);
+        LinkedList<DiffMatchPatch.Diff> diffs = dmp.diff_lineMode(actual, expected);
+        
+        //dmp.diff_cleanupSemantic(diffs);
 
         for (DiffMatchPatch.Diff aDiff : diffs) {
             //System.out.println("adiff: " + aDiff);
@@ -37,7 +51,7 @@ public class ReadFile {
                 isEqual = false;
             }
         }
-        System.out.println(isEqual == false ? "diffs: " + text_diff.toString() : "");
+        System.out.println(isEqual == false ? "diffs: \n" + text_diff.toString() : "");
         return isEqual;
 
     }

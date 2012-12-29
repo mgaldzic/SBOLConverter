@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rdf:RDF xmlns:s="http://sbols.org/v1#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:so="http://purl.obolibrary.org/obo/">
+    <s:DnaComponent rdf:about="http://example.com/MyDnaComponent">
+        <s:displayId>DC1</s:displayId>
+    </s:DnaComponent>
+</rdf:RDF>

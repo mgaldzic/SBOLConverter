@@ -1,12 +1,15 @@
 /*
  * Defines leaves and classes within <rsbpml>
  */
+
 package org.sbols.converter.rsbpml;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLFactory;
+import javax.xml.bind.annotation.*;
+
 
 @XmlRootElement(name = "rsbpml")
 public class Rsbpml {
