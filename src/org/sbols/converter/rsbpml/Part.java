@@ -122,7 +122,7 @@ public class Part {
     }
 
     public DnaComponent toSbol(DnaComponent biobrick) {
-        biobrick.setURI(URI.create("http://example.com/MyDnaComponent")); //Need to make dynamic
+        biobrick.setURI(URI.create("http://partsregistry.org/part/"+part_name)); //Need to make dynamic
         biobrick.setDisplayId(part_name);
         biobrick.setDescription(part_short_desc);
         biobrick.setName(part_nickname);
