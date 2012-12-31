@@ -4,5 +4,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000167"/>
   <s:displayId>DC1</s:displayId>
   <s:description>A DnaComponent can optionally use a type from Sequence Ontology</s:description>
+  <rdf:type rdf:resource="http://partsregistry.org/type/promoter"/>
  </s:DnaComponent>
 </rdf:RDF>

@@ -1,4 +1,4 @@
-package org.sbols.converter.rsbpml.basic;
+package org.sbols.converter.rsbpml;
 
 /*
  * To change this template, choose Tools | Templates
@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.sbols.converter.rsbpml.basic.*;
 
 /**
  *
@@ -22,9 +23,10 @@ import org.junit.runners.Suite;
     Valid_NicknameTest.class, 
     Valid_SequenceTest.class, 
     Valid_SOTypeTest.class, 
-    Valid_MultiSOTypesTest.class
+    Valid_MultiSOTypesTest.class,
+    Valid_NonSOTypesTest.class, 
 })
-public class BasicPartSuite {
+public class ValidBasicPartSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {

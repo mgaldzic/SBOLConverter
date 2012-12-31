@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rdf:RDF xmlns:s="http://sbols.org/v1#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:so="http://purl.obolibrary.org/obo/">
-    <s:DnaComponent rdf:about="http://example.com/MyDnaComponent">
+    <s:DnaComponent rdf:about="http://partsregistry.org/part/DC1">
         <s:displayId>DC1</s:displayId>
         <s:name>DnaComponent1</s:name>
         <s:description>DnaComponent with only name and description</s:description>

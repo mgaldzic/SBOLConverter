@@ -4,5 +4,10 @@
   <s:displayId>DC1</s:displayId>
   <s:name>DnaComponent1</s:name>
   <s:description>DnaComponent with only name and description</s:description>
+  <s:dnaSequence>
+   <s:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_1">
+    <s:nucleotides>tccctatcagtgat</s:nucleotides>
+   </s:DnaSequence>
+  </s:dnaSequence>
  </s:DnaComponent>
 </rdf:RDF>

@@ -3,7 +3,6 @@
  */
 package org.sbols.converter.rsbpml;
 
-
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +12,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.sbolstandard.core.DnaComponent;
+import org.sbolstandard.core.DnaSequence;
+import org.sbolstandard.core.SBOLFactory;
 
 @XmlRootElement(name = "part")
 public class Part {
 
-    private DnaSequenceContainer dna_sequence;
+    private List<String> seq_data = new ArrayList<>();
     private String part_name;
     private String part_nickname;
     private String part_short_desc;
@@ -25,13 +26,14 @@ public class Part {
     private List<Subpart> subpart;
     private List<String> part_types = new ArrayList<>();
 
-    @XmlElement(name = "dnaSequence")
-    public DnaSequenceContainer getSequence() {
-        return dna_sequence;
+    @XmlElementWrapper(name = "sequences")
+    @XmlElement(name = "seq_data")
+    public List<String> getSeq_data() {
+        return seq_data;
     }
 
-    public void setSequence(DnaSequenceContainer newSequence) {
-        this.dna_sequence = newSequence;
+    public void setSequence(List<String> newSequence) {
+        this.seq_data = newSequence;
     }
 
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -101,7 +103,7 @@ public class Part {
                 + (part_name != null ? "part_name: " + part_name + ", \n" : "")
                 + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "")
                 + (part_short_desc != null ? "part_short_desc: '" + part_short_desc + "', \n" : "")
-                + (dna_sequence != null ? "dna_sequence: " + dna_sequence + "\n" : "")
+                + (seq_data != null ? "dna_sequence: " + seq_data + "\n" : "")
                 //+ (deepSubparts != null ? "deepSubparts: " + deepSubparts + "\n" : "")
                 + (subpart != null ? "deepSubparts: " + subpart + "\n" : "")
                 + (subpart != null ? "subpart length: |" + subpart.size() + "| \n" : "");
@@ -115,16 +117,22 @@ public class Part {
         biobrick.setName(part_nickname);
 
         if (part_types != null) {
-            
+
             for (String aType : part_types) {
                 if (Vocabulary.SO_MAP.get(aType) != null) {
-                biobrick.addType(Vocabulary.SO_MAP.get(aType));
+                    biobrick.addType(Vocabulary.SO_MAP.get(aType));
                 }
             }
         }
 
-        if (dna_sequence != null) {
-            biobrick = dna_sequence.toSbol(biobrick);
+        if (seq_data != null) {
+            DnaSequence sequenceObject = SBOLFactory.createDnaSequence();
+
+            for (String aSeq : seq_data) {
+                sequenceObject.setNucleotides(aSeq);
+                sequenceObject.setURI(URI.create("http://partsregistry.org/seq/partseq_")); //Need to make dynamic
+                biobrick.setDnaSequence(sequenceObject);
+            }
         }
 
         if (subpart != null) {
