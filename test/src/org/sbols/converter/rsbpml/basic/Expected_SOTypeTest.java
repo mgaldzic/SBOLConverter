@@ -4,6 +4,7 @@
  */
 package org.sbols.converter.rsbpml.basic;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
@@ -13,6 +14,7 @@ import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadXML;
 import org.sbolstandard.core.SBOLDocument;
+import org.sbolstandard.core.SBOLFactory;
 
 /**
  *
@@ -28,6 +30,12 @@ public class Expected_SOTypeTest {
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
+        
+        // Sometimes we generate the expected results using the test - cheating
+        String file_out_path = "test/data/rdfout/Out_SOTypeTest.sbol.xml";
+        //     FileOutputStream fout = new FileOutputStream(file_out_path+"1");
+             FileOutputStream fout = new FileOutputStream(file_out_path);
+             SBOLFactory.write(SbolDoc, fout);
         
         //Get expected result
         String expected = ReadFile.fromPath("test/data/basic/Valid_SOTypeTest.sbol.xml");

@@ -5,8 +5,7 @@
         <part>
             <part_name>DC1</part_name>
             <part_short_desc>A DnaComponent can optionally use multiple types from Sequence Ontology</part_short_desc>
-            <part_type>promoter</part_type>
-            <part_type>rbs</part_type>
+            <part_type>bidirectional_promoter</part_type>
         </part>
     </part_list>
 </rsbpml>
