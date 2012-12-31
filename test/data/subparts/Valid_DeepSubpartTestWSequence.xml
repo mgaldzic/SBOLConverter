@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--Basic Part with Basic Subpart with 2 deep_subparts-->
+<!--Basic Part with Basic Subpart-->
 <rsbpml>
     <part_list>
         <part>
@@ -12,13 +12,7 @@
                     <part_id>2</part_id>
                     <part_name>DC2</part_name>
                     <part_nickname>DnaComponent2</part_nickname>
-                    <part_short_desc>A second DNA Component that is a deep_subpart</part_short_desc>
-                </subpart>
-                <subpart>
-                    <part_id>3</part_id>
-                    <part_name>DC3</part_name>
-                    <part_nickname>DnaComponent3</part_nickname>
-                    <part_short_desc>A third DNA Component that is a deep_subpart</part_short_desc>
+                    <part_short_desc>Another DNA Component</part_short_desc>
                 </subpart>
             </deep_subparts>
         </part>
