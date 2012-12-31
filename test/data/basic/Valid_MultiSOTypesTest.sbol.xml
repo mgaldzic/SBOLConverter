@@ -2,7 +2,7 @@
 <rdf:RDF xmlns:s="http://sbols.org/v1#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:so="http://purl.obolibrary.org/obo/">
  <s:DnaComponent rdf:about="http://partsregistry.org/part/DC1">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000167"/>
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000552"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
   <s:displayId>DC1</s:displayId>
   <s:description>A DnaComponent can optionally use multiple types from Sequence Ontology</s:description>
   <rdf:type rdf:resource="http://partsregistry.org/type/promoter"/>
