@@ -12,10 +12,21 @@ import org.sbolstandard.core.SequenceAnnotation;
 @XmlRootElement(name = "subpart")
 public class Subpart {
 
+    private String part_id;
     private String part_name;
     private String part_nickname;
     private String part_short_desc;
 
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlElement(name = "part_id")
+    public String getPart_id() {
+        return part_id;
+    }
+
+    public void setPart_id(String part_id) {
+        this.part_id = part_id;
+    }
+    
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlElement(name = "part_name")
     public String getPart_name() {
@@ -56,13 +67,13 @@ public class Subpart {
 
     public DnaComponent toSbol(DnaComponent biobrick) {
         DnaComponent SubDnaComponent = SBOLFactory.createDnaComponent();
-        SubDnaComponent.setURI(URI.create("http://example.com/DC_" + part_name)); //Need to make dynamic
+        SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //TODO Need to make dynamic
         SubDnaComponent.setDisplayId(part_name);
         SubDnaComponent.setDescription(part_short_desc);
         SubDnaComponent.setName(part_nickname);
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
-        newAnnotation.setURI(URI.create("http://sampleuri.com/SA_" + part_name));
+        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_"+part_id)); //TODO parent part_id+_+part_id+_+posiiton 
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }

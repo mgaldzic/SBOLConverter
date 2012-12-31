@@ -5,7 +5,7 @@
   <s:name>DnaComponent1</s:name>
   <s:description>DnaComponent with only name and description</s:description>
   <s:annotation>
-   <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an___1">
+   <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_1_2_1">
     <s:subComponent>
      <s:DnaComponent rdf:about="http://partsregistry.org/part/DC2">
       <s:displayId>DC2</s:displayId>
