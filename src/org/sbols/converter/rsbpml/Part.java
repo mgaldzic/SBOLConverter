@@ -18,6 +18,7 @@ import org.sbolstandard.core.SBOLFactory;
 @XmlRootElement(name = "part")
 public class Part {
 
+    private String part_id;
     private List<String> seq_data = new ArrayList<>();
     private String part_name;
     private String part_nickname;
@@ -26,6 +27,16 @@ public class Part {
     private List<Subpart> subpart;
     private List<String> part_types = new ArrayList<>();
 
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlElement(name = "part_id")
+    public String getPart_id() {
+        return part_id;
+    }
+
+    public void setPart_id(String part_id) {
+        this.part_id = part_id;
+    }
+    
     @XmlElementWrapper(name = "sequences")
     @XmlElement(name = "seq_data")
     public List<String> getSeq_data() {
