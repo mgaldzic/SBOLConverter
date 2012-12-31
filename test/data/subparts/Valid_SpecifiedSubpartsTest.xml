@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--Basic Part with Basic Subpart with 2 specified_subparts-->
 <rsbpml>
-	<part_list>
-		<part>
-			<part_name>DC1</part_name>
-			<part_nickname>DnaComponent1</part_nickname>
-			<part_short_desc>DnaComponent with only name and description</part_short_desc>
-			<dnaSequence>
-				<DnaSequence>
-					<seq_data>tccctatcagtgat</seq_data>
-				</DnaSequence>
-			</dnaSequence>
-			<specified_subparts>
-				<subpart>
-					<part_name>DC2</part_name>
-					<part_nickname>DnaComponent2</part_nickname>
-					<part_short_desc>Another DNA Component that is a specified_subpart</part_short_desc>
-				</subpart>
-				<subpart>
-					<part_name>DC3</part_name>
-					<part_nickname>DnaComponent3</part_nickname>
-					<part_short_desc>A third DNA Component that is a specified_subpart</part_short_desc>
-				</subpart>
-			</specified_subparts>
-		</part>
-	</part_list>
+    <part_list>
+        <part>
+            <part_id>1</part_id>
+            <part_name>DC1</part_name>
+            <part_nickname>DnaComponent1</part_nickname>
+            <part_short_desc>DnaComponent with only name and description</part_short_desc>
+        <specified_subparts>
+            <subpart>
+                <part_id>2</part_id>
+                <part_name>DC2</part_name>
+                <part_nickname>DnaComponent2</part_nickname>
+                <part_short_desc>Another DNA Component that is a specified_subpart</part_short_desc>
+            </subpart>
+            <subpart>
+                <part_id>3</part_id>
+                <part_name>DC3</part_name>
+                <part_nickname>DnaComponent3</part_nickname>
+                <part_short_desc>A third DNA Component that is a specified_subpart</part_short_desc>
+            </subpart>
+        </specified_subparts>
+    </part>
+</part_list>
 </rsbpml>

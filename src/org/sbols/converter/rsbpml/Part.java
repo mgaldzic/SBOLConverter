@@ -31,9 +31,8 @@ public class Part {
     //entered
     //author
     //quality
-    //private deep_subparts deepSubparts;
     private List<Subpart> deep_subparts;
-    //specified_subparts
+    private List<Subpart> specified_subparts;
     private List<SubThing> specified_subscars;
     private List<String> seq_data = new ArrayList<>();
     //features
@@ -99,10 +98,24 @@ public class Part {
         return deep_subparts;
     }
 
-    public void setSubpart(List<Subpart> deep_subparts) {
+    public void setDeep_subparts(List<Subpart> deep_subparts) {
         this.deep_subparts = deep_subparts;
     }
 
+    @XmlElementWrapper(name = "specified_subparts")
+    @XmlElement(name = "subpart")
+    public List<Subpart> getSpecified_subparts() {
+        if (specified_subparts == null) {
+
+            specified_subparts = new ArrayList<>();
+        }
+        return specified_subparts;
+    }
+
+    public void setSpecified_subparts(List<Subpart> specified_subparts) {
+        this.specified_subparts = specified_subparts;
+    }
+    
     @XmlElementWrapper(name = "specified_subscars")
     @XmlElements({
         @XmlElement(name = "scar", type = Scar.class),
@@ -181,6 +194,12 @@ public class Part {
 
         if (deep_subparts != null) {
             for (Subpart aSubpart : deep_subparts) {
+                biobrick = aSubpart.toSbol(biobrick);
+            }
+        }
+        
+        if (specified_subparts != null) {
+            for (Subpart aSubpart : specified_subparts) {
                 biobrick = aSubpart.toSbol(biobrick);
             }
         }

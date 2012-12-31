@@ -5,7 +5,8 @@
   <s:name>DnaComponent1</s:name>
   <s:description>DnaComponent with only name and description</s:description>
   <s:annotation>
-   <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an___1">
+   <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_1_2_1">
+    <s:precedes rdf:resource="http://partsregistry.org/anot/an_1_3_2"/>
     <s:subComponent>
      <s:DnaComponent rdf:about="http://partsregistry.org/part/DC2">
       <s:displayId>DC2</s:displayId>
@@ -16,7 +17,7 @@
    </s:SequenceAnnotation>
   </s:annotation>
   <s:annotation>
-   <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an___2">
+   <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_1_3_2">
     <s:subComponent>
      <s:DnaComponent rdf:about="http://partsregistry.org/part/DC3">
       <s:displayId>DC3</s:displayId>
