@@ -19,13 +19,25 @@ import org.sbolstandard.core.SBOLFactory;
 public class Part {
 
     private String part_id;
-    private List<String> seq_data = new ArrayList<>();
     private String part_name;
-    private String part_nickname;
+    //short_name
     private String part_short_desc;
+    private List<String> part_types = new ArrayList<>();
+    //status
+    //results
+    private String part_nickname;
+    //url
+    //entered
+    //author
+    //quality
     //private Deep_subparts deepSubparts;
     private List<Subpart> subpart;
-    private List<String> part_types = new ArrayList<>();
+    //specified_subparts
+    //specified_subscars
+    private List<String> seq_data = new ArrayList<>();
+    //features
+    //paramters
+    //categories  
 
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlElement(name = "part_id")
@@ -35,17 +47,6 @@ public class Part {
 
     public void setPart_id(String part_id) {
         this.part_id = part_id;
-    }
-    
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlElementWrapper(name = "sequences")
-    @XmlElement(name = "seq_data")
-    public List<String> getSeq_data() {
-        return seq_data;
-    }
-
-    public void setSequence(List<String> newSequence) {
-        this.seq_data = newSequence;
     }
 
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -59,16 +60,6 @@ public class Part {
     }
 
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlElement(name = "part_nickname")
-    public String getPart_nickname() {
-        return part_nickname;
-    }
-
-    public void setPart_nickname(String part_nickname) {
-        this.part_nickname = part_nickname;
-    }
-
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlElement(name = "part_short_desc")
     public String getPart_short_desc() {
         return part_short_desc;
@@ -78,9 +69,27 @@ public class Part {
         this.part_short_desc = part_short_desc;
     }
 
+    @XmlElement(name = "part_type")
+    public List<String> getPartTypes() {
+        return part_types;
+    }
+
+    public void setPartTypes(List<String> newPartTypes) {
+        this.part_types = newPartTypes;
+    }
+
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlElement(name = "part_nickname")
+    public String getPart_nickname() {
+        return part_nickname;
+    }
+
+    public void setPart_nickname(String part_nickname) {
+        this.part_nickname = part_nickname;
+    }
+
     @XmlElementWrapper(name = "deep_subparts")
     @XmlElement(name = "subpart")
-    //public Subpart getDeepSubparts() {
     public List<Subpart> getSubpart() {
         if (subpart == null) {
             subpart = new ArrayList<>();
@@ -88,7 +97,6 @@ public class Part {
         return subpart;
     }
 
-    //public void setDeepSubparts(Deep_subparts newSubpart) {
     public void setSubpart(List<Subpart> subpart) {
         this.subpart = subpart;
     }
@@ -100,13 +108,15 @@ public class Part {
      * public void setDeepSubparts(Deep_subparts newSubpart) { this.deepSubparts
      * = newSubpart; }
      */
-    @XmlElement(name = "part_type")
-    public List<String> getPartTypes() {
-        return part_types;
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlElementWrapper(name = "sequences")
+    @XmlElement(name = "seq_data")
+    public List<String> getSeq_data() {
+        return seq_data;
     }
 
-    public void setPartTypes(List<String> newPartTypes) {
-        this.part_types = newPartTypes;
+    public void setSequence(List<String> newSequence) {
+        this.seq_data = newSequence;
     }
 
     @Override //need to edit this later to reflect changes
@@ -138,14 +148,14 @@ public class Part {
         }
 
         if ((seq_data != null) && !seq_data.isEmpty()) {
-            
+
             DnaSequence sequenceObject = SBOLFactory.createDnaSequence();
 
             for (String aSeq : seq_data) {
                 if (!aSeq.isEmpty()) {
-                sequenceObject.setNucleotides(aSeq);
-                sequenceObject.setURI(URI.create("http://partsregistry.org/seq/partseq_"+part_id)); //Need to make dynamic
-                biobrick.setDnaSequence(sequenceObject);
+                    sequenceObject.setNucleotides(aSeq);
+                    sequenceObject.setURI(URI.create("http://partsregistry.org/seq/partseq_" + part_id)); //Need to make dynamic
+                    biobrick.setDnaSequence(sequenceObject);
                 }
             }
         }
