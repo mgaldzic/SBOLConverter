@@ -4,19 +4,16 @@
  */
 package org.sbols.converter.rsbpml.subparts;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadXML;
 import org.sbols.converter.util.WriteFile;
-import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
-import org.sbolstandard.core.SBOLFactory;
 
 /**
  *
