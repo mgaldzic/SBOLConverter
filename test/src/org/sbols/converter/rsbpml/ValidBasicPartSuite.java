@@ -19,12 +19,14 @@ import org.sbols.converter.rsbpml.basic.*;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+    Valid_IdTest.class,
     Valid_BasicPartTest.class, 
     Valid_NicknameTest.class, 
     Valid_SequenceTest.class, 
     Valid_SOTypeTest.class, 
     Valid_MultiSOTypesTest.class,
     Valid_NonSOTypesTest.class, 
+    Valid_MininumRSBPML.class
 })
 public class ValidBasicPartSuite {
 
