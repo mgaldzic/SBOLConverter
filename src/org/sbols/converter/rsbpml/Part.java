@@ -37,6 +37,7 @@ public class Part {
         this.part_id = part_id;
     }
     
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlElementWrapper(name = "sequences")
     @XmlElement(name = "seq_data")
     public List<String> getSeq_data() {
@@ -136,13 +137,16 @@ public class Part {
             }
         }
 
-        if (seq_data != null) {
+        if ((seq_data != null) && !seq_data.isEmpty()) {
+            
             DnaSequence sequenceObject = SBOLFactory.createDnaSequence();
 
             for (String aSeq : seq_data) {
+                if (!aSeq.isEmpty()) {
                 sequenceObject.setNucleotides(aSeq);
                 sequenceObject.setURI(URI.create("http://partsregistry.org/seq/partseq_")); //Need to make dynamic
                 biobrick.setDnaSequence(sequenceObject);
+                }
             }
         }
 
