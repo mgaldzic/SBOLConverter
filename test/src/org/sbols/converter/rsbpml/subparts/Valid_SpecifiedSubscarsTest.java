@@ -16,12 +16,12 @@ import org.sbolstandard.core.SBOLFactory;
  *
  * @author mgaldzic
  */
-public class Valid_SpecifiedSubcarsTest {
+public class Valid_SpecifiedSubscarsTest {
     
     @Test
-    public void Valid_SpecifiedSubcarsTest() throws JAXBException, FileNotFoundException {
-        System.out.println("Valid_SpecifiedSubcarsTest");
-        Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_SpecifiedSubcarsTest.xml");
+    public void Valid_SpecifiedSubscarsTest() throws JAXBException, FileNotFoundException {
+        System.out.println("Valid_SpecifiedSubscarsTest");
+        Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_SpecifiedSubscarsTest.xml");
         SBOLDocument Doc = SBOLFactory.createDocument();
         Doc.addContent(rsbpmlData.toSbol());
         SBOLFactory.validate(Doc);
