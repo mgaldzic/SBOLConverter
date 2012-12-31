@@ -17,6 +17,7 @@ import org.sbols.converter.rsbpml.basic.*;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+    Expected_IdTest.class,
     Expected_NonSOTypesTest.class, 
     Expected_SOTypeTest.class, 
     Expected_Basic_PartTest.class, 
