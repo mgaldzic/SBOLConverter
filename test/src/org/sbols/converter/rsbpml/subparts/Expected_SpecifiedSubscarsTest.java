@@ -21,7 +21,7 @@ import org.sbolstandard.core.SBOLFactory;
  *
  * @author mgaldzic
  */
-public class Expected_SpecifiedSubcarsTest {
+public class Expected_SpecifiedSubscarsTest {
 
     @Test
     public void Valid_SpecifiedSubcarsTest() throws JAXBException, FileNotFoundException, IOException {
