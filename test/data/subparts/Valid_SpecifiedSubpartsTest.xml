@@ -17,8 +17,6 @@
 					<part_nickname>DnaComponent2</part_nickname>
 					<part_short_desc>Another DNA Component that is a specified_subpart</part_short_desc>
 				</subpart>
-			</specified_subparts>
-			<specified_subparts>
 				<subpart>
 					<part_name>DC3</part_name>
 					<part_nickname>DnaComponent3</part_nickname>

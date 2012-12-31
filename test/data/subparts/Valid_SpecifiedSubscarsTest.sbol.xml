@@ -16,18 +16,7 @@
     </s:subComponent>
    </s:SequenceAnnotation>
   </s:annotation>
-  <s:annotation>
-   <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_1_3_2">
-    <s:subComponent>
-     <s:DnaComponent rdf:about="http://partsregistry.org/part/DC3">
-      <s:displayId>DC3</s:displayId>
-      <s:name>DnaComponent3</s:name>
-      <s:description>A third DNA Component that is a subscar</s:description>
-     </s:DnaComponent>
-    </s:subComponent>
-   </s:SequenceAnnotation>
-  </s:annotation>
-  <s:annotation>
+    <s:annotation>
    <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/sc_1_1_1">
     <s:precedes rdf:resource="http://partsregistry.org/anot/an_1_3_2"/>
     <s:subComponent>
@@ -44,5 +33,17 @@
     </s:subComponent>
    </s:SequenceAnnotation>
   </s:annotation>
+  <s:annotation>
+   <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_1_3_2">
+    <s:subComponent>
+     <s:DnaComponent rdf:about="http://partsregistry.org/part/DC3">
+      <s:displayId>DC3</s:displayId>
+      <s:name>DnaComponent3</s:name>
+      <s:description>A third DNA Component that is a subscar</s:description>
+     </s:DnaComponent>
+    </s:subComponent>
+   </s:SequenceAnnotation>
+  </s:annotation>
+
  </s:DnaComponent>
 </rdf:RDF>

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -30,10 +31,10 @@ public class Part {
     //entered
     //author
     //quality
-    //private Deep_subparts deepSubparts;
-    private List<Subpart> subpart;
+    //private deep_subparts deepSubparts;
+    private List<Subpart> deep_subparts;
     //specified_subparts
-    //specified_subscars
+    private List<SubThing> specified_subscars;
     private List<String> seq_data = new ArrayList<>();
     //features
     //paramters
@@ -90,15 +91,33 @@ public class Part {
 
     @XmlElementWrapper(name = "deep_subparts")
     @XmlElement(name = "subpart")
-    public List<Subpart> getSubpart() {
-        if (subpart == null) {
-            subpart = new ArrayList<>();
+    public List<Subpart> getDeep_subparts() {
+        if (deep_subparts == null) {
+
+            deep_subparts = new ArrayList<>();
         }
-        return subpart;
+        return deep_subparts;
     }
 
-    public void setSubpart(List<Subpart> subpart) {
-        this.subpart = subpart;
+    public void setSubpart(List<Subpart> deep_subparts) {
+        this.deep_subparts = deep_subparts;
+    }
+
+    @XmlElementWrapper(name = "specified_subscars")
+    @XmlElements({
+        @XmlElement(name = "scar", type = Scar.class),
+        @XmlElement(name = "subpart", type = Subpart.class)
+    })
+    public List<SubThing> getSpecified_subscars() {
+        if (specified_subscars == null) {
+
+            specified_subscars = new ArrayList<>();
+        }
+        return specified_subscars;
+    }
+
+    public void setScar(List<SubThing> specified_subscars) {
+        this.specified_subscars = specified_subscars;
     }
 
     /*
@@ -127,8 +146,8 @@ public class Part {
                 + (part_short_desc != null ? "part_short_desc: '" + part_short_desc + "', \n" : "")
                 + (seq_data != null ? "dna_sequence: " + seq_data + "\n" : "")
                 //+ (deepSubparts != null ? "deepSubparts: " + deepSubparts + "\n" : "")
-                + (subpart != null ? "deepSubparts: " + subpart + "\n" : "")
-                + (subpart != null ? "subpart length: |" + subpart.size() + "| \n" : "");
+                + (deep_subparts != null ? "deepSubparts: " + deep_subparts + "\n" : "")
+                + (deep_subparts != null ? "subpart length: |" + deep_subparts.size() + "| \n" : "");
 
     }
 
@@ -160,8 +179,13 @@ public class Part {
             }
         }
 
-        if (subpart != null) {
-            for (Subpart aSubpart : subpart) {
+        if (deep_subparts != null) {
+            for (Subpart aSubpart : deep_subparts) {
+                biobrick = aSubpart.toSbol(biobrick);
+            }
+        }
+        if (specified_subscars != null) {
+            for (SubThing aSubpart : specified_subscars) {
                 biobrick = aSubpart.toSbol(biobrick);
             }
         }
