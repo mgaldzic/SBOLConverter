@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes" ?>
 
-<!-- Mininum RSBPML -->
+<!-- Mininum RSBPML demonstrates the empty tag issues -->
 <rsbpml>
     <part_list>
         <part>
