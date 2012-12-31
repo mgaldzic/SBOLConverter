@@ -144,7 +144,7 @@ public class Part {
             for (String aSeq : seq_data) {
                 if (!aSeq.isEmpty()) {
                 sequenceObject.setNucleotides(aSeq);
-                sequenceObject.setURI(URI.create("http://partsregistry.org/seq/partseq_")); //Need to make dynamic
+                sequenceObject.setURI(URI.create("http://partsregistry.org/seq/partseq_"+part_id)); //Need to make dynamic
                 biobrick.setDnaSequence(sequenceObject);
                 }
             }
