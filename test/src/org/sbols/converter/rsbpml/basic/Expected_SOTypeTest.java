@@ -4,7 +4,6 @@
  */
 package org.sbols.converter.rsbpml.basic;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
@@ -15,7 +14,6 @@ import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadXML;
 import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
-import org.sbolstandard.core.SBOLFactory;
 
 /**
  *

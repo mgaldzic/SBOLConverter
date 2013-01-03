@@ -4,7 +4,6 @@
  */
 package org.sbols.converter.rsbpml.basic;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
@@ -13,8 +12,8 @@ import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
-import org.sbolstandard.core.SBOLFactory;
 
 /**
  *
@@ -32,10 +31,7 @@ public class Expected_MultiSOTypesTest {
         String actual = ReadFile.sbolDocToString(SbolDoc);
         
                 // Sometimes we generate the expected results using the test - cheating
-        String file_out_path = "test/data/rdfout/Out_MultiSOTypesTest.sbol.xml";
-        //     FileOutputStream fout = new FileOutputStream(file_out_path+"1");
-             FileOutputStream fout = new FileOutputStream(file_out_path);
-             SBOLFactory.write(SbolDoc, fout);
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_MultiSOTypesTest.sbol.xml");
         
         //Get expected result
         String expected = ReadFile.fromPath("test/data/basic/Valid_MultiSOTypesTest.sbol.xml");

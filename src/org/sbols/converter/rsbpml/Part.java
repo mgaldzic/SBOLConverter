@@ -13,9 +13,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
+import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 import org.sbolstandard.core.DnaSequence;
-import org.sbolstandard.core.SBOLFactory;
 
 @XmlRootElement(name = "part")
 public class Part {
@@ -194,7 +194,7 @@ public class Part {
 
         if ((seq_data != null) && !seq_data.isEmpty()) {
 
-            DnaSequence sequenceObject = SBOLFactory.createDnaSequence();
+            DnaSequence sequenceObject = PartsRegistrySBOLFactory.createDnaSequence();
 
             for (String aSeq : seq_data) {
                 if (!aSeq.isEmpty()) {

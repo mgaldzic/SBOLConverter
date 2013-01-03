@@ -23,13 +23,14 @@ public class ReadFile {
         aString = aString.replaceAll("\\r", "#@#@#");
         aString = aString.replaceAll("\\n", "#@#@#");
         aString = aString.replaceAll("\\s+", " ");
+        aString = aString.replaceAll("#@#@##@#@#", "#@#@#");
         aString = aString.replaceAll("#@#@#", "\n");
         String[] lines = aString.split("\n");
         //String[] lines = aString.split(System.getProperty("line.separator"));
 
         StringBuilder outString = new StringBuilder();
         for (String l : lines){
-          outString.append(l.trim());
+            outString.append(l.trim()).append("\n");
         }
         aString = outString.toString();
         return aString;

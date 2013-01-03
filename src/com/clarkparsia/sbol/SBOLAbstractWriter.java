@@ -117,6 +117,7 @@ public abstract class SBOLAbstractWriter implements SBOLWriter {
 	            startSubj(component, SBOLVocabulary.DnaComponent);
                     writeProp(RDF.TYPE, component.getTypes());
 	            writeProp(SBOLVocabulary.displayId, component.getDisplayId());
+                    writeProp(SBOLVocabulary.name, component.getName());
 	            writeProp(SBOLVocabulary.description, component.getDescription());
 	            if (component.getDnaSequence() != null) {
 	            	startProp(SBOLVocabulary.dnaSequence);
