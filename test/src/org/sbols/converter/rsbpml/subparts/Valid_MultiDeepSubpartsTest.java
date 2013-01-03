@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
@@ -25,7 +25,7 @@ public class Valid_MultiDeepSubpartsTest {
     @Test
     public void Valid_MultiDeepSubpartsTest() throws JAXBException, FileNotFoundException {
         System.out.println("Valid_MultiDeepSubpartsTest");
-        Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_MultiDeepSubpartsTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_MultiDeepSubpartsTest.xml");
         SBOLDocument Doc = SBOLFactory.createDocument();
         DnaComponent biobrick = rsbpmlData.toSbol();
         Doc.addContent(biobrick);

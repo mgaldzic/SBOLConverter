@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadFile;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
@@ -26,7 +26,7 @@ public class Expected_NonSOTypesTest {
     public void Expected_NonSOTypesTest() throws JAXBException, IOException {
         System.out.println("Expected_NonSOTypesTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadXML.file("test/data/basic/Valid_NonSOTypesTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_NonSOTypesTest.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);

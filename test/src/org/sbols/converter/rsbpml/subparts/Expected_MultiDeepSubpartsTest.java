@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadFile;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.SBOLDocument;
 
 /**
@@ -24,7 +24,7 @@ public class Expected_MultiDeepSubpartsTest {
     public void Expected_MultiDeepSubpartsTest() throws JAXBException, IOException {
         System.out.println("Expected_MultiDeepSubpartsTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_MultiDeepSubpartsTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_MultiDeepSubpartsTest.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);

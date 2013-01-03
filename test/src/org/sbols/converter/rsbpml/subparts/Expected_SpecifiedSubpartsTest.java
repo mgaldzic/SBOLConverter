@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadFile;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
@@ -28,7 +28,7 @@ public class Expected_SpecifiedSubpartsTest {
     public void Expected_SpecifiedSubpartsTest() throws JAXBException, IOException {
         System.out.println("Expected_SpecifiedSubpartsTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_SpecifiedSubpartsTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_SpecifiedSubpartsTest.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);

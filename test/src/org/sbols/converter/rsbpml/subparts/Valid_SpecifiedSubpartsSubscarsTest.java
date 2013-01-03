@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
 
@@ -21,7 +21,7 @@ public class Valid_SpecifiedSubpartsSubscarsTest {
     @Test
     public void Valid_SpecifiedSubpartsSubscarsTest() throws JAXBException, FileNotFoundException {
         System.out.println("Valid_SpecifiedSubpartsSubscarsTest");
-        Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_SpecifiedSubpartsSubscarsTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_SpecifiedSubpartsSubscarsTest.xml");
         SBOLDocument Doc = SBOLFactory.createDocument();
         Doc.addContent(rsbpmlData.toSbol());
         SBOLFactory.validate(Doc);

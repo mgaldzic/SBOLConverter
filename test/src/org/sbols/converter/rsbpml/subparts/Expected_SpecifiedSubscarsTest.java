@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbols.converter.util.DiffMatchPatch;
 import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.WriteFile;
@@ -29,7 +29,7 @@ public class Expected_SpecifiedSubscarsTest {
         System.out.println("Expected_SpecifiedSubscarsTest");
 
         //Get input for test
-        Rsbpml rsbpmlData = ReadXML.file("test/data/subparts/Valid_SpecifiedSubscarsTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_SpecifiedSubscarsTest.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);

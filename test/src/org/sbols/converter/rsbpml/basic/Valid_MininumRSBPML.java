@@ -9,7 +9,7 @@ import javax.xml.bind.JAXBException;
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 
@@ -21,7 +21,7 @@ public class Valid_MininumRSBPML {
     @Test
     public void Valid_MininumRSBPML() throws JAXBException, IOException {
         System.out.println("Valid_MininumRSBPML");
-        Rsbpml rsbpmlData = ReadXML.file("test/data/basic/Valid_MininumRSBPML.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_MininumRSBPML.xml");
 
         SBOLDocument Doc = PartsRegistrySBOLFactory.createDocument();
         DnaComponent biobrick = rsbpmlData.toSbol();

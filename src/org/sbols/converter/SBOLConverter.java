@@ -7,7 +7,7 @@ package org.sbols.converter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import org.sbols.converter.rsbpml.Rsbpml;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
@@ -52,7 +52,7 @@ public class SBOLConverter {
 
         try { //Can we enter this with fileName and outputName being null? Need to make sure
 
-            Rsbpml rsbpmlData = ReadXML.file(fileName + ".xml");
+            Rsbpml rsbpmlData = ReadRSBPML.file(fileName + ".xml");
             FileOutputStream out = new FileOutputStream(outputName + ".txt");
 
             System.out.println(rsbpmlData);

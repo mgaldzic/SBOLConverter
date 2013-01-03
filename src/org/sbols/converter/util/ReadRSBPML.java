@@ -15,7 +15,7 @@ import org.sbols.converter.rsbpml.Rsbpml;
  *
  * @author mgaldzic
  */
-public class ReadXML {
+public class ReadRSBPML {
     public static Rsbpml file (String path) throws JAXBException, FileNotFoundException{
     JAXBContext context = JAXBContext.newInstance(Rsbpml.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();

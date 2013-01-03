@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
 
@@ -20,7 +20,7 @@ public class ValidCustomElementExtenedPartTest {
     @Test
     public void ValidCustomElementExtenedPartTest() throws JAXBException, FileNotFoundException {
         System.out.println("ValidCustomElementExtenedPartTest");
-        Rsbpml rsbpmlData = ReadXML.file("test/data/extendsSBOL/ValidCustomElementExtenedPartTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/extendsSBOL/ValidCustomElementExtenedPartTest.xml");
         SBOLDocument Doc = SBOLFactory.createDocument();
         Doc.addContent(rsbpmlData.toSbol());
         SBOLFactory.validate(Doc);

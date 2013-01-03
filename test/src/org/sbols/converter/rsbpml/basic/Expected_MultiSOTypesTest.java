@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadFile;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
 
@@ -24,7 +24,7 @@ public class Expected_MultiSOTypesTest {
     public void Expected_MultiSOTypesTest() throws JAXBException, IOException {
         System.out.println("Expected_MultiSOTypesTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadXML.file("test/data/basic/Valid_MultiSOTypesTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_MultiSOTypesTest.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);

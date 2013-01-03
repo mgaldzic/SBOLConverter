@@ -5,7 +5,7 @@ import javax.xml.bind.JAXBException;
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
-import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 
@@ -15,7 +15,7 @@ public class Valid_SequenceTest {
     @Test
     public void Valid_SequenceTest() throws JAXBException, IOException {
         System.out.println("Valid_SequenceTest");
-        Rsbpml rsbpmlData = ReadXML.file("test/data/basic/Valid_SequenceTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_SequenceTest.xml");
 
         SBOLDocument Doc = PartsRegistrySBOLFactory.createDocument();
         DnaComponent biobrick = rsbpmlData.toSbol();
