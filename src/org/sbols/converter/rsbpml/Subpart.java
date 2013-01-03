@@ -5,6 +5,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.sbols.converter.sbol.PartsRegistryDnaComponent;
+import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
@@ -65,8 +67,8 @@ public class Subpart extends SubThing{
                 + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "")                ;
     }
 
-    public DnaComponent toSbol(DnaComponent biobrick) {
-        DnaComponent SubDnaComponent = SBOLFactory.createDnaComponent();
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
+        PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
         SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //TODO Need to make dynamic
         SubDnaComponent.setDisplayId(part_name);
         SubDnaComponent.setDescription(part_short_desc);

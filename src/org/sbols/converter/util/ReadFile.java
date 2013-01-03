@@ -9,8 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
+import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbolstandard.core.SBOLDocument;
-import org.sbolstandard.core.SBOLFactory;
 
 /**
  *
@@ -24,6 +24,14 @@ public class ReadFile {
         aString = aString.replaceAll("\\n", "#@#@#");
         aString = aString.replaceAll("\\s+", " ");
         aString = aString.replaceAll("#@#@#", "\n");
+        String[] lines = aString.split("\n");
+        //String[] lines = aString.split(System.getProperty("line.separator"));
+
+        StringBuilder outString = new StringBuilder();
+        for (String l : lines){
+          outString.append(l.trim());
+        }
+        aString = outString.toString();
         return aString;
     }
 
@@ -68,7 +76,7 @@ public class ReadFile {
 
     public static String sbolDocToString(SBOLDocument sboldoc) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        SBOLFactory.write(sboldoc, baos);
+        PartsRegistrySBOLFactory.write(sboldoc, baos);
         return baos.toString();
     }
 }

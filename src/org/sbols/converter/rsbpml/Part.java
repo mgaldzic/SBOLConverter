@@ -12,7 +12,8 @@ import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.sbolstandard.core.DnaComponent;
+import org.sbols.converter.sbol.PartsRegistryDnaComponent;
+import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 import org.sbolstandard.core.DnaSequence;
 import org.sbolstandard.core.SBOLFactory;
 
@@ -175,7 +176,7 @@ public class Part {
 
     }
 
-    public DnaComponent toSbol(DnaComponent biobrick) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
         biobrick.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //Need to make dynamic
         biobrick.setDisplayId(part_name);
         biobrick.setDescription(part_short_desc);
@@ -185,8 +186,9 @@ public class Part {
 
             for (String aType : part_types) {
                 if (Vocabulary.SO_MAP.get(aType) != null) {
-                    biobrick.addType(Vocabulary.SO_MAP.get(aType));
+                    biobrick.addType(Vocabulary.SO_MAP.get(aType));                    
                 }
+                biobrick.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
             }
         }
 

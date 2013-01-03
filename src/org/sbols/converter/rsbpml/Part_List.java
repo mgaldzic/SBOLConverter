@@ -5,7 +5,7 @@ package org.sbols.converter.rsbpml;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.sbolstandard.core.DnaComponent;
+import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 
 @XmlRootElement(name = "part_list")
 public class Part_List {
@@ -26,7 +26,7 @@ public class Part_List {
         return "part_list [" + (part != null ? part : "") + "]";
     }
 
-    public DnaComponent toSbol(DnaComponent biobrick) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
         return part.toSbol(biobrick);
     }
 }

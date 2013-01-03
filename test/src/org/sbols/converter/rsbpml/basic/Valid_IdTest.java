@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBException;
 import org.junit.Test;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadXML;
+import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;

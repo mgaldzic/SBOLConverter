@@ -5,7 +5,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.sbolstandard.core.DnaComponent;
+import org.sbols.converter.sbol.PartsRegistryDnaComponent;
+import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
 import org.sbolstandard.core.StrandType;
@@ -88,8 +89,8 @@ public class Feature {
                 + (direction != null ? "direction: " + direction + ", \n" : "");
     }
 
-    public DnaComponent toSbol(DnaComponent biobrick) {
-        DnaComponent feature = SBOLFactory.createDnaComponent();
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
+        PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
         feature.setURI(URI.create("http://partsregistry.org/feat/f_" + id)); //TODO Need to make dynamic
         feature.setDisplayId("f_" + id);
         feature.setName(title);

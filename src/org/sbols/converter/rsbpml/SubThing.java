@@ -4,7 +4,7 @@
  */
 package org.sbols.converter.rsbpml;
 
-import org.sbolstandard.core.DnaComponent;
+import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 
 /**
  * For Subpart and Scar to be related to each other
@@ -12,7 +12,7 @@ import org.sbolstandard.core.DnaComponent;
  */
 
 public abstract class SubThing {
-    public DnaComponent toSbol(DnaComponent biobrick) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
         return biobrick;
     }
 }
