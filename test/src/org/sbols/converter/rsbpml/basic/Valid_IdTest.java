@@ -7,6 +7,7 @@ package org.sbols.converter.rsbpml.basic;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
+import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
@@ -24,9 +25,7 @@ public class Valid_IdTest {
         System.out.println("Valid_IdTest");
         Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_IdTest.xml");
 
-        SBOLDocument SbolDoc = PartsRegistrySBOLFactory.createDocument();
-        DnaComponent biobrick = rsbpmlData.toSbol();
-        SbolDoc.addContent(biobrick);
+        SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         // Sometimes we generate the expected results using the test - cheating
         WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_IdTest.sbol.xml");
         

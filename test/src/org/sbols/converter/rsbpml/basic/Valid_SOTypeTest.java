@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
+import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
@@ -17,10 +18,8 @@ public class Valid_SOTypeTest {
         System.out.println("Valid_SOTypeTest");
         Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_SOTypeTest.xml");
 
-        SBOLDocument Doc = PartsRegistrySBOLFactory.createDocument();
-        DnaComponent biobrick = rsbpmlData.toSbol();
-        Doc.addContent(biobrick);
-        PartsRegistrySBOLFactory.validate(Doc);
+        SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
+        PartsRegistrySBOLFactory.validate(SbolDoc);
 
     }
 }

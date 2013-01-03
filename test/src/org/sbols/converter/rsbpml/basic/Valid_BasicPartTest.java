@@ -7,6 +7,7 @@ package org.sbols.converter.rsbpml.basic;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
+import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
@@ -20,9 +21,7 @@ public class Valid_BasicPartTest {
         System.out.println("Valid_BasicPartTest");
         Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_BasicPartTest.xml");
 
-        SBOLDocument Doc = PartsRegistrySBOLFactory.createDocument();
-        DnaComponent biobrick = rsbpmlData.toSbol();
-        Doc.addContent(biobrick);
+        SBOLDocument Doc = SBOLConverter.convert(rsbpmlData);
         PartsRegistrySBOLFactory.validate(Doc);
 
     }

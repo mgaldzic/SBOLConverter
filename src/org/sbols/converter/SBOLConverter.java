@@ -7,8 +7,9 @@ package org.sbols.converter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import org.sbols.converter.rsbpml.Rsbpml;
+import org.sbols.converter.sbol.PartsRegistryDnaComponent;
+import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
-import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SBOLValidationException;
@@ -57,10 +58,7 @@ public class SBOLConverter {
 
             System.out.println(rsbpmlData);
 
-            DnaComponent biobrick = SBOLFactory.createDnaComponent();
-            SBOLDocument Doc = SBOLFactory.createDocument();
-            biobrick = rsbpmlData.toSbol();
-            Doc.addContent(biobrick);
+            SBOLDocument Doc = convert(rsbpmlData);
 
             SBOLFactory.write(Doc, out);
 
@@ -71,8 +69,9 @@ public class SBOLConverter {
         }
     }
     public static SBOLDocument convert(Rsbpml rsbpmlData){
+        PartsRegistryDnaComponent biobrick = PartsRegistrySBOLFactory.createDnaComponent();
         SBOLDocument SbolDoc = SBOLFactory.createDocument();
-        SbolDoc.addContent(rsbpmlData.toSbol());
+        SbolDoc.addContent(rsbpmlData.toSbol(biobrick, rsbpmlData));
         return SbolDoc;
         
     }
