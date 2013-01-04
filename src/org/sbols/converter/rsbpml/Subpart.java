@@ -1,6 +1,7 @@
 package org.sbols.converter.rsbpml;
 
 import java.net.URI;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -67,7 +68,8 @@ public class Subpart extends SubThing{
     }
 
     @Override
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
+        
         PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
         SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //TODO Need to make dynamic
         SubDnaComponent.setDisplayId(part_name);
@@ -76,8 +78,24 @@ public class Subpart extends SubThing{
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
         
+        int position = index+1;
         String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
-        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_"+parent_id+"_"+part_id+"_"+position)); //TODO parent part_id+_+part_id+_+posiiton 
+        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_"+parent_id+"_"+part_id+"_"+position));
+        
+        //Get next SA for SA.precedes, if it exists
+        List<Subpart> myDeepSuparts= rsbpmlData.getPart_list().getPart().getDeep_subparts();
+        if (myDeepSuparts.size() > (index+1) && myDeepSuparts.get(index+1) != null){
+            //Capture next SA
+            SequenceAnnotation pSA 
+                    //For the next subpart
+                    = myDeepSuparts.get(index+1)
+                    //get that ones, index+1's, SBOL
+                    .toSbol(PartsRegistrySBOLFactory.createDnaComponent(), rsbpmlData, index+1)
+                    //get the SA out of it
+                    .getAnnotations().get(index);
+            //Make the .precedes connection
+            newAnnotation.addPrecede(pSA);
+        }   
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }

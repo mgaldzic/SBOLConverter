@@ -208,8 +208,8 @@ public class Part {
         if (deep_subparts != null) {
             int i=0;
             for (Subpart aSubpart : deep_subparts) {
-                i++;
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
+                i++;
             }
         }
         
