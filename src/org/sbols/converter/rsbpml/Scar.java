@@ -5,6 +5,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.sbols.converter.sbol.PartsRegistryDnaComponent;
+import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.DnaSequence;
 import org.sbolstandard.core.SBOLFactory;
@@ -89,18 +91,22 @@ public class Scar extends SubThing{
                 + (scar_nickname != null ? "scar_nickname: " + scar_nickname + ", \n" : "")                ;
     }
 
-    public DnaComponent toSbol(DnaComponent biobrick) {
+    
+    @Override
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
         DnaSequence scarSequence = SBOLFactory.createDnaSequence();
         scarSequence.setURI(URI.create("http://partsregistry.org/seq/scarseq_" + scar_id)); //TODO ?
         scarSequence.setNucleotides(scar_sequence);
-        DnaComponent SubDnaComponent = SBOLFactory.createDnaComponent();
+        PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
         SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/RFC_" + scar_standard)); //TODO Need to make dynamic
         SubDnaComponent.setDisplayId(scar_name);
         SubDnaComponent.setName(scar_nickname);
         SubDnaComponent.setDnaSequence(scarSequence);
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
-        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/sc_"+scar_id)); //TODO parent scar_id+_+scar_id+_+posiiton 
+        
+        String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
+        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/sc_"+parent_id+"_"+scar_id+"_"+position)); //TODO parent scar_id+_+scar_id+_+posiiton 
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }

@@ -176,7 +176,7 @@ public class Part {
 
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData) {
         biobrick.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //Need to make dynamic
         biobrick.setDisplayId(part_name);
         biobrick.setDescription(part_short_desc);
@@ -206,24 +206,32 @@ public class Part {
         }
 
         if (deep_subparts != null) {
+            int i=0;
             for (Subpart aSubpart : deep_subparts) {
-                biobrick = aSubpart.toSbol(biobrick);
+                i++;
+                biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
             }
         }
         
         if (specified_subparts != null) {
+            int i=0;
             for (Subpart aSubpart : specified_subparts) {
-                biobrick = aSubpart.toSbol(biobrick);
+                i++;
+                biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
             }
         }
         if (specified_subscars != null) {
+            int i=0;
             for (SubThing aSubpart : specified_subscars) {
-                biobrick = aSubpart.toSbol(biobrick);
+                i++;
+                biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
             }
         }
         if (features != null) {
+            int i=0;
             for (Feature aSubpart : features) {
-                biobrick = aSubpart.toSbol(biobrick);
+                i++;
+                biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
             }
         }        
         return biobrick;

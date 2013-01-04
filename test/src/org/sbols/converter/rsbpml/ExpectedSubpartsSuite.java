@@ -20,7 +20,10 @@ import org.sbols.converter.rsbpml.subparts.*;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     Expected_DeepSubpartTest.class,
-    Expected_MultiDeepSubpartsTest.class, 
+    Expected_FeaturesTest.class,
+    Expected_MultiDeepSubpartsTest.class,
+    Expected_SpecifiedSubpartsSubscarsTest.class, 
+    Expected_SpecifiedSubpartsTest.class,
     Expected_SpecifiedSubscarsTest.class
 })
 public class ExpectedSubpartsSuite {

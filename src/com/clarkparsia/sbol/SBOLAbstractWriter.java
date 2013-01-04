@@ -162,7 +162,7 @@ public abstract class SBOLAbstractWriter implements SBOLWriter {
 	            writeProp(SBOLVocabulary.bioStart, annotation.getBioStart());
 	            writeProp(SBOLVocabulary.bioEnd, annotation.getBioEnd());
 	            writeProp(SBOLVocabulary.strand, annotation.getStrand());
-	            DnaComponent subComponent = annotation.getSubComponent();
+	            PartsRegistryDnaComponent subComponent = (PartsRegistryDnaComponent) annotation.getSubComponent();
 	            if (subComponent != null) {
 	            	startProp(SBOLVocabulary.subComponent);
 	            	visit(subComponent);

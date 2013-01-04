@@ -1,12 +1,15 @@
 package org.sbols.converter.rsbpml;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
+import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
 import org.sbolstandard.core.StrandType;
@@ -16,7 +19,8 @@ public class Feature {
 
     private String id;
     private String title;
-    private String type;
+    //private String type;
+    private List<String> types = new ArrayList<>();
     private String direction;
     private String startpos;
     private String endpos;
@@ -43,12 +47,12 @@ public class Feature {
 
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlElement(name = "type")
-    public String getType() {
-        return type;
+    public List<String> getTypes() {
+        return types;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypes(List<String> types) {
+        this.types = types;
     }
 
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -85,16 +89,25 @@ public class Feature {
     public String toString() {
         return "\nfeature [\n"
                 + (title != null ? "title: " + title + ", \n" : "")
-                + (type != null ? "type: " + type + ", \n" : "")
+                + (types != null ? "types: " + types + ", \n" : "")
                 + (direction != null ? "direction: " + direction + ", \n" : "");
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
         PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
         feature.setURI(URI.create("http://partsregistry.org/feat/f_" + id)); //TODO Need to make dynamic
         feature.setDisplayId("f_" + id);
         feature.setName(title);
-        feature.addType(Vocabulary.SO_MAP.get(type));
+        
+        if (types != null) {
+
+            for (String aType : types) {
+                if (Vocabulary.SO_MAP.get(aType) != null) {
+                    feature.addType(Vocabulary.SO_MAP.get(aType));                    
+                }
+                feature.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
+            }
+        }        
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(feature);
         newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id)); //TODO other feature cases 

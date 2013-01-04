@@ -66,7 +66,8 @@ public class Subpart extends SubThing{
                 + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "")                ;
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
+    @Override
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
         PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
         SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //TODO Need to make dynamic
         SubDnaComponent.setDisplayId(part_name);
@@ -74,7 +75,9 @@ public class Subpart extends SubThing{
         SubDnaComponent.setName(part_nickname);
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
-        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_"+part_id)); //TODO parent part_id+_+part_id+_+posiiton 
+        
+        String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
+        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_"+parent_id+"_"+part_id+"_"+position)); //TODO parent part_id+_+part_id+_+posiiton 
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }

@@ -26,7 +26,7 @@ public class Part_List {
         return "part_list [" + (part != null ? part : "") + "]";
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick) {
-        return part.toSbol(biobrick);
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData) {
+        return part.toSbol(biobrick, rsbpmlData);
     }
 }

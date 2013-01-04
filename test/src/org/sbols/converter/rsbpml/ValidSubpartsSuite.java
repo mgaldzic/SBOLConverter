@@ -19,10 +19,12 @@ import org.sbols.converter.rsbpml.subparts.*;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    Valid_SpecifiedSubpartsTest.class,
-    Valid_SpecifiedSubpartsSubscarsTest.class, 
     Valid_DeepSubpartTest.class,
-    Valid_MultiDeepSubpartsTest.class
+    Valid_FeaturesTest.class,
+    Valid_MultiDeepSubpartsTest.class,
+    Valid_SpecifiedSubpartsSubscarsTest.class, 
+    Valid_SpecifiedSubpartsTest.class,
+    Valid_SpecifiedSubscarsTest.class
 })
 public class ValidSubpartsSuite {
 
