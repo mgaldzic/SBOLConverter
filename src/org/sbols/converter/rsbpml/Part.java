@@ -33,7 +33,7 @@ public class Part {
     //author
     //quality
     private List<DeepSubpart> deep_subparts;
-    private List<Subpart> specified_subparts;
+    private List<SpecifiedSubpart> specified_subparts;
     private List<SubThing> specified_subscars;
     private List<Feature> features;
     private List<String> seq_data = new ArrayList<>();
@@ -105,14 +105,14 @@ public class Part {
 
     @XmlElementWrapper(name = "specified_subparts")
     @XmlElement(name = "subpart")
-    public List<Subpart> getSpecified_subparts() {
+    public List<SpecifiedSubpart> getSpecified_subparts() {
         if (specified_subparts == null) {
             specified_subparts = new ArrayList<>();
         }
         return specified_subparts;
     }
 
-    public void setSpecified_subparts(List<Subpart> specified_subparts) {
+    public void setSpecified_subparts(List<SpecifiedSubpart> specified_subparts) {
         this.specified_subparts = specified_subparts;
     }
     

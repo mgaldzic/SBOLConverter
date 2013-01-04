@@ -1,6 +1,7 @@
 package org.sbols.converter.rsbpml;
 
 import java.net.URI;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -65,6 +66,7 @@ public class Subpart extends SubThing{
                 + (part_short_desc != null ? "part_short_desc: " + part_short_desc + ", \n" : "")
                 + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "")                ;
     }
+    
     protected SequenceAnnotation getNewSA (Rsbpml rsbpmlData, int index){
         PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
         SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //TODO Need to make dynamic
