@@ -207,7 +207,7 @@ public class Part {
 
         if (deep_subparts != null) {
             int i=0;
-            for (DeepSubpart aSubpart : deep_subparts) {
+            for (Subpart aSubpart : deep_subparts) {
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
                 i++;
             }
@@ -222,9 +222,9 @@ public class Part {
         }
         if (specified_subscars != null) {
             int i=0;
-            for (SubThing aSubpart : specified_subscars) {
-                i++;
+            for (SubThing  aSubpart : specified_subscars) {
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
+                i++;
             }
         }
         if (features != null) {

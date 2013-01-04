@@ -28,7 +28,7 @@ public class Subpart extends SubThing{
     public void setPart_id(String part_id) {
         this.part_id = part_id;
     }
-    
+
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlElement(name = "part_name")
     public String getPart_name() {
@@ -64,10 +64,10 @@ public class Subpart extends SubThing{
         return "\nsubpart [\n"
                 + (part_name != null ? "part_name: " + part_name + ", \n" : "")
                 + (part_short_desc != null ? "part_short_desc: " + part_short_desc + ", \n" : "")
-                + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "")                ;
+                + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "");
     }
-    
-    protected SequenceAnnotation getNewSA (Rsbpml rsbpmlData, int index){
+
+    protected SequenceAnnotation getNewSA(Rsbpml rsbpmlData, int index) {
         PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
         SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //TODO Need to make dynamic
         SubDnaComponent.setDisplayId(part_name);
@@ -75,17 +75,37 @@ public class Subpart extends SubThing{
         SubDnaComponent.setName(part_nickname);
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
-        
-        int position = index+1;
+
+        int position = index + 1;
         String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
-        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_"+parent_id+"_"+part_id+"_"+position));
+        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_" + parent_id + "_" + part_id + "_" + position));
+        System.out.println("sp_pos " + position);
         return newAnnotation;
     }
-            
-    @Override
+
     public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
         SequenceAnnotation newAnnotation = getNewSA(rsbpmlData, index);
         //specific *SubPart classes implement the .precedes relationship as needed in this area
+        
+        //This one does it for subscars? //move to subclass?
+        System.out.println("BEGIN" + index);
+        System.out.println("SAp " + newAnnotation.getURI());
+        //Get next SA for SA.precedes, if it exists
+        List<SubThing> mySubscars = rsbpmlData.getPart_list().getPart().getSpecified_subscars();
+        if (mySubscars.size() > (index + 1) && mySubscars.get(index + 1) != null) {
+            //Capture next SA
+            SequenceAnnotation pSA 
+                    //For the next subpart
+                    = mySubscars.get(index + 1) 
+                    //get that ones, index+1's, SBOL
+                    .toSbol(PartsRegistrySBOLFactory.createDnaComponent(), rsbpmlData, index + 1) 
+                    //get the SA out of it
+                    .getAnnotations().get(index);
+            //Make the .precedes connection
+            System.out.println("pSA " + pSA.getURI());
+            newAnnotation.addPrecede(pSA);
+        }
+        System.out.println("END" + index);
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }

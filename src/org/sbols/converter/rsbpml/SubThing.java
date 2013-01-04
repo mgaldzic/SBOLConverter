@@ -12,7 +12,7 @@ import org.sbols.converter.sbol.PartsRegistryDnaComponent;
  */
 
 public abstract class SubThing {
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
         return biobrick;
     }
 }

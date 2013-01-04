@@ -1,6 +1,7 @@
 package org.sbols.converter.rsbpml;
 
 import java.net.URI;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -90,10 +91,8 @@ public class Scar extends SubThing{
                 + (scar_sequence != null ? "scar_sequence: " + scar_sequence + ", \n" : "")
                 + (scar_nickname != null ? "scar_nickname: " + scar_nickname + ", \n" : "")                ;
     }
-
     
-    @Override
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
+    protected SequenceAnnotation getNewSA (Rsbpml rsbpmlData, int index){
         DnaSequence scarSequence = SBOLFactory.createDnaSequence();
         scarSequence.setURI(URI.create("http://partsregistry.org/seq/scarseq_" + scar_id)); //TODO ?
         scarSequence.setNucleotides(scar_sequence);
@@ -105,8 +104,39 @@ public class Scar extends SubThing{
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
         
+        int position = index+1;
         String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
-        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/sc_"+parent_id+"_"+scar_id+"_"+position)); //TODO parent scar_id+_+scar_id+_+posiiton 
+        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/sc_"+parent_id+"_"+scar_id+"_"+position));
+        System.out.println("sp_pos "+position);
+        return newAnnotation;
+    }
+    
+    @Override
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
+        SequenceAnnotation newAnnotation = getNewSA(rsbpmlData, index);
+        
+        System.out.println("BEGIN" + index);
+        System.out.println("SAc " + newAnnotation.getURI());
+        //Get next SA for SA.precedes, if it exists
+        List<SubThing> mySubscars = rsbpmlData.getPart_list().getPart().getSpecified_subscars();
+        System.out.println("my size :"+mySubscars.size()+" in+1 :"+(index+1));
+        if (mySubscars.size() > (index + 1) && mySubscars.get(index + 1) != null) {
+            //Capture next SA
+            System.out.println("ms "+mySubscars.get(index+1));
+                    //+mySubscars.get(index+1).toSbol(PartsRegistrySBOLFactory.createDnaComponent(), rsbpmlData, index).toString());
+            SequenceAnnotation pSA 
+                    //For the next subpart
+                    = mySubscars.get(index+1) 
+                    //get that ones, index+1's, SBOL
+                    .toSbol(PartsRegistrySBOLFactory.createDnaComponent(), rsbpmlData, index+1) 
+                    //get the SA out of it
+                    .getAnnotations().get(index);
+            //Make the .precedes connection
+            System.out.println("pSA " + pSA.getURI());
+            newAnnotation.addPrecede(pSA);
+        }
+        System.out.println("END" + index);
+        
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }
