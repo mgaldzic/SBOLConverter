@@ -32,7 +32,7 @@ public class Part {
     //entered
     //author
     //quality
-    private List<Subpart> deep_subparts;
+    private List<DeepSubpart> deep_subparts;
     private List<Subpart> specified_subparts;
     private List<SubThing> specified_subscars;
     private List<Feature> features;
@@ -92,14 +92,14 @@ public class Part {
 
     @XmlElementWrapper(name = "deep_subparts")
     @XmlElement(name = "subpart")
-    public List<Subpart> getDeep_subparts() {
+    public List<DeepSubpart> getDeep_subparts() {
         if (deep_subparts == null) {
             deep_subparts = new ArrayList<>();
         }
         return deep_subparts;
     }
 
-    public void setDeep_subparts(List<Subpart> deep_subparts) {
+    public void setDeep_subparts(List<DeepSubpart> deep_subparts) {
         this.deep_subparts = deep_subparts;
     }
 
@@ -207,7 +207,7 @@ public class Part {
 
         if (deep_subparts != null) {
             int i=0;
-            for (Subpart aSubpart : deep_subparts) {
+            for (DeepSubpart aSubpart : deep_subparts) {
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
                 i++;
             }
@@ -215,9 +215,9 @@ public class Part {
         
         if (specified_subparts != null) {
             int i=0;
-            for (Subpart aSubpart : specified_subparts) {
-                i++;
+            for (Subpart aSubpart : specified_subparts) {  
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
+                i++;
             }
         }
         if (specified_subscars != null) {
