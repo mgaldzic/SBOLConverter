@@ -12,7 +12,7 @@ import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
 
 @XmlRootElement(name = "subpart")
-public class Subpart extends SubThing{
+public class Subpart {
 
     private String part_id;
     private String part_name;
@@ -84,29 +84,7 @@ public class Subpart extends SubThing{
     }
 
     public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
-        SequenceAnnotation newAnnotation = getNewSA(rsbpmlData, index);
-        //specific *SubPart classes implement the .precedes relationship as needed in this area
-        
-        //This one does it for subscars? //move to subclass?
-        System.out.println("BEGIN" + index);
-        System.out.println("SAp " + newAnnotation.getURI());
-        //Get next SA for SA.precedes, if it exists
-        List<SubThing> mySubscars = rsbpmlData.getPart_list().getPart().getSpecified_subscars();
-        if (mySubscars.size() > (index + 1) && mySubscars.get(index + 1) != null) {
-            //Capture next SA
-            SequenceAnnotation pSA 
-                    //For the next subpart
-                    = mySubscars.get(index + 1) 
-                    //get that ones, index+1's, SBOL
-                    .toSbol(PartsRegistrySBOLFactory.createDnaComponent(), rsbpmlData, index + 1) 
-                    //get the SA out of it
-                    .getAnnotations().get(index);
-            //Make the .precedes connection
-            System.out.println("pSA " + pSA.getURI());
-            newAnnotation.addPrecede(pSA);
-        }
-        System.out.println("END" + index);
-        biobrick.addAnnotation(newAnnotation);
+        //implrememnted in subClass
         return biobrick;
     }
 }

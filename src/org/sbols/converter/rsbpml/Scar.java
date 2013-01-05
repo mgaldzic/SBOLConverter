@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
-import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.DnaSequence;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
@@ -107,7 +106,6 @@ public class Scar extends SubThing{
         int position = index+1;
         String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
         newAnnotation.setURI(URI.create("http://partsregistry.org/anot/sc_"+parent_id+"_"+scar_id+"_"+position));
-        System.out.println("sp_pos "+position);
         return newAnnotation;
     }
     
@@ -122,8 +120,7 @@ public class Scar extends SubThing{
         System.out.println("my size :"+mySubscars.size()+" in+1 :"+(index+1));
         if (mySubscars.size() > (index + 1) && mySubscars.get(index + 1) != null) {
             //Capture next SA
-            System.out.println("ms "+mySubscars.get(index+1));
-                    //+mySubscars.get(index+1).toSbol(PartsRegistrySBOLFactory.createDnaComponent(), rsbpmlData, index).toString());
+            System.out.println("ms "+mySubscars.get(index+1).getClass());
             SequenceAnnotation pSA 
                     //For the next subpart
                     = mySubscars.get(index+1) 

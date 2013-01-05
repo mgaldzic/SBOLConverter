@@ -119,7 +119,7 @@ public class Part {
     @XmlElementWrapper(name = "specified_subscars")
     @XmlElements({
         @XmlElement(name = "scar", type = Scar.class),
-        @XmlElement(name = "subpart", type = Subpart.class)
+        @XmlElement(name = "subpart", type = SpecifiedSubscarSubpart.class)
     })
     public List<SubThing> getSpecified_subscars() {
         if (specified_subscars == null) {
@@ -128,7 +128,7 @@ public class Part {
         return specified_subscars;
     }
 
-    public void setScar(List<SubThing> specified_subscars) {
+    public void setSpecified_subscars(List<SubThing> specified_subscars) {
         this.specified_subscars = specified_subscars;
     }
     
@@ -222,7 +222,7 @@ public class Part {
         }
         if (specified_subscars != null) {
             int i=0;
-            for (SubThing  aSubpart : specified_subscars) {
+            for (SubThing  aSubpart : specified_subscars) {     
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
                 i++;
             }
