@@ -20,7 +20,7 @@ import org.sbolstandard.core.SequenceAnnotation;
  * @author mgaldzic
  */
 @XmlRootElement(name = "subpart")
-public class SpecifiedSubscarSubpart extends SubThing {
+public class SpecifiedSubscarSubpart extends SpecifiedSubscar {
 
     private String part_id;
     private String part_name;

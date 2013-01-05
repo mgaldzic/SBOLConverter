@@ -13,7 +13,7 @@ import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
 
 @XmlRootElement(name = "scar")
-public class Scar extends SubThing{
+public class Scar extends SpecifiedSubscar{
 
     private String scar_id;
     private String scar_standard;
@@ -113,26 +113,10 @@ public class Scar extends SubThing{
     public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
         SequenceAnnotation newAnnotation = getNewSA(rsbpmlData, index);
         
-        System.out.println("BEGIN" + index);
-        System.out.println("SAc " + newAnnotation.getURI());
-        //Get next SA for SA.precedes, if it exists
-        List<SubThing> mySubscars = rsbpmlData.getPart_list().getPart().getSpecified_subscars();
-        System.out.println("my size :"+mySubscars.size()+" in+1 :"+(index+1));
-        if (mySubscars.size() > (index + 1) && mySubscars.get(index + 1) != null) {
-            //Capture next SA
-            System.out.println("ms "+mySubscars.get(index+1).getClass());
-            SequenceAnnotation pSA 
-                    //For the next subpart
-                    = mySubscars.get(index+1) 
-                    //get that ones, index+1's, SBOL
-                    .toSbol(PartsRegistrySBOLFactory.createDnaComponent(), rsbpmlData, index+1) 
-                    //get the SA out of it
-                    .getAnnotations().get(index);
-            //Make the .precedes connection
-            System.out.println("pSA " + pSA.getURI());
-            newAnnotation.addPrecede(pSA);
+        SequenceAnnotation nextSA = getNextSA(rsbpmlData, index);
+        if (nextSA != null) {
+            newAnnotation.addPrecede(nextSA);
         }
-        System.out.println("END" + index);
         
         biobrick.addAnnotation(newAnnotation);
         return biobrick;

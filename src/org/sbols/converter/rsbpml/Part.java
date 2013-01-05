@@ -34,7 +34,7 @@ public class Part {
     //quality
     private List<DeepSubpart> deep_subparts;
     private List<SpecifiedSubpart> specified_subparts;
-    private List<SubThing> specified_subscars;
+    private List<SpecifiedSubscar> specified_subscars;
     private List<Feature> features;
     private List<String> seq_data = new ArrayList<>();
     //features
@@ -121,14 +121,14 @@ public class Part {
         @XmlElement(name = "scar", type = Scar.class),
         @XmlElement(name = "subpart", type = SpecifiedSubscarSubpart.class)
     })
-    public List<SubThing> getSpecified_subscars() {
+    public List<SpecifiedSubscar> getSpecified_subscars() {
         if (specified_subscars == null) {
             specified_subscars = new ArrayList<>();
         }
         return specified_subscars;
     }
 
-    public void setSpecified_subscars(List<SubThing> specified_subscars) {
+    public void setSpecified_subscars(List<SpecifiedSubscar> specified_subscars) {
         this.specified_subscars = specified_subscars;
     }
     
@@ -222,7 +222,7 @@ public class Part {
         }
         if (specified_subscars != null) {
             int i=0;
-            for (SubThing  aSubpart : specified_subscars) {     
+            for (SpecifiedSubscar  aSubpart : specified_subscars) {     
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
                 i++;
             }
