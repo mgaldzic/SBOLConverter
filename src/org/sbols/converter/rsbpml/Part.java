@@ -16,6 +16,7 @@ import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 import org.sbolstandard.core.DnaSequence;
+import org.sbolstandard.core.SequenceAnnotation;
 
 @XmlRootElement(name = "part")
 public class Part {
@@ -221,10 +222,15 @@ public class Part {
             }
         }
         if (specified_subscars != null) {
-            int i=0;
-            for (SpecifiedSubscar  aSubpart : specified_subscars) {     
-                biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
-                i++;
+            SequenceAnnotation nextSA = null;
+            List<SequenceAnnotation> revSAList = new ArrayList<>();
+            for (int i=specified_subscars.size()-1; i >= 0; i--)  {              
+                SequenceAnnotation thisSA = specified_subscars.get(i).toSbol(biobrick, rsbpmlData, i, nextSA);              
+                revSAList.add(thisSA);
+                nextSA = thisSA;
+            }
+            for (int i=revSAList.size()-1; i>=0; i--){
+                biobrick.addAnnotation(revSAList.get(i));
             }
         }
         if (features != null) {

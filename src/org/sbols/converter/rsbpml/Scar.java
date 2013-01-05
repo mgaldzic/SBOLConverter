@@ -1,7 +1,6 @@
 package org.sbols.converter.rsbpml;
 
 import java.net.URI;
-import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -85,21 +84,23 @@ public class Scar extends SpecifiedSubscar{
 
     @Override //need to edit this later to reflect changes
     public String toString() {
-        return "\nsubscar [\n"
+        return "\nScar [\n"
                 + (scar_name != null ? "scar_name: " + scar_name + ", \n" : "")
                 + (scar_sequence != null ? "scar_sequence: " + scar_sequence + ", \n" : "")
-                + (scar_nickname != null ? "scar_nickname: " + scar_nickname + ", \n" : "")                ;
+                + (scar_nickname != null ? "scar_nickname: " + scar_nickname + "] \n" : "")                ;
     }
     
+    @Override
     protected SequenceAnnotation getNewSA (Rsbpml rsbpmlData, int index){
         DnaSequence scarSequence = SBOLFactory.createDnaSequence();
-        scarSequence.setURI(URI.create("http://partsregistry.org/seq/scarseq_" + scar_id)); //TODO ?
+        scarSequence.setURI(URI.create("http://partsregistry.org/seq/scarseq_" + scar_id)); //TODO is this unique?
         scarSequence.setNucleotides(scar_sequence);
         PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
-        SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/RFC_" + scar_standard)); //TODO Need to make dynamic
-        SubDnaComponent.setDisplayId(scar_name);
+        SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/RFC_" + scar_standard));
+        SubDnaComponent.setDisplayId("RFC_"+scar_standard);
         SubDnaComponent.setName(scar_nickname);
         SubDnaComponent.setDnaSequence(scarSequence);
+        SubDnaComponent.addRegistry_types(URI.create("http://partsregistry.org/type/scar"));
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
         
@@ -109,16 +110,5 @@ public class Scar extends SpecifiedSubscar{
         return newAnnotation;
     }
     
-    @Override
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
-        SequenceAnnotation newAnnotation = getNewSA(rsbpmlData, index);
-        
-        SequenceAnnotation nextSA = getNextSA(rsbpmlData, index);
-        if (nextSA != null) {
-            newAnnotation.addPrecede(nextSA);
-        }
-        
-        biobrick.addAnnotation(newAnnotation);
-        return biobrick;
-    }
+    
 }

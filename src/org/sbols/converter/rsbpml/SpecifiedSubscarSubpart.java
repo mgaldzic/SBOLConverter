@@ -69,12 +69,13 @@ public class SpecifiedSubscarSubpart extends SpecifiedSubscar {
 
     @Override //need to edit this later to reflect changes
     public String toString() {
-        return "\nsubpart [\n"
+        return "\nSpecifiedSubscarSupart [\n"
                 + (part_name != null ? "part_name: " + part_name + ", \n" : "")
                 + (part_short_desc != null ? "part_short_desc: " + part_short_desc + ", \n" : "")
-                + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "");
+                + (part_nickname != null ? "part_nickname: " + part_nickname + "] \n" : "");
     }
 
+    @Override
     protected SequenceAnnotation getNewSA(Rsbpml rsbpmlData, int index) {
         PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
         SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + part_name));
@@ -87,19 +88,6 @@ public class SpecifiedSubscarSubpart extends SpecifiedSubscar {
         int position = index + 1;
         String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
         newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_" + parent_id + "_" + part_id + "_" + position));
-        System.out.println("sp_pos " + position);
         return newAnnotation;
-    }
-
-    @Override
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
-        SequenceAnnotation newAnnotation = this.getNewSA(rsbpmlData, index);
-        System.out.println("SAss " + newAnnotation.getURI());
-        SequenceAnnotation nextSA = getNextSA(rsbpmlData, index);
-        if (nextSA != null) {
-            newAnnotation.addPrecede(nextSA);
-        }
-        biobrick.addAnnotation(newAnnotation);
-        return biobrick;
     }
 }
