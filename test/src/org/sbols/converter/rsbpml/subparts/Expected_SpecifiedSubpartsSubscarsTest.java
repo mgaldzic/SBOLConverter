@@ -12,6 +12,7 @@ import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadRSBPML;
+import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
 
 /**
@@ -31,6 +32,9 @@ public class Expected_SpecifiedSubpartsSubscarsTest {
         
         //Get expected result
         String expected = ReadFile.fromPath("test/data/subparts/Valid_SpecifiedSubpartsSubscarsTest.sbol.xml");
+        
+        // Sometimes we generate the expected results using the test - cheating
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_SpecifiedSubpartsSubscarsTest.sbol.xml");
 
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
