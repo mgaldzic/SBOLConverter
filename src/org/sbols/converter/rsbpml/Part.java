@@ -184,15 +184,16 @@ public class Part {
         biobrick.setName(part_nickname);
 
         if (part_types != null) {
-
+            
             for (String aType : part_types) {
+                aType = aType.toLowerCase();
                 if (Vocabulary.SO_MAP.get(aType) != null) {
                     biobrick.addType(Vocabulary.SO_MAP.get(aType));
                 }
                 biobrick.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
             }
         }
-
+        
         if ((seq_data != null) && !seq_data.isEmpty()) {
 
             DnaSequence sequenceObject = PartsRegistrySBOLFactory.createDnaSequence();
@@ -231,7 +232,7 @@ public class Part {
                 biobrick.addAnnotation(revSAList.get(i));
             }
         }
-        
+
         if (specified_subscars != null) {
             SequenceAnnotation nextSA = null;
             List<SequenceAnnotation> revSAList = new ArrayList<>();
