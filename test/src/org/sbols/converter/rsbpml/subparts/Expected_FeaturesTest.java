@@ -25,17 +25,17 @@ public class Expected_FeaturesTest {
     public void Expected_FeaturesTest() throws JAXBException, IOException {
         System.out.println("Expected_FeaturesTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_FeaturesTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Features_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_FeaturesTest.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/FeaturesTest_Out.sbol.xml");
         
         //Get expected result
-        String expected = ReadFile.fromPath("test/data/subparts/Valid_FeaturesTest.sbol.xml");
+        String expected = ReadFile.fromPath("test/data/subparts/Features_Expected.sbol.xml");
 
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));

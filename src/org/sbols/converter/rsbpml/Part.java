@@ -116,7 +116,7 @@ public class Part {
     public void setSpecified_subparts(List<SpecifiedSubpart> specified_subparts) {
         this.specified_subparts = specified_subparts;
     }
-    
+
     @XmlElementWrapper(name = "specified_subscars")
     @XmlElements({
         @XmlElement(name = "scar", type = Scar.class),
@@ -132,7 +132,7 @@ public class Part {
     public void setSpecified_subscars(List<SpecifiedSubscar> specified_subscars) {
         this.specified_subscars = specified_subscars;
     }
-    
+
     @XmlElementWrapper(name = "features")
     @XmlElement(name = "feature")
     public List<Feature> getFeatures() {
@@ -187,7 +187,7 @@ public class Part {
 
             for (String aType : part_types) {
                 if (Vocabulary.SO_MAP.get(aType) != null) {
-                    biobrick.addType(Vocabulary.SO_MAP.get(aType));                    
+                    biobrick.addType(Vocabulary.SO_MAP.get(aType));
                 }
                 biobrick.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
             }
@@ -207,39 +207,50 @@ public class Part {
         }
 
         if (deep_subparts != null) {
-            int i=0;
-            for (Subpart aSubpart : deep_subparts) {
-                biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
-                i++;
-            }
-        }
-        
-        if (specified_subparts != null) {
-            int i=0;
-            for (Subpart aSubpart : specified_subparts) {  
-                biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
-                i++;
-            }
-        }
-        if (specified_subscars != null) {
             SequenceAnnotation nextSA = null;
             List<SequenceAnnotation> revSAList = new ArrayList<>();
-            for (int i=specified_subscars.size()-1; i >= 0; i--)  {              
-                SequenceAnnotation thisSA = specified_subscars.get(i).toSbol(biobrick, rsbpmlData, i, nextSA);              
+            for (int i = deep_subparts.size() - 1; i >= 0; i--) {
+                SequenceAnnotation thisSA = deep_subparts.get(i).toSbol(biobrick, rsbpmlData, i, nextSA);
                 revSAList.add(thisSA);
                 nextSA = thisSA;
             }
-            for (int i=revSAList.size()-1; i>=0; i--){
+            for (int i = revSAList.size() - 1; i >= 0; i--) {
+                biobrick.addAnnotation(revSAList.get(i));
+            }
+        }
+
+        if (specified_subparts != null) {
+            SequenceAnnotation nextSA = null;
+            List<SequenceAnnotation> revSAList = new ArrayList<>();
+            for (int i = specified_subparts.size() - 1; i >= 0; i--) {
+                SequenceAnnotation thisSA = specified_subparts.get(i).toSbol(biobrick, rsbpmlData, i, nextSA);
+                revSAList.add(thisSA);
+                nextSA = thisSA;
+            }
+            for (int i = revSAList.size() - 1; i >= 0; i--) {
+                biobrick.addAnnotation(revSAList.get(i));
+            }
+        }
+        
+        if (specified_subscars != null) {
+            SequenceAnnotation nextSA = null;
+            List<SequenceAnnotation> revSAList = new ArrayList<>();
+            for (int i = specified_subscars.size() - 1; i >= 0; i--) {
+                SequenceAnnotation thisSA = specified_subscars.get(i).toSbol(biobrick, rsbpmlData, i, nextSA);
+                revSAList.add(thisSA);
+                nextSA = thisSA;
+            }
+            for (int i = revSAList.size() - 1; i >= 0; i--) {
                 biobrick.addAnnotation(revSAList.get(i));
             }
         }
         if (features != null) {
-            int i=0;
+            int i = 0;
             for (Feature aSubpart : features) {
                 i++;
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
             }
-        }        
+        }
         return biobrick;
     }
 }

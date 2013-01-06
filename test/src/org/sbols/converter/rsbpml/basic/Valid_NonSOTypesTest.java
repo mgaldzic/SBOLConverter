@@ -7,7 +7,6 @@ import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
-import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 
 public class Valid_NonSOTypesTest {
@@ -15,7 +14,7 @@ public class Valid_NonSOTypesTest {
     @Test
     public void Valid_NonSOTypesTest() throws JAXBException, IOException {
         System.out.println("Valid_NonSOTypesTest");
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_NonSOTypesTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/NonSOTypes_Test.xml");
 
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         PartsRegistrySBOLFactory.validate(SbolDoc);

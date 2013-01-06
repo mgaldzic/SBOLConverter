@@ -25,17 +25,17 @@ public class Expected_IdTest {
     public void Expected_IdTest() throws JAXBException, IOException {
         System.out.println("Expected_IdTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_IdTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Id_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_IdTest.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/Id_Out.sbol.xml");
         
         //Get expected result
-        String expected = ReadFile.fromPath("test/data/basic/Valid_IdTest.sbol.xml");
+        String expected = ReadFile.fromPath("test/data/basic/Id_Expected.sbol.xml");
 
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));

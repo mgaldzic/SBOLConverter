@@ -2,6 +2,7 @@ nbproject/
 build/
 dist/
 rdfout/
+nbbuild.xml
 #################
 ## Eclipse
 #################

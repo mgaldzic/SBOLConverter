@@ -27,17 +27,17 @@ public class Expected_Basic_PartTest {
     public void Expected_BasicPartTest() throws JAXBException, IOException {
         System.out.println("Expected_BasicPartTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_BasicPartTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/BasicPart_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
 
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_BasicPartTest.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/BasicPart_Out.sbol.xml");
 
         //Get expected result
-        String expected = ReadFile.fromPath("test/data/basic/Valid_BasicPartTest.sbol.xml");
+        String expected = ReadFile.fromPath("test/data/basic/BasicPart_Expected.sbol.xml");
 
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));

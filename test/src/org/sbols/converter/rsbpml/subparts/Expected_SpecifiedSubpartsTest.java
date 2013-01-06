@@ -24,14 +24,14 @@ public class Expected_SpecifiedSubpartsTest {
     public void Expected_SpecifiedSubpartsTest() throws JAXBException, IOException {
         System.out.println("Expected_SpecifiedSubpartsTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_SpecifiedSubpartsTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/SpecifiedSubparts_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         
         //Get expected result
-        String expected = ReadFile.fromPath("test/data/subparts/Valid_SpecifiedSubpartsTest.sbol.xml");
+        String expected = ReadFile.fromPath("test/data/subparts/SpecifiedSubparts_Expected.sbol.xml");
 
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));

@@ -21,7 +21,7 @@ public class Valid_MininumRSBPML {
     @Test
     public void Valid_MininumRSBPML() throws JAXBException, IOException {
         System.out.println("Valid_MininumRSBPML");
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_MininumRSBPML.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/MininumRSBPML_Test.xml");
 
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         PartsRegistrySBOLFactory.validate(SbolDoc);

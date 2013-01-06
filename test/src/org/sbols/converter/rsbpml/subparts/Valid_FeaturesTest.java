@@ -24,7 +24,7 @@ public class Valid_FeaturesTest {
     @Test
     public void Valid_FeaturesTest() throws JAXBException, IOException {
         System.out.println("Valid_FeaturesTest");
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_FeaturesTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Features_Test.xml");
 
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         SBOLFactory.validate(SbolDoc);
