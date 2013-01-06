@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.sbols.converter.rsbpml.subparts;
+package org.sbols.converter.rsbpml.features;
 
 import java.io.IOException;
 import javax.xml.bind.JAXBException;

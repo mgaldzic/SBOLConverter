@@ -5,6 +5,7 @@ package org.sbols.converter.rsbpml;
  * and open the template in the editor.
  */
 
+import org.sbols.converter.rsbpml.features.Valid_FeaturesTest;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,7 +21,6 @@ import org.sbols.converter.rsbpml.subparts.*;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     Valid_DeepSubpartTest.class,
-    Valid_FeaturesTest.class,
     Valid_MultiDeepSubpartsTest.class,
     Valid_SpecifiedSubpartsSubscarsTest.class, 
     Valid_SpecifiedSubpartsTest.class,

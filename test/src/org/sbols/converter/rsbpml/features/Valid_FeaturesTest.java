@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.sbols.converter.rsbpml.subparts;
+package org.sbols.converter.rsbpml.features;
 
 /**
  *
