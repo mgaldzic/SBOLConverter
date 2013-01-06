@@ -1,7 +1,6 @@
 package org.sbols.converter.rsbpml;
 
 import java.net.URI;
-import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -12,7 +11,7 @@ import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
 
 @XmlRootElement(name = "subpart")
-public class Subpart {
+public abstract class Subpart extends SubThing{
 
     private String part_id;
     private String part_name;
@@ -67,6 +66,7 @@ public class Subpart {
                 + (part_nickname != null ? "part_nickname: " + part_nickname + ", \n" : "");
     }
 
+    @Override
     protected SequenceAnnotation getNewSA(Rsbpml rsbpmlData, int index) {
         PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
         SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //TODO Need to make dynamic
@@ -79,12 +79,9 @@ public class Subpart {
         int position = index + 1;
         String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
         newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_" + parent_id + "_" + part_id + "_" + position));
-        System.out.println("sp_pos " + position);
         return newAnnotation;
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int index) {
-        //implrememnted in subClass
-        return biobrick;
-    }
+    
+
 }
