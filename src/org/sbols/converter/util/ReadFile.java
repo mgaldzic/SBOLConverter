@@ -17,8 +17,8 @@ import org.sbolstandard.core.SBOLDocument;
  * @author mgaldzic
  */
 public class ReadFile {
-    
-    public static String normalize_ws (String aString){
+
+    public static String normalize_ws(String aString) {
         aString = aString.replaceAll("\\r\\n", "#@#@#");
         aString = aString.replaceAll("\\r", "#@#@#");
         aString = aString.replaceAll("\\n", "#@#@#");
@@ -29,7 +29,7 @@ public class ReadFile {
         //String[] lines = aString.split(System.getProperty("line.separator"));
 
         StringBuilder outString = new StringBuilder();
-        for (String l : lines){
+        for (String l : lines) {
             outString.append(l.trim()).append("\n");
         }
         aString = outString.toString();
@@ -39,18 +39,18 @@ public class ReadFile {
     public static Boolean compare(String expected, String actual) {
         StringBuilder text_diff = new StringBuilder();
         Boolean isEqual = true;
-        
+
         expected = normalize_ws(expected);
         actual = normalize_ws(actual);
 
         DiffMatchPatch dmp = new DiffMatchPatch();
         //LinkedList<DiffMatchPatch.Diff> diffs = dmp.diff_main(actual, expected, true);
         LinkedList<DiffMatchPatch.Diff> diffs = dmp.diff_lineMode(actual, expected);
-        
+
         //dmp.diff_cleanupSemantic(diffs);
 
         for (DiffMatchPatch.Diff aDiff : diffs) {
-            //System.out.println("adiff: " + aDiff);
+
             if (aDiff.operation != DiffMatchPatch.Operation.EQUAL) {
                 text_diff.append(aDiff.operation);
                 text_diff.append("ed '");
@@ -60,7 +60,9 @@ public class ReadFile {
                 isEqual = false;
             }
         }
-        System.out.println(isEqual == false ? "diffs: \n" + text_diff.toString() : "");
+        if (isEqual == false) {
+            System.out.println("diffs: \n" + text_diff.toString());
+        }
         return isEqual;
 
     }
