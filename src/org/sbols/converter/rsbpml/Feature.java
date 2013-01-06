@@ -102,6 +102,7 @@ public class Feature {
         if (types != null) {
 
             for (String aType : types) {
+                aType = aType.toLowerCase();
                 if (Vocabulary.SO_MAP.get(aType) != null) {
                     feature.addType(Vocabulary.SO_MAP.get(aType));                    
                 }
