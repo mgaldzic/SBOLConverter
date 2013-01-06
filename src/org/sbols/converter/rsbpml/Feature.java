@@ -84,6 +84,57 @@ public class Feature {
     public void setEndpos(String endpos) {
         this.endpos = endpos;
     }
+    private PartsRegistryDnaComponent assignType (PartsRegistryDnaComponent feature){
+        if (types != null) {
+
+            for (String aType : types) {
+                aType = aType.toLowerCase();
+                if (Vocabulary.SO_MAP.get(aType) != null) {
+                    feature.addType(Vocabulary.SO_MAP.get(aType));
+                }
+                feature.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
+            }
+        }
+        return feature;
+    }
+
+    private PartsRegistryDnaComponent assignPartFeature() {
+        PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
+
+        //title = title.trim(); - loooks like traling spaces are already taken care of
+        feature.setURI(URI.create("http://partsregistry.org/part/" + title));
+        feature.setDisplayId(title);
+        feature = assignType(feature);
+        return feature;
+    }
+
+    private PartsRegistryDnaComponent assignNotPartFeature() {
+        PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
+        feature.setURI(URI.create("http://partsregistry.org/feat/f_" + id));
+        feature.setDisplayId("f_" + id);
+        if (title != null) {
+            feature.setName(title);
+        } else {
+            feature.setName(types.get(0).toLowerCase());
+        }
+        feature = assignType(feature);
+        return feature;
+    }
+    
+    private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation){
+        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id)); 
+        newAnnotation.setBioStart(Integer.parseInt(startpos));
+        newAnnotation.setBioEnd(Integer.parseInt(endpos));
+        if (direction != null) {
+            if (direction.equals("forward")) {
+                newAnnotation.setStrand(StrandType.POSITIVE);
+            }
+            if (direction.equals("reverse")) {
+                newAnnotation.setStrand(StrandType.NEGATIVE);
+            }
+        }
+        return newAnnotation;
+    }
 
     @Override //need to edit this later to reflect changes
     public String toString() {
@@ -94,34 +145,17 @@ public class Feature {
     }
 
     public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
-        PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
-        feature.setURI(URI.create("http://partsregistry.org/feat/f_" + id)); //TODO Need to make dynamic
-        feature.setDisplayId("f_" + id);
-        feature.setName(title);
-        
-        if (types != null) {
+        PartsRegistryDnaComponent feature;
 
-            for (String aType : types) {
-                aType = aType.toLowerCase();
-                if (Vocabulary.SO_MAP.get(aType) != null) {
-                    feature.addType(Vocabulary.SO_MAP.get(aType));                    
-                }
-                feature.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
-            }
-        }        
+        if (title != null && title.startsWith("BBa_")) {
+            feature = assignPartFeature();
+        } else {
+            feature = assignNotPartFeature();
+        }
+
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(feature);
-        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id)); //TODO other feature cases 
-        newAnnotation.setBioStart(Integer.parseInt(startpos));
-        newAnnotation.setBioEnd(Integer.parseInt(endpos));
-        if (direction != null) {
-            if (direction.equals("forward")){
-            newAnnotation.setStrand(StrandType.POSITIVE);
-            }
-            if (direction.equals("reverse")){
-            newAnnotation.setStrand(StrandType.NEGATIVE);
-            }  
-        }   
+        newAnnotation = assignAnnotation(newAnnotation);
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }
