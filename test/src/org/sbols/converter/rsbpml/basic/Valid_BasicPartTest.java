@@ -11,7 +11,6 @@ import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
-import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 
 public class Valid_BasicPartTest {
@@ -19,7 +18,7 @@ public class Valid_BasicPartTest {
     @Test
     public void Valid_BasicPartTest() throws JAXBException, IOException {
         System.out.println("Valid_BasicPartTest");
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_BasicPartTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/BasicPart_Test.xml");
 
         SBOLDocument Doc = SBOLConverter.convert(rsbpmlData);
         PartsRegistrySBOLFactory.validate(Doc);

@@ -20,24 +20,24 @@ import org.sbolstandard.core.SBOLDocument;
  * @author mgaldzic
  */
 public class Expected_SOTypeTest {
+
     @Test
     public void Expected_SOTypeTest() throws JAXBException, IOException {
         System.out.println("Expected_SOTypeTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_SOTypeTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/SOType_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
-        
+
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_SOTypeTest.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/SOType_Out.sbol.xml");
 
         //Get expected result
-        String expected = ReadFile.fromPath("test/data/basic/Valid_SOTypeTest.sbol.xml");
-       
+        String expected = ReadFile.fromPath("test/data/basic/SOType_Expected.sbol.xml");
+
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }
-    
 }

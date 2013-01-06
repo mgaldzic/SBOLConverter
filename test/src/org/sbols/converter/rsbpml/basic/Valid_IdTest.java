@@ -12,7 +12,6 @@ import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
 import org.sbols.converter.util.WriteFile;
-import org.sbolstandard.core.DnaComponent;
 import org.sbolstandard.core.SBOLDocument;
 
 /**
@@ -23,11 +22,11 @@ public class Valid_IdTest {
     @Test
     public void Valid_IdTest() throws JAXBException, IOException {
         System.out.println("Valid_IdTest");
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_IdTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Id_Test.xml");
 
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_IdTest.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/Id_Out.sbol.xml");
         
         PartsRegistrySBOLFactory.validate(SbolDoc);
     }

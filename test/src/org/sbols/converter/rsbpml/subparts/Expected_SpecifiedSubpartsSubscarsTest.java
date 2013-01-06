@@ -24,18 +24,18 @@ public class Expected_SpecifiedSubpartsSubscarsTest {
     public void Expected_SpecifiedSubpartsSubscarsTest() throws JAXBException, IOException {
         System.out.println("Expected_SpecifiedSubpartsSubscarsTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_SpecifiedSubpartsSubscarsTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/SpecifiedSubpartsSubscars_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         
-        //Get expected result
-        String expected = ReadFile.fromPath("test/data/subparts/Valid_SpecifiedSubpartsSubscarsTest.sbol.xml");
-        
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_SpecifiedSubpartsSubscarsTest.sbol.xml");
-
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/SpecifiedSubpartsSubscars_Out.sbol.xml");
+        
+        //Get expected result
+        String expected = ReadFile.fromPath("test/data/subparts/SpecifiedSubpartsSubscars_Expected.sbol.xml");
+  
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }

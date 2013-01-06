@@ -14,7 +14,7 @@ public class Valid_MultiSOTypesTest {
     @Test
     public void Valid_MultiSOTypesTest() throws JAXBException, IOException {
         System.out.println("Valid_MultiSOTypesTest");
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_MultiSOTypesTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/MultiSOTypes_Test.xml");
 
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         PartsRegistrySBOLFactory.validate(SbolDoc);

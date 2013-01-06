@@ -22,7 +22,7 @@ public class Valid_SpecifiedSubpartsSubscarsTest {
     @Test
     public void Valid_SpecifiedSubpartsSubscarsTest() throws JAXBException, FileNotFoundException {
         System.out.println("Valid_SpecifiedSubpartsSubscarsTest");
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_SpecifiedSubpartsSubscarsTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/SpecifiedSubpartsSubscars_Test.xml");
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         SBOLFactory.validate(SbolDoc);
     }

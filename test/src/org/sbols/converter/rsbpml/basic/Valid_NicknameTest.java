@@ -14,7 +14,7 @@ public class Valid_NicknameTest {
     @Test
     public void Valid_NicknameTest() throws JAXBException, IOException {
         System.out.println("Valid_NicknameTest");
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_NicknameTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Nickname_Test.xml");
 
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         PartsRegistrySBOLFactory.validate(SbolDoc);

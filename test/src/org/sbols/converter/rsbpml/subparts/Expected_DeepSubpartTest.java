@@ -25,17 +25,17 @@ public class Expected_DeepSubpartTest {
     public void Expected_DeepSubpartTest() throws JAXBException, IOException {
         System.out.println("Expected_DeepSubpartTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Valid_DeepSubpartTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/DeepSubpart_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_DeepSubpartTest.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/DeepSubpart_Test.sbol.xml");
         
         //Get expected result
-        String expected = ReadFile.fromPath("test/data/subparts/Valid_DeepSubpartTest.sbol.xml");
+        String expected = ReadFile.fromPath("test/data/subparts/DeepSubpart_Expected.sbol.xml");
 
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));

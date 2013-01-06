@@ -24,17 +24,17 @@ public class Expected_NicknameTest {
     public void Expected_NicknameTest() throws JAXBException, IOException {
         System.out.println("Expected_NicknameTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Valid_NicknameTest.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/basic/Nickname_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/Out_NicknameTest.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/Nickname_Out.sbol.xml");
         
         //Get expected result
-        String expected = ReadFile.fromPath("test/data/basic/Valid_NicknameTest.sbol.xml");
+        String expected = ReadFile.fromPath("test/data/basic/Nickname_Expected.sbol.xml");
 
         //Compare
         assertTrue("Diffs found", ReadFile.compare(expected, actual));
