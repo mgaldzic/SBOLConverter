@@ -5,7 +5,6 @@ package org.sbols.converter.rsbpml;
  * and open the template in the editor.
  */
 
-import org.sbols.converter.rsbpml.features.Valid_FeaturesTest;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -17,7 +17,6 @@ import org.sbols.converter.rsbpml.features.*;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     Expected_TwoFeaturesTest.class,
-    Valid_FeaturesTest.class,
     Expected_EndStartPostionsFeaturesTest.class,
     Expected_Part_NotPart_SubComponentTest.class
 })
