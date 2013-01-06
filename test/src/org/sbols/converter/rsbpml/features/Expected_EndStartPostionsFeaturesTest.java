@@ -103,7 +103,7 @@ public class Expected_EndStartPostionsFeaturesTest {
 
     @Test
     public void Expected_startLToneFeatureTest() throws JAXBException, IOException {
-        System.out.println("startLToneFeature_FeatureTest");
+        System.out.println("Expected_startLToneFeatureTest");
         //Get input for test
         Rsbpml rsbpmlData = ReadRSBPML.file("test/data/features/startLToneFeature_Test.xml");
         //Do the test
