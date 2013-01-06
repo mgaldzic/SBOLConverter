@@ -25,7 +25,7 @@ public class Expected_FeaturesTest {
     public void Expected_FeaturesTest() throws JAXBException, IOException {
         System.out.println("Expected_FeaturesTest");
         //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/subparts/Features_Test.xml");
+        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/features/Features_Test.xml");
 
         //Do the test
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
@@ -35,7 +35,7 @@ public class Expected_FeaturesTest {
         WriteFile.toPath(SbolDoc, "test/data/rdfout/FeaturesTest_Out.sbol.xml");
         
         //Get expected result
-        String expected = ReadFile.fromPath("test/data/subparts/Features_Expected.sbol.xml");
+        String expected = ReadFile.fromPath("test/data/features/Features_Expected.sbol.xml");
 
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
