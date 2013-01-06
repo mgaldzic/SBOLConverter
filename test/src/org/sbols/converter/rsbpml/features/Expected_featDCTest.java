@@ -19,7 +19,7 @@ import org.sbolstandard.core.SBOLDocument;
  *
  * @author mgaldzic
  */
-public class Expected_Part_NotPart_SubComponentTest {
+public class Expected_featDCTest {
 
     @Test
     public void Expected_NotAPartWOTitleFeature_Test() throws JAXBException, IOException {

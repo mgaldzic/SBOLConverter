@@ -10,7 +10,7 @@
             <features>
                 <feature>
                     <id>1</id>
-                    <title>Start == 1</title>
+                    <title>Start == 1 </title>
                     <type>rbs</type>
                     <direction>forward</direction>
                     <startpos>1</startpos>
