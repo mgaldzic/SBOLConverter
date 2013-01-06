@@ -8,8 +8,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.sbols.converter.rsbpml.features.Expected_FeaturesTest;
-import org.sbols.converter.rsbpml.features.Valid_FeaturesTest;
+import org.sbols.converter.rsbpml.features.*;
 
 /**
  *
@@ -17,6 +16,7 @@ import org.sbols.converter.rsbpml.features.Valid_FeaturesTest;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+    Expected_TwoFeaturesTest.class,
     Valid_FeaturesTest.class,
     Expected_FeaturesTest.class
 })
