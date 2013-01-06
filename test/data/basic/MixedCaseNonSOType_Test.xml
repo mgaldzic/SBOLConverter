@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Basic Part with MixedCaseNonSOTypes-->
+<rsbpml>
+    <part_list>
+        <part>
+            <part_name>DC1</part_name>
+            <part_short_desc>Mixed Case Non SO Type</part_short_desc>
+            <part_type>MixedCaseNonSOType</part_type>
+        </part>
+    </part_list>
+</rsbpml>
