@@ -18,7 +18,7 @@
      <s:DnaComponent rdf:about="http://partsregistry.org/feat/f_1">
       <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
       <s:displayId>f_1</s:displayId>
-      <s:name>Start == 1 </s:name>
+      <s:name>Start == 1</s:name>
       <rdf:type rdf:resource="http://partsregistry.org/type/rbs"/>
      </s:DnaComponent>
     </s:subComponent>

@@ -6,11 +6,11 @@
             <part_id>1</part_id>
             <part_name>DC1</part_name>
             <part_nickname>DnaComponent1</part_nickname>
-            <part_short_desc>Start == 1 </part_short_desc>
+            <part_short_desc>Start == 1</part_short_desc>
             <features>
                 <feature>
                     <id>1</id>
-                    <title>Start == 1 </title>
+                    <title>Start == 1</title>
                     <type>rbs</type>
                     <direction>forward</direction>
                     <startpos>1</startpos>
