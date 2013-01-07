@@ -87,20 +87,4 @@ public class Expected_EndStartPostionsFeaturesTest {
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }
-
-    @Test
-    public void Expected_startLToneFeatureTest() throws JAXBException, IOException {
-        System.out.println("Expected_startLToneFeatureTest");
-        //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/features/startLToneFeature_Test.xml");
-        //Do the test
-        SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
-        String actual = ReadFile.sbolDocToString(SbolDoc);
-        // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/startLToneFeature_Out.sbol.xml");
-        //Get expected result
-        String expected = ReadFile.fromPath("test/data/features/startLToneFeature_Expected.sbol.xml");
-        //Compare
-        assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
-    }
 }
