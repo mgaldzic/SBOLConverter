@@ -72,7 +72,7 @@ public class SBOLConverter {
         PartsRegistryDnaComponent biobrick = PartsRegistrySBOLFactory.createDnaComponent();
         SBOLDocument SbolDoc = SBOLFactory.createDocument();
         SbolDoc.addContent(rsbpmlData.toSbol(biobrick, rsbpmlData));
-        PartsRegistrySBOLFactory.validate(SbolDoc);
+        //PartsRegistrySBOLFactory.validate(SbolDoc);
         return SbolDoc;
         
     }
