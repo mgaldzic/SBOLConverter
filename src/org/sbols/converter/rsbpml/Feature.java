@@ -103,7 +103,7 @@ public class Feature {
 
         //title = title.trim(); - loooks like traling spaces are already taken care of
         feature.setURI(URI.create("http://partsregistry.org/part/" + title));
-        feature.setDisplayId(title);
+        //feature.setDisplayId(title);
         feature = assignType(feature);
         return feature;
     }
