@@ -16,6 +16,7 @@ import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 import org.sbolstandard.core.DnaSequence;
+import org.sbolstandard.core.SBOLValidationException;
 import org.sbolstandard.core.SequenceAnnotation;
 
 @XmlRootElement(name = "part")
@@ -177,7 +178,7 @@ public class Part {
 
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData)  throws SBOLValidationException{
         biobrick.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //Need to make dynamic
         biobrick.setDisplayId(part_name);
         biobrick.setDescription(part_short_desc);

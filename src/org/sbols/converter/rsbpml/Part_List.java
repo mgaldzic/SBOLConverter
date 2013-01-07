@@ -6,6 +6,7 @@ package org.sbols.converter.rsbpml;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
+import org.sbolstandard.core.SBOLValidationException;
 
 @XmlRootElement(name = "part_list")
 public class Part_List {
@@ -26,7 +27,7 @@ public class Part_List {
         return "part_list [" + (part != null ? part : "") + "]";
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData) throws SBOLValidationException{
         return part.toSbol(biobrick, rsbpmlData);
     }
 }
