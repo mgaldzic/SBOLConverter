@@ -84,7 +84,8 @@ public class Feature {
     public void setEndpos(String endpos) {
         this.endpos = endpos;
     }
-    private PartsRegistryDnaComponent assignType (PartsRegistryDnaComponent feature){
+
+    private PartsRegistryDnaComponent assignType(PartsRegistryDnaComponent feature) {
         if (types != null) {
 
             for (String aType : types) {
@@ -98,12 +99,23 @@ public class Feature {
         return feature;
     }
 
-    private PartsRegistryDnaComponent assignPartFeature() {
+    private PartsRegistryDnaComponent assignPartFeature(PartsRegistryDnaComponent biobrick) {
         PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
 
         //title = title.trim(); - loooks like traling spaces are already taken care of
         feature.setURI(URI.create("http://partsregistry.org/part/" + title));
-        //feature.setDisplayId(title);
+        
+        if (biobrick.getAnnotations().size() > 0) { //Actual annotations already exist
+            for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { //any of them
+                if (!feature.getURI().equals(subpartSA.getSubComponent().getURI())) { //NOT Already a *Subpart  
+                    feature.setDisplayId(title);
+                }
+            }
+        } else { //only features in this one
+            feature.setDisplayId(title);
+        }
+
+
         feature = assignType(feature);
         return feature;
     }
@@ -120,9 +132,9 @@ public class Feature {
         feature = assignType(feature);
         return feature;
     }
-    
-    private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation){
-        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id)); 
+
+    private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation) {
+        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id));
         newAnnotation.setBioStart(Integer.parseInt(startpos));
         newAnnotation.setBioEnd(Integer.parseInt(endpos));
         if (direction != null) {
@@ -148,7 +160,7 @@ public class Feature {
         PartsRegistryDnaComponent feature;
 
         if (title != null && title.startsWith("BBa_")) {
-            feature = assignPartFeature();
+            feature = assignPartFeature(biobrick);
         } else {
             feature = assignNotPartFeature();
         }
