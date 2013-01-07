@@ -9,12 +9,8 @@ import javax.xml.bind.JAXBException;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
-import org.sbols.converter.sbol.PartsRegistryDnaComponent;
-import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
-import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.SBOLDocument;
-import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SBOLValidationException;
 
 /**
