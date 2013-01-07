@@ -1,5 +1,7 @@
 package org.sbols.converter.rsbpml;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 import org.sbolstandard.core.SBOLFactory;
+import org.sbolstandard.core.SBOLValidationException;
 import org.sbolstandard.core.SequenceAnnotation;
 import org.sbolstandard.core.StrandType;
 
@@ -104,7 +107,7 @@ public class Feature {
 
         //title = title.trim(); - loooks like traling spaces are already taken care of
         feature.setURI(URI.create("http://partsregistry.org/part/" + title));
-        
+
         if (biobrick.getAnnotations().size() > 0) { //Actual annotations already exist
             for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { //any of them
                 if (!feature.getURI().equals(subpartSA.getSubComponent().getURI())) { //NOT Already a *Subpart  
@@ -133,8 +136,13 @@ public class Feature {
         return feature;
     }
 
-    private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation) {
+    private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation) throws SBOLValidationException {
         newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id));
+        Integer expectedLength = Integer.parseInt(endpos) - Integer.parseInt(startpos) + 1;
+        if (!(expectedLength > 0)) {
+            throw new SBOLValidationException("Inconsistent startpos and endpos rsbpml.Feature values");
+        }
+
         newAnnotation.setBioStart(Integer.parseInt(startpos));
         newAnnotation.setBioEnd(Integer.parseInt(endpos));
         if (direction != null) {
@@ -156,7 +164,7 @@ public class Feature {
                 + (direction != null ? "direction: " + direction + ", \n" : "");
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) throws SBOLValidationException{
         PartsRegistryDnaComponent feature;
 
         if (title != null && title.startsWith("BBa_")) {

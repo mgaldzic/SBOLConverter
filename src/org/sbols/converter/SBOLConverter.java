@@ -71,7 +71,8 @@ public class SBOLConverter {
     public static SBOLDocument convert(Rsbpml rsbpmlData) throws SBOLValidationException{
         PartsRegistryDnaComponent biobrick = PartsRegistrySBOLFactory.createDnaComponent();
         SBOLDocument SbolDoc = SBOLFactory.createDocument();
-        SbolDoc.addContent(rsbpmlData.toSbol(biobrick, rsbpmlData));
+        biobrick = rsbpmlData.toSbol(biobrick, rsbpmlData);
+        SbolDoc.addContent(biobrick);
         //PartsRegistrySBOLFactory.validate(SbolDoc);
         return SbolDoc;
         
