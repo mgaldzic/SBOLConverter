@@ -132,7 +132,7 @@ public class Expected_featDCTest {
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/_Out.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/TitleBBa_NotASubPartFeature_Out.sbol.xml");
         //Get expected result
         String expected = ReadFile.fromPath("test/data/features/TitleBBa_NotASubPartFeature_Expected.sbol.xml");
         //Compare
@@ -148,7 +148,7 @@ public class Expected_featDCTest {
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/_Out.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/TitleBBa_TrailingSpaceFeature_Out.sbol.xml");
         //Get expected result
         String expected = ReadFile.fromPath("test/data/features/TitleBBa_TrailingSpaceFeature_Expected.sbol.xml");
         //Compare
