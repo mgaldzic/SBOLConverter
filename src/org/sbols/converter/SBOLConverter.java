@@ -53,8 +53,8 @@ public class SBOLConverter {
 
         try { //Can we enter this with fileName and outputName being null? Need to make sure
 
-            Rsbpml rsbpmlData = ReadRSBPML.file(fileName + ".xml");
-            FileOutputStream out = new FileOutputStream(outputName + ".txt");
+            Rsbpml rsbpmlData = ReadRSBPML.file(fileName);
+            FileOutputStream out = new FileOutputStream(outputName);
 
             System.out.println(rsbpmlData);
 
