@@ -7,13 +7,16 @@ package org.sbols.converter.rsbpml.features;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
+import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadRSBPML;
 import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
+import org.sbolstandard.core.SBOLValidationException;
 
 /**
  *
@@ -49,22 +52,6 @@ public class Expected_EndStartPostionsFeaturesTest {
         WriteFile.toPath(SbolDoc, "test/data/rdfout/endGTstartFeature_Out.sbol.xml");
         //Get expected result
         String expected = ReadFile.fromPath("test/data/features/endGTstartFeature_Expected.sbol.xml");
-        //Compare
-        assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
-    }
-
-    @Test
-    public void Expected_endLTstartFeatureTest() throws JAXBException, IOException {
-        System.out.println("Expected_endLTstartFeatureTest");
-        //Get input for test
-        Rsbpml rsbpmlData = ReadRSBPML.file("test/data/features/endLTstartFeature_Test.xml");
-        //Do the test
-        SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
-        String actual = ReadFile.sbolDocToString(SbolDoc);
-        // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/endLTstartFeature_Out.sbol.xml");
-        //Get expected result
-        String expected = ReadFile.fromPath("test/data/features/endLTstartFeature_Expected.sbol.xml");
         //Compare
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }

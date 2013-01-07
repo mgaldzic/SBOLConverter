@@ -68,10 +68,11 @@ public class SBOLConverter {
             System.err.println("Validation failed, error: " + e.getMessage());
         }
     }
-    public static SBOLDocument convert(Rsbpml rsbpmlData){
+    public static SBOLDocument convert(Rsbpml rsbpmlData) throws SBOLValidationException{
         PartsRegistryDnaComponent biobrick = PartsRegistrySBOLFactory.createDnaComponent();
         SBOLDocument SbolDoc = SBOLFactory.createDocument();
         SbolDoc.addContent(rsbpmlData.toSbol(biobrick, rsbpmlData));
+        PartsRegistrySBOLFactory.validate(SbolDoc);
         return SbolDoc;
         
     }
