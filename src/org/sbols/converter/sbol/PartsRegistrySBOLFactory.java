@@ -11,7 +11,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import org.openrdf.rio.RDFFormat;
 import org.sbolstandard.core.*;
-import org.sbolstandard.core.impl.*;
+import org.sbolstandard.core.impl.CollectionImpl;
+import org.sbolstandard.core.impl.DnaSequenceImpl;
+import org.sbolstandard.core.impl.SBOLDocumentImpl;
+import org.sbolstandard.core.impl.SequenceAnnotationImpl;
 
 /**
  *
@@ -106,7 +109,7 @@ public class PartsRegistrySBOLFactory {
 	 * Creates a new validator instance.
 	 */
 	public static SBOLValidator createValidator() {
-		return new SBOLValidatorImpl();
+		return new PartsRegistrySBOLValidatorImpl();
 	}
 	
 	/**
