@@ -25,11 +25,6 @@ public class Invalid_endLTstartFeatureTest {
         //Get input for test
         Rsbpml rsbpmlData = ReadRSBPML.file("test/data/features/endLTstartFeature_Test.xml");
         //Do the test: convert validates and raises an exception in this case
-        try {
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
-        } catch (SBOLValidationException e) {
-            //to debug get message
-            System.err.println("Validation failed, error: " + e.getMessage());
-        }
     }
 }
