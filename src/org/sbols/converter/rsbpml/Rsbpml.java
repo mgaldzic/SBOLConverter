@@ -30,7 +30,7 @@ public class Rsbpml {
         return "rsbpml [" + (part_list != null ? part_list : "") + "]";
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData) throws SBOLValidationException {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData) {
         return part_list.toSbol(biobrick, rsbpmlData);
     }
 }

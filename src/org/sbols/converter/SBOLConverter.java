@@ -77,7 +77,8 @@ public class SBOLConverter {
         SBOLDocument SbolDoc = SBOLFactory.createDocument();
         biobrick = rsbpmlData.toSbol(biobrick, rsbpmlData);
         SbolDoc.addContent(biobrick);
-        //PartsRegistrySBOLFactory.validate(SbolDoc);
+        
+        PartsRegistrySBOLFactory.validate(SbolDoc);
         return SbolDoc;
 
     }
