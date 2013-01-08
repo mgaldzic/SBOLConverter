@@ -66,9 +66,9 @@ public class SBOLConverter {
 
             SBOLFactory.write(Doc, out);
         } catch (IOException e) {
-            System.err.println("I/O ERROR: " + e.getMessage());
+            System.err.println("I/O ERROR: in: "+inputFileName+" out: "+ outputFileName +", "+ e.getMessage());
         } catch (SBOLValidationException e) {
-            System.err.println("Validation failed, error: " + e.getMessage());
+            System.err.println("Validation failed "+inputFileName+ ", error: " + e.getMessage());
         }
     }
 
