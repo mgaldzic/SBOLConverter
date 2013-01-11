@@ -23,6 +23,8 @@ public class PartsRegistryDnaComponent extends DnaComponentImpl {
     public void accept(PartsRegistrySBOLVisitor visitor) {
         if (visitor instanceof PartsRegistrySBOLVisitor) {
             ((PartsRegistrySBOLVisitor) visitor).visit(this);
+        } else {
+            visitor.visit(this);
         }
     }
         public List<URI> getRegistry_types() {
