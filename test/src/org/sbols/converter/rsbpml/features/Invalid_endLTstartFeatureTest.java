@@ -7,6 +7,7 @@ package org.sbols.converter.rsbpml.features;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import org.junit.Test;
+import static org.junit.Assert.fail;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
 import org.sbols.converter.util.ReadRSBPML;
@@ -26,5 +27,6 @@ public class Invalid_endLTstartFeatureTest {
         Rsbpml rsbpmlData = ReadRSBPML.file("test/data/features/endLTstartFeature_Test.xml");
         //Do the test: convert validates and raises an exception in this case
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
+        fail("The test should check if the just the bad feature is thrown away not the whole thing. See BBa_G0002");
     }
 }

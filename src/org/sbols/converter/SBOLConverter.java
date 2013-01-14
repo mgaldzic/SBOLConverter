@@ -60,16 +60,19 @@ public class SBOLConverter {
             FileOutputStream out = new FileOutputStream(outputFileName);
 
             //System.out.println(rsbpmlData);
-            System.out.println("in: " + inputFileName + " out: " + outputFileName);
-
+           
             SBOLDocument Doc = convert(rsbpmlData);
 
             SBOLFactory.write(Doc, out);
         } catch (IOException e) {
-            System.err.println("I/O ERROR: in: "+inputFileName+" out: "+ outputFileName +", "+ e.getMessage());
+            System.err.println("I/O ERROR: in: " + inputFileName + " out: " + outputFileName + ", " + e.getMessage());
         } catch (SBOLValidationException e) {
-            System.err.println("Validation failed "+inputFileName+ ", error: " + e.getMessage());
+            System.err.println("Validation failed " + inputFileName + ", error: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Exception " + inputFileName + ", error: " + e.getClass().getName()+" "+ e.getMessage());
         }
+        System.out.println("Processed in: " + inputFileName + " out: " + outputFileName);
+        
     }
 
     public static SBOLDocument convert(Rsbpml rsbpmlData) throws SBOLValidationException {
