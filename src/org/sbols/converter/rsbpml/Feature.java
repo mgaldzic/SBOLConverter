@@ -140,6 +140,14 @@ public class Feature {
         newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id));
         Integer expectedLength = Integer.parseInt(endpos) - Integer.parseInt(startpos) + 1;
 
+ /*       if (!(expectedLength > 0)) {
+            throw new SBOLValidationException("Inconsistent startpos and endpos rsbpml.Feature values");
+        }
+        if (Integer.parseInt(startpos) < 1) {
+            throw new SBOLValidationException("startpos < 0 rsbpml.Feature values");
+        }
+*/
+
         newAnnotation.setBioStart(Integer.parseInt(startpos));
         newAnnotation.setBioEnd(Integer.parseInt(endpos));
         if (direction != null) {
