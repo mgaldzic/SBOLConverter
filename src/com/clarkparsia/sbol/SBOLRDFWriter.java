@@ -14,6 +14,7 @@
  */
 package com.clarkparsia.sbol;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
@@ -52,7 +53,7 @@ public class SBOLRDFWriter extends SBOLAbstractWriter {
     }
 
     @Override
-    protected SBOLVisitor createWriter(OutputStream out) {
+    protected SBOLVisitor<RDFHandlerException> createWriter(OutputStream out) {
         return new Writer(factory.getWriter(out));
     }
 
@@ -62,7 +63,7 @@ public class SBOLRDFWriter extends SBOLAbstractWriter {
      *
      * @author Evren Sirin
      */
-    protected static class Writer extends SBOLAbstractWriter<RDFHandlerException> {
+    protected static class Writer extends SBOLAbstractWriterVisitor {
 
         private final RDFWriter out;
 
@@ -83,11 +84,8 @@ public class SBOLRDFWriter extends SBOLAbstractWriter {
             out.endRDF();
         }
 
-        protected void write(Resource subj, URI pred, Value obj) {
-
+        protected void write(Resource subj, URI pred, Value obj) throws RDFHandlerException {
             out.handleStatement(FACTORY.createStatement(subj, pred, obj));
-
-
         }
     }
 }

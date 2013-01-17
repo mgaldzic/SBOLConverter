@@ -23,7 +23,7 @@ public class PartsRegistryDnaComponent extends DnaComponentImpl {
     @Override
     public <T extends Throwable> void accept(SBOLVisitor<T> visitor) throws T {
         if (visitor instanceof PartsRegistrySBOLVisitor) {
-            ((PartsRegistrySBOLVisitor) visitor).visit(this);
+            ((PartsRegistrySBOLVisitor<T>) visitor).visit(this);
         } else {
             visitor.visit(this);
         }

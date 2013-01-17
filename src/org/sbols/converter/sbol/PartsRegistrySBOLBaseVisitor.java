@@ -23,7 +23,10 @@ import org.sbolstandard.core.util.SBOLBaseVisitor;
  * @author mgaldzic
  */
 
-public class PartsRegistrySBOLBaseVisitor<T extends Throwable> extends SBOLBaseVisitor<T> implements PartsRegistrySBOLVisitor<T> {
+public class PartsRegistrySBOLBaseVisitor<T extends Throwable>
+        extends SBOLBaseVisitor<T>
+        implements PartsRegistrySBOLVisitor<T>
+{
 
     @Override
     public void visit(PartsRegistryDnaComponent component) throws T {

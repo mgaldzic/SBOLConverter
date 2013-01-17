@@ -7,7 +7,7 @@ import org.sbolstandard.core.SBOLVisitor;
  * 
  * @author mgaldzic
  */
-public interface PartsRegistrySBOLVisitor<T extends Throwable> extends SBOLVisitor {
+public interface PartsRegistrySBOLVisitor<T extends Throwable> extends SBOLVisitor<T> {
 	public void visit(PartsRegistryDnaComponent component) throws T;
 
 }

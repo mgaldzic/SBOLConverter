@@ -123,7 +123,7 @@ public class SBOLRDFReader implements SBOLReader {
     /**
      * @author Evren Sirin
      */
-    protected static class Handler extends RDFHandlerBase implements PartsRegistrySBOLVisitor {
+    protected static class Handler extends RDFHandlerBase implements PartsRegistrySBOLVisitor<RDFHandlerException> {
 
         private static URI DUMMY = ValueFactoryImpl.getInstance().createURI("urn:dummy");
         private static SBOLMappers MAPPERS = new SBOLMappers(
