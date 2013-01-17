@@ -42,7 +42,7 @@ import org.sbolstandard.core.util.SBOLBaseVisitor;
  * 
  * @author Evren Sirin
  */
-public abstract class SBOLAbstractWriter implements SBOLWriter {
+public abstract class SBOLAbstractWriter<T> implements SBOLWriter {
 	private final boolean validate;
 
 	public SBOLAbstractWriter(boolean validate) {
@@ -81,7 +81,8 @@ public abstract class SBOLAbstractWriter implements SBOLWriter {
 	 * 
 	 * @author Evren Sirin
 	 */
-	protected static abstract class SBOLAbstractWriterVisitor extends SBOLBaseVisitor implements PartsRegistrySBOLVisitor {
+	
+            protected static abstract class SBOLAbstractWriterVisitor<T extends Throwable> extends SBOLBaseVisitor<T> implements PartsRegistrySBOLVisitor {
 		protected static ValueFactory FACTORY = ValueFactoryImpl.getInstance();
 		protected static URI DUMMY = FACTORY.createURI("urn:dummy");
 		

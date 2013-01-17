@@ -62,7 +62,7 @@ public class SBOLRDFWriter extends SBOLAbstractWriter {
      *
      * @author Evren Sirin
      */
-    protected static class Writer extends SBOLAbstractWriterVisitor {
+    protected static class Writer extends SBOLAbstractWriter<RDFHandlerException> {
 
         private final RDFWriter out;
 
@@ -70,29 +70,24 @@ public class SBOLRDFWriter extends SBOLAbstractWriter {
             this.out = out;
         }
 
-        @Override
-        public void visit(SBOLDocument doc) {
-            try {
-                out.startRDF();
-                out.handleNamespace("s", SBOLVocabulary.NAMESPACE);
-                out.handleNamespace("rdf", RDF.NAMESPACE);
-                out.handleNamespace("xsd", XMLSchema.NAMESPACE);
-                out.handleNamespace("so", "http://purl.obolibrary.org/obo/");
+        public void visit(SBOLDocument doc) throws RDFHandlerException {
 
-                super.visit(doc);
+            out.startRDF();
+            out.handleNamespace("s", SBOLVocabulary.NAMESPACE);
+            out.handleNamespace("rdf", RDF.NAMESPACE);
+            out.handleNamespace("xsd", XMLSchema.NAMESPACE);
+            out.handleNamespace("so", "http://purl.obolibrary.org/obo/");
 
-                out.endRDF();
-            } catch (RDFHandlerException e) {
-                throw new RuntimeException(e);
-            }
+            super.visit(doc);
+
+            out.endRDF();
         }
 
         protected void write(Resource subj, URI pred, Value obj) {
-            try {
-                out.handleStatement(FACTORY.createStatement(subj, pred, obj));
-            } catch (RDFHandlerException e) {
-                throw new RuntimeException(e);
-            }
+
+            out.handleStatement(FACTORY.createStatement(subj, pred, obj));
+
+
         }
     }
 }
