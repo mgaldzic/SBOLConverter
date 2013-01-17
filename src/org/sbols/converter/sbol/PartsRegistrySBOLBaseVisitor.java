@@ -22,10 +22,10 @@ import org.sbolstandard.core.util.SBOLBaseVisitor;
  *
  * @author mgaldzic
  */
-public class PartsRegistrySBOLBaseVisitor extends SBOLBaseVisitor implements PartsRegistrySBOLVisitor {
+public class PartsRegistrySBOLBaseVisitor<T extends Throwable> extends SBOLBaseVisitor implements PartsRegistrySBOLVisitor<T> {
 
     @Override
-    public void visit(PartsRegistryDnaComponent component) {
+    public void visit(PartsRegistryDnaComponent component) throws T {
         component.accept(this);
         for (SequenceAnnotation sequenceAnnotation : component.getAnnotations()) {
             visit(sequenceAnnotation);
