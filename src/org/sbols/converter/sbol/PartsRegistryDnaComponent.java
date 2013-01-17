@@ -20,7 +20,7 @@ public class PartsRegistryDnaComponent extends DnaComponentImpl {
     public PartsRegistryDnaComponent() {
     }
 
-    public void accept(PartsRegistrySBOLVisitor visitor) {
+    public void accept(SBOLVisitor visitor) {
         if (visitor instanceof PartsRegistrySBOLVisitor) {
             ((PartsRegistrySBOLVisitor) visitor).visit(this);
         } else {
