@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--Feature with title BBa_ w/ or w/o a space and extra text trailing (mimics BBa_J28031.xml, BBa_K743014.xml, BBa_K624053)-->
+<rsbpml>
+    <part_list>
+        <part>
+            <part_id>1</part_id>
+            <part_name>BBa_J00000</part_name>
+            <features>
+                <feature>
+                    <id>2</id>
+                    <title>BBa_C0000 (ExtraText), ExtraTextAgain</title>
+                    <type>cds</type>
+                    <direction>reverse</direction>
+                    <startpos>1</startpos>
+                    <endpos>3</endpos>
+                </feature>
+                <feature>
+                    <id>3</id>
+                    <title>BBa_K000000 Extra text</title>
+                    <type>promoter</type>
+                    <direction>forward</direction>
+                    <startpos>1</startpos>
+                    <endpos>15</endpos>
+                </feature>
+                <feature>
+                    <id>4</id>
+                    <title>BBa_F000000(extra text)</title>
+                    <type>BioBrick</type>
+                    <direction>forward</direction>
+                    <startpos>1</startpos>
+                    <endpos>14</endpos>
+                </feature>
+            </features>
+        </part>
+    </part_list>
+</rsbpml>

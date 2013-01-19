@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--Feature startpos = 0-->
+<rsbpml>
+    <part_list>
+        <part>
+            <part_id>1</part_id>
+            <part_name>Start = 0</part_name>
+            <features>
+                <feature>
+                    <id>2</id>
+                    <title>StrartEq0</title>
+                    <type>BioBrick</type>
+                    <direction>forward</direction>
+                    <startpos>0</startpos>
+                    <endpos>0</endpos>
+                </feature>
+        </part>
+    </part_list>
+</rsbpml>

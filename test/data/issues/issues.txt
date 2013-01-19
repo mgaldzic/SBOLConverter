@@ -1,0 +1,15 @@
+ok BBa_J28031.xml Exception java.lang.IllegalArgumentException Illegal character in path at index 39: http://partsregistry.org/part/BBa_C0062 (luxR), codons optimised for E. coli
+
+ok BBa_K743014.xml Exception java.lang.IllegalArgumentException Illegal character in path at index 41: http://partsregistry.org/part/BBa_K743003 Pta promoter
+
+ok BBa_K624053.xml Exception java.lang.IllegalArgumentException Illegal character in path at index 49: http://partsregistry.org/part/BBa_K624041(reverse order)
+
+ok BBa_B0079.xml Exception java.lang.NullPointerException null
+
+ok BBa_E71204.xml Exception javax.xml.bind.UnmarshalException null
+
+needs a fix to old test - BBa_G0002.xml Validation Inconsistent startpos and endpos rsbpml.Feature values
+
+No idea: BBa_I11101.xml Validation org.xml.sax.SAXParseException; lineNumber: 0; columnNumber: 0; cvc-complex-type.2.4.b: The content of element 's:DnaComponent' is not complete. One of '{"http://www.w3.org/1999/02/22-rdf-syntax-ns#":type, "http://sbols.org/v1#":displayId}' is expected.
+
+Start = 0 should be already tested? BBa_J04800.xml Validation startpos < 0 rsbpml.Feature values
