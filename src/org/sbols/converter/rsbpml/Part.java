@@ -191,7 +191,7 @@ public class Part {
                 if (Vocabulary.SO_MAP.get(aType) != null) {
                     biobrick.addType(Vocabulary.SO_MAP.get(aType));
                 }
-                biobrick.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
+                biobrick.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
             }
         }
         

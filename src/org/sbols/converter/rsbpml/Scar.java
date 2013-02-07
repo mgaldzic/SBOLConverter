@@ -100,7 +100,7 @@ public class Scar extends SpecifiedSubscar{
         SubDnaComponent.setDisplayId("RFC_"+scar_standard);
         SubDnaComponent.setName(scar_nickname);
         SubDnaComponent.setDnaSequence(scarSequence);
-        SubDnaComponent.addRegistry_types(URI.create("http://partsregistry.org/type/scar"));
+        SubDnaComponent.addRegistry_type(URI.create("http://partsregistry.org/type/scar"));
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
         
