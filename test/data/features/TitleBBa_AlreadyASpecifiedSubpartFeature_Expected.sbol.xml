@@ -27,9 +27,6 @@
     <s:strand>+</s:strand>
     <s:subComponent>
      <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_title">
-      <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
-      <rdf:type rdf:resource="http://partsregistry.org/type/rbs"/>
-      <rdf:type rdf:resource="http://partsregistry.org/type/nonsotype"/>
      </s:DnaComponent>
     </s:subComponent>
    </s:SequenceAnnotation>
