@@ -32,7 +32,7 @@ public class PartsRegistryDnaComponent extends DnaComponentImpl {
 		return this.registry_types;
 	}
 
-	public void addRegistry_types(URI registry_type) {
+	public void addRegistry_type(URI registry_type) {
     	getRegistry_types().add(registry_type);
     }
 }
