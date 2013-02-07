@@ -96,31 +96,42 @@ public class Feature {
                 if (Vocabulary.SO_MAP.get(aType) != null) {
                     feature.addType(Vocabulary.SO_MAP.get(aType));
                 }
-                feature.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
+                feature.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
             }
         }
         return feature;
     }
 
     private PartsRegistryDnaComponent assignPartFeature(PartsRegistryDnaComponent biobrick) {
-        PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
-
-        //title = title.trim(); - loooks like traling spaces are already taken care of
-        feature.setURI(URI.create("http://partsregistry.org/part/" + title));
+        PartsRegistryDnaComponent newSCforFeature = PartsRegistrySBOLFactory.createDnaComponent();
+        URI newuri = URI.create("http://partsregistry.org/part/" + title);
 
         if (biobrick.getAnnotations().size() > 0) { //Actual annotations already exist
             for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { //any of them
-                if (!feature.getURI().equals(subpartSA.getSubComponent().getURI())) { //NOT Already a *Subpart  
-                    feature.setDisplayId(title);
+                System.out.println("here");
+                if (!newuri.equals(subpartSA.getSubComponent().getURI())) { //NOT Already a *Subpart  
+                    System.out.println("NOT Already a *Subpart");
+                    newSCforFeature.setURI(newuri);
+                    newSCforFeature.setDisplayId(title);
+                    newSCforFeature = assignType(newSCforFeature);
+
+                } else { //Already a *Subpart
+                    System.out.println("Already a *Subpart");
+                    System.out.println("subpartSA " + subpartSA.getSubComponent());
+                    PartsRegistryDnaComponent temp = (PartsRegistryDnaComponent) subpartSA.getSubComponent();
+                    for (String aType : types) {
+                        temp.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
+                    }
+                    System.out.println("temo " + temp);
                 }
             }
-        } else { //only features in this one
-            feature.setDisplayId(title);
+        } else { //Only features in this one - these features are not Parts
+            System.out.println("When is this true?");
+            newSCforFeature.setURI(newuri);
+            newSCforFeature.setDisplayId(title);
+            newSCforFeature = assignType(newSCforFeature);
         }
-
-
-        feature = assignType(feature);
-        return feature;
+        return newSCforFeature;
     }
 
     private PartsRegistryDnaComponent assignNotPartFeature() {
@@ -138,15 +149,17 @@ public class Feature {
 
     private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation) {
         newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id));
-        Integer expectedLength = Integer.parseInt(endpos) - Integer.parseInt(startpos) + 1;
-
- /*       if (!(expectedLength > 0)) {
-            throw new SBOLValidationException("Inconsistent startpos and endpos rsbpml.Feature values");
-        }
-        if (Integer.parseInt(startpos) < 1) {
-            throw new SBOLValidationException("startpos < 0 rsbpml.Feature values");
-        }
-*/
+        /*
+         * Integer expectedLength = Integer.parseInt(endpos) -
+         * Integer.parseInt(startpos) + 1;
+         *
+         *
+         * if (!(expectedLength > 0)) { throw new
+         * SBOLValidationException("Inconsistent startpos and endpos
+         * rsbpml.Feature values"); } if (Integer.parseInt(startpos) < 1) {
+         * throw new SBOLValidationException("startpos < 0 rsbpml.Feature
+         * values"); }
+         */
 
         newAnnotation.setBioStart(Integer.parseInt(startpos));
         newAnnotation.setBioEnd(Integer.parseInt(endpos));
@@ -170,7 +183,7 @@ public class Feature {
     }
 
     public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
-        PartsRegistryDnaComponent feature;
+        PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
 
         if (title != null && title.startsWith("BBa_")) {
             feature = assignPartFeature(biobrick);
@@ -179,8 +192,10 @@ public class Feature {
         }
 
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
-        newAnnotation.setSubComponent(feature);
-        newAnnotation = assignAnnotation(newAnnotation);
+        if (feature != null) {
+            newAnnotation.setSubComponent(feature);
+            newAnnotation = assignAnnotation(newAnnotation);
+        }
         biobrick.addAnnotation(newAnnotation);
         return biobrick;
     }
