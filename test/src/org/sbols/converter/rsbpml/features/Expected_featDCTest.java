@@ -7,6 +7,7 @@ package org.sbols.converter.rsbpml.features;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -19,8 +20,9 @@ import org.sbolstandard.core.SBOLDocument;
  *
  * @author mgaldzic
  */
-public class Expected_featDCTest {
 
+public class Expected_featDCTest {
+    
     @Test
     public void Expected_NotAPartWOTitleFeature_Test() throws JAXBException, IOException {
         System.out.println("Expected_NotAPartWOTitleFeature_Test");
@@ -54,7 +56,7 @@ public class Expected_featDCTest {
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }
     
-
+    @Ignore
     @Test
     public void Expected_TitleBBa_AlreadyADeepSubPartFeature_Test() throws JAXBException, IOException {
         System.out.println("Expected_TitleBBa_AlreadyADeepSubPartFeature_Test");
@@ -71,7 +73,7 @@ public class Expected_featDCTest {
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }
      
-
+    @Ignore
     @Test
     public void Expected_TitleBBa_AlreadyASpecifiedSubpartFeature_Test() throws JAXBException, IOException {
         System.out.println("Expected_TitleBBa_AlreadyASpecifiedSubpartFeature_Test");
@@ -88,7 +90,7 @@ public class Expected_featDCTest {
         assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
     }
      
-
+    @Ignore
     @Test
     public void Expected_TitleBBa_AlreadyASpecifiedSubscarSubPartFeature_Test() throws JAXBException, IOException {
         System.out.println("Expected_TitleBBa_AlreadyASpecifiedSubscarSubPartFeature_Test");

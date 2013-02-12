@@ -22,6 +22,7 @@ import org.sbols.converter.rsbpml.basic.*;
     Expected_SOTypeTest.class, 
     Expected_Basic_PartTest.class, 
     Expected_SequenceTest.class, 
+    Expected_SequenceLongTest.class,
     Expected_NicknameTest.class, 
     Expected_MultiSOTypesTest.class})
 public class ExpectedBasicPartSuite {

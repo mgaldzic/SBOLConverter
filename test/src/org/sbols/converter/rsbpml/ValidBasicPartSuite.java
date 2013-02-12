@@ -23,6 +23,7 @@ import org.sbols.converter.rsbpml.basic.*;
     Valid_BasicPartTest.class, 
     Valid_NicknameTest.class, 
     Valid_SequenceTest.class, 
+    Valid_SequenceLongTest.class,
     Valid_SOTypeTest.class, 
     Valid_MultiSOTypesTest.class,
     Valid_NonSOTypesTest.class, 
