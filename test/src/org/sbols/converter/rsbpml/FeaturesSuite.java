@@ -9,6 +9,9 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.sbols.converter.rsbpml.features.*;
+import org.sbols.converter.rsbpml.features.EndStart.Expected_EndStartPostionsFeaturesTest;
+import org.sbols.converter.rsbpml.features.EndStart.Invalid_endLTstartFeatureTest;
+import org.sbols.converter.rsbpml.features.EndStart.Invalid_startLToneFeatureTest;
 
 /**
  *

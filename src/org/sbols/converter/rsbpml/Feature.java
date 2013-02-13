@@ -108,7 +108,7 @@ public class Feature {
 
         if (biobrick.getAnnotations().size() > 0) { //Actual annotations already exist
             for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { //any of them
-                System.out.println("here");
+                System.out.println("any of them");
                 if (!newuri.equals(subpartSA.getSubComponent().getURI())) { //NOT Already a *Subpart  
                     System.out.println("NOT Already a *Subpart");
                     newSCforFeature.setURI(newuri);
@@ -127,9 +127,10 @@ public class Feature {
             }
         } else { //Only features in this one - these features are not Parts
             System.out.println("When is this true?");
-            newSCforFeature.setURI(newuri);
+            throw new IllegalStateException("When is this true? these features are not Parts, but this is the assignPartFeature method");
+            /*newSCforFeature.setURI(newuri);
             newSCforFeature.setDisplayId(title);
-            newSCforFeature = assignType(newSCforFeature);
+            newSCforFeature = assignType(newSCforFeature);*/
         }
         return newSCforFeature;
     }
