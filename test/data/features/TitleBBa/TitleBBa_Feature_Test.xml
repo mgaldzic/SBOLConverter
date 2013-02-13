@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Part with BBa_title-->
+<rsbpml>
+    <part_list>
+        <part>
+            <part_id>1</part_id>
+            <part_name>DC1</part_name>
+            <part_nickname>DnaComponent1</part_nickname>
+            <part_short_desc>BBa_title</part_short_desc>
+            <features>
+                <feature>
+                    <id>1</id>
+                    <title>BBa_title</title>
+                    <type>rbs</type>
+                    <type>nonsotype</type>
+                    <direction>forward</direction>
+                    <startpos>1</startpos>
+                    <endpos>2</endpos>
+                </feature>
+            </features>	    
+        </part>
+    </part_list>
+</rsbpml>
