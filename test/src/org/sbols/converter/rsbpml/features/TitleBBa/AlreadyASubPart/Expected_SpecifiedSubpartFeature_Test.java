@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -15,6 +16,8 @@ import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
 
 public class Expected_SpecifiedSubpartFeature_Test {
+	
+	@Ignore //SpecifiedSubparts are duplicates of Subscars - no longer considered needed
     @Test
     public void Expected_TitleBBa_AlreadyASpecifiedSubpartFeature_Test() throws JAXBException, IOException {
         System.out.println("Expected_TitleBBa_AlreadyASpecifiedSubpartFeature_Test");
