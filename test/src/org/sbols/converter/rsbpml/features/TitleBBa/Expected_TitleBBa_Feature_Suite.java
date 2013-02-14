@@ -16,7 +16,7 @@ import org.sbols.converter.rsbpml.features.TitleBBa.AlreadyASubPart.*;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	Expected_Feature_Test.class,
+	Expected_TitleBBa_Feature_Test.class,
 	Expected_NotASubPartFeature_Test.class,
 	Expected_TrailingSpaceFeature_Test.class,
 	Expected_AlreadyASubPart_Suite.class

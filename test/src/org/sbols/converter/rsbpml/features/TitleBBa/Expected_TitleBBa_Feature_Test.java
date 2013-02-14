@@ -14,7 +14,7 @@ import org.sbols.converter.util.ReadRSBPML;
 import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
 
-public class Expected_Feature_Test {
+public class Expected_TitleBBa_Feature_Test {
     @Test
     public void Expected_TitleBBa_Feature_Test() throws JAXBException, IOException {
         System.out.println("Expected_TitleBBa_Feature_Test");

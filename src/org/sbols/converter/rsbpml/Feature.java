@@ -103,32 +103,32 @@ public class Feature {
 		return feature;
 	}
 
-	private PartsRegistryDnaComponent assignPartFeature(
-			PartsRegistryDnaComponent biobrick) {
-		SequenceAnnotation newFeatureSA = PartsRegistrySBOLFactory
-				.createSequenceAnnotation();
+	private PartsRegistryDnaComponent assignPartFeature(PartsRegistryDnaComponent biobrick) {
+		SequenceAnnotation newFeatureSA = PartsRegistrySBOLFactory.createSequenceAnnotation();
 		URI featureuri = URI.create("http://partsregistry.org/part/" + title);
 
 		if (biobrick.getAnnotations().size() > 0) { // Actual annotations already exist
+			boolean isAlreadySubPart = false;
 			for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { // for any of them
 				if (!featureuri.equals(subpartSA.getSubComponent().getURI())) { // NOT Already a *Subpart
-					System.out.println("NOT Already a *Subpart");
+					isAlreadySubPart = false;
 
-					PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory
-							.createDnaComponent();
+					PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory.createDnaComponent();
 					newDCFeature.setURI(featureuri);
 					newDCFeature.setDisplayId(title);
 					newDCFeature = assignType(newDCFeature);
+					newFeatureSA.setSubComponent(newDCFeature);
+					newFeatureSA = assignAnnotation(newFeatureSA);
 
-				} else { // Already a *Subpart
+				} else { // Already a *SubPart
+					isAlreadySubPart = true;
 					// SA gets new position
-					// TODO likely Features in reverse will incorrectly be
-					// assigned as fwd
+					// TODO likely Features in reverse will incorrectly be assigned as fwd
 					subpartSA.setBioStart(Integer.parseInt(startpos));
 					subpartSA.setBioEnd(Integer.parseInt(endpos));
 					// if direction fwd then
-					// subpartSA.setStrand(StrandType.POSITIVE); if rev then
-					// NEGATIVE (What if conflict?)
+					// subpartSA.setStrand(StrandType.POSITIVE); 
+					//if rev then NEGATIVE (What if conflict?)
 					subpartSA.setStrand(StrandType.POSITIVE); // this is a hack
 																// (ultimately it
 																// should be
@@ -144,10 +144,11 @@ public class Feature {
 					}
 				}
 			}
+			if (!isAlreadySubPart) biobrick.addAnnotation(newFeatureSA);
 		} else { // Only features, these features are not Parts, no parts exist: create a new one
 
-			PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory
-					.createDnaComponent();
+			PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory.createDnaComponent();
+			newFeatureSA = assignAnnotation(newFeatureSA);
 			newDCFeature.setURI(featureuri);
 			newDCFeature.setDisplayId(title);
 			newDCFeature = assignType(newDCFeature);
@@ -158,8 +159,7 @@ public class Feature {
 	}
 
 	private PartsRegistryDnaComponent assignNotPartFeature() {
-		PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory
-				.createDnaComponent();
+		PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
 		feature.setURI(URI.create("http://partsregistry.org/feat/f_" + id));
 		feature.setDisplayId("f_" + id);
 		if (title != null) {
@@ -172,8 +172,7 @@ public class Feature {
 	}
 
 	private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation) {
-		newAnnotation.setURI(URI
-				.create("http://partsregistry.org/anot/f_" + id));
+		newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id));
 		/*
 		 * Integer expectedLength = Integer.parseInt(endpos) -
 		 * Integer.parseInt(startpos) + 1;
@@ -208,21 +207,14 @@ public class Feature {
 				+ (direction != null ? "direction: " + direction + ", \n" : "");
 	}
 
-	public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick,
-			Rsbpml rsbpmlData, int position) {
-		SequenceAnnotation newFeatureSA = SBOLFactory
-				.createSequenceAnnotation();
+	public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick,	Rsbpml rsbpmlData, int position) {
+		SequenceAnnotation newFeatureSA = SBOLFactory.createSequenceAnnotation();
 
 		if (title != null && title.startsWith("BBa_")) {
-			biobrick = assignPartFeature(biobrick); // either a new featureSA is
-													// created or biobrick is
-													// updated
+			biobrick = assignPartFeature(biobrick); // either a new featureSA is created or biobrick is updated
 
 		} else {
-			PartsRegistryDnaComponent featDC = assignNotPartFeature(); // a new
-																		// feature
-																		// is
-																		// created
+			PartsRegistryDnaComponent featDC = assignNotPartFeature(); // a new featureDC is created
 			newFeatureSA.setSubComponent(featDC);
 			newFeatureSA = assignAnnotation(newFeatureSA);
 			biobrick.addAnnotation(newFeatureSA);

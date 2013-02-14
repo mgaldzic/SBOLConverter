@@ -24,7 +24,7 @@ public class Expected_NotASubPartFeature_Test {
         SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
         String actual = ReadFile.sbolDocToString(SbolDoc);
         // Sometimes we generate the expected results using the test - cheating
-        WriteFile.toPath(SbolDoc, "test/data/rdfout/_Out.sbol.xml");
+        WriteFile.toPath(SbolDoc, "test/data/rdfout/TitleBBa_NotASubPartFeature_Out.sbol.xml");
         //Get expected result
         String expected = ReadFile.fromPath("test/data/features/TitleBBa/TitleBBa_NotASubPartFeature_Expected.sbol.xml");
         //Compare
