@@ -20,184 +20,214 @@ import org.sbolstandard.core.StrandType;
 @XmlRootElement(name = "feature")
 public class Feature {
 
-    private String id;
-    private String title;
-    //private String type;
-    private List<String> types = new ArrayList<>();
-    private String direction;
-    private String startpos;
-    private String endpos;
+	private String id;
+	private String title;
+	// private String type;
+	private List<String> types = new ArrayList<>();
+	private String direction;
+	private String startpos;
+	private String endpos;
 
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlElement(name = "id")
-    public String getId() {
-        return id;
-    }
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlElement(name = "id")
+	public String getId() {
+		return id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlElement(name = "title")
-    public String getTitle() {
-        return title;
-    }
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlElement(name = "title")
+	public String getTitle() {
+		return title;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlElement(name = "type")
-    public List<String> getTypes() {
-        return types;
-    }
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlElement(name = "type")
+	public List<String> getTypes() {
+		return types;
+	}
 
-    public void setTypes(List<String> types) {
-        this.types = types;
-    }
+	public void setTypes(List<String> types) {
+		this.types = types;
+	}
 
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlElement(name = "direction")
-    public String getDirection() {
-        return direction;
-    }
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlElement(name = "direction")
+	public String getDirection() {
+		return direction;
+	}
 
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
 
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlElement(name = "startpos")
-    public String getStartpos() {
-        return startpos;
-    }
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlElement(name = "startpos")
+	public String getStartpos() {
+		return startpos;
+	}
 
-    public void setStartpos(String startpos) {
-        this.startpos = startpos;
-    }
+	public void setStartpos(String startpos) {
+		this.startpos = startpos;
+	}
 
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlElement(name = "endpos")
-    public String getEndpos() {
-        return endpos;
-    }
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlElement(name = "endpos")
+	public String getEndpos() {
+		return endpos;
+	}
 
-    public void setEndpos(String endpos) {
-        this.endpos = endpos;
-    }
+	public void setEndpos(String endpos) {
+		this.endpos = endpos;
+	}
 
-    private PartsRegistryDnaComponent assignType(PartsRegistryDnaComponent feature) {
-        if (types != null) {
+	private PartsRegistryDnaComponent assignType(
+			PartsRegistryDnaComponent feature) {
+		if (types != null) {
 
-            for (String aType : types) {
-                aType = aType.toLowerCase();
-                if (Vocabulary.SO_MAP.get(aType) != null) {
-                    feature.addType(Vocabulary.SO_MAP.get(aType));
-                }
-                feature.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
-            }
-        }
-        return feature;
-    }
+			for (String aType : types) {
+				aType = aType.toLowerCase();
+				if (Vocabulary.SO_MAP.get(aType) != null) {
+					feature.addType(Vocabulary.SO_MAP.get(aType));
+				}
+				feature.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
+			}
+		}
+		return feature;
+	}
 
-    private PartsRegistryDnaComponent assignPartFeature(PartsRegistryDnaComponent biobrick) {
-        PartsRegistryDnaComponent newSCforFeature = PartsRegistrySBOLFactory.createDnaComponent();
-        URI newuri = URI.create("http://partsregistry.org/part/" + title);
+	private PartsRegistryDnaComponent assignPartFeature(
+			PartsRegistryDnaComponent biobrick) {
+		SequenceAnnotation newFeatureSA = PartsRegistrySBOLFactory
+				.createSequenceAnnotation();
+		URI featureuri = URI.create("http://partsregistry.org/part/" + title);
 
-        if (biobrick.getAnnotations().size() > 0) { //Actual annotations already exist
-            for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { //any of them
-                System.out.println("any of them");
-                if (!newuri.equals(subpartSA.getSubComponent().getURI())) { //NOT Already a *Subpart  
-                    System.out.println("NOT Already a *Subpart");
-                    newSCforFeature.setURI(newuri);
-                    newSCforFeature.setDisplayId(title);
-                    newSCforFeature = assignType(newSCforFeature);
+		if (biobrick.getAnnotations().size() > 0) { // Actual annotations already exist
+			for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { // for any of them
+				if (!featureuri.equals(subpartSA.getSubComponent().getURI())) { // NOT Already a *Subpart
+					System.out.println("NOT Already a *Subpart");
 
-                } else { //Already a *Subpart
-                    System.out.println("Already a *Subpart");
-                    System.out.println("subpartSA " + subpartSA.getSubComponent());
-                    PartsRegistryDnaComponent temp = (PartsRegistryDnaComponent) subpartSA.getSubComponent();
-                    for (String aType : types) {
-                        temp.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
-                    }
-                    System.out.println("temo " + temp);
-                }
-            }
-        } else { //Only features in this one - these features are not Parts
-            System.out.println("When is this true?");
-            throw new IllegalStateException("When is this true? these features are not Parts, but this is the assignPartFeature method");
-            /*newSCforFeature.setURI(newuri);
-            newSCforFeature.setDisplayId(title);
-            newSCforFeature = assignType(newSCforFeature);*/
-        }
-        return newSCforFeature;
-    }
+					PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory
+							.createDnaComponent();
+					newDCFeature.setURI(featureuri);
+					newDCFeature.setDisplayId(title);
+					newDCFeature = assignType(newDCFeature);
 
-    private PartsRegistryDnaComponent assignNotPartFeature() {
-        PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
-        feature.setURI(URI.create("http://partsregistry.org/feat/f_" + id));
-        feature.setDisplayId("f_" + id);
-        if (title != null) {
-            feature.setName(title);
-        } else {
-            feature.setName(types.get(0).toLowerCase());
-        }
-        feature = assignType(feature);
-        return feature;
-    }
+				} else { // Already a *Subpart
+					// SA gets new position
+					// TODO likely Features in reverse will incorrectly be
+					// assigned as fwd
+					subpartSA.setBioStart(Integer.parseInt(startpos));
+					subpartSA.setBioEnd(Integer.parseInt(endpos));
+					// if direction fwd then
+					// subpartSA.setStrand(StrandType.POSITIVE); if rev then
+					// NEGATIVE (What if conflict?)
+					subpartSA.setStrand(StrandType.POSITIVE); // this is a hack
+																// (ultimately it
+																// should be
+																// done by
+																// checking)
 
-    private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation) {
-        newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id));
-        /*
-         * Integer expectedLength = Integer.parseInt(endpos) -
-         * Integer.parseInt(startpos) + 1;
-         *
-         *
-         * if (!(expectedLength > 0)) { throw new
-         * SBOLValidationException("Inconsistent startpos and endpos
-         * rsbpml.Feature values"); } if (Integer.parseInt(startpos) < 1) {
-         * throw new SBOLValidationException("startpos < 0 rsbpml.Feature
-         * values"); }
-         */
+					for (String aType : types) {  //Doing it this way allows us to add a SO and non SO type to a non PR DC.. 
+						aType = aType.toLowerCase();
+						if (Vocabulary.SO_MAP.get(aType) != null) {
+							subpartSA.getSubComponent().addType(Vocabulary.SO_MAP.get(aType));
+						}
+						subpartSA.getSubComponent().getTypes().add(PartsRegistrySBOLVocabulary.uri(aType));
+					}
+				}
+			}
+		} else { // Only features, these features are not Parts, no parts exist: create a new one
 
-        newAnnotation.setBioStart(Integer.parseInt(startpos));
-        newAnnotation.setBioEnd(Integer.parseInt(endpos));
-        if (direction != null) {
-            if (direction.equals("forward")) {
-                newAnnotation.setStrand(StrandType.POSITIVE);
-            }
-            if (direction.equals("reverse")) {
-                newAnnotation.setStrand(StrandType.NEGATIVE);
-            }
-        }
-        return newAnnotation;
-    }
+			PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory
+					.createDnaComponent();
+			newDCFeature.setURI(featureuri);
+			newDCFeature.setDisplayId(title);
+			newDCFeature = assignType(newDCFeature);
+			newFeatureSA.setSubComponent(newDCFeature);
+			biobrick.addAnnotation(newFeatureSA);
+		}
+		return biobrick;
+	}
 
-    @Override //need to edit this later to reflect changes
-    public String toString() {
-        return "\nfeature [\n"
-                + (title != null ? "title: " + title + ", \n" : "")
-                + (types != null ? "types: " + types + ", \n" : "")
-                + (direction != null ? "direction: " + direction + ", \n" : "");
-    }
+	private PartsRegistryDnaComponent assignNotPartFeature() {
+		PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory
+				.createDnaComponent();
+		feature.setURI(URI.create("http://partsregistry.org/feat/f_" + id));
+		feature.setDisplayId("f_" + id);
+		if (title != null) {
+			feature.setName(title);
+		} else {
+			feature.setName(types.get(0).toLowerCase());
+		}
+		feature = assignType(feature);
+		return feature;
+	}
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData, int position) {
-        PartsRegistryDnaComponent feature = PartsRegistrySBOLFactory.createDnaComponent();
+	private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation) {
+		newAnnotation.setURI(URI
+				.create("http://partsregistry.org/anot/f_" + id));
+		/*
+		 * Integer expectedLength = Integer.parseInt(endpos) -
+		 * Integer.parseInt(startpos) + 1;
+		 * 
+		 * 
+		 * if (!(expectedLength > 0)) { throw new
+		 * SBOLValidationException("Inconsistent startpos and endpos
+		 * rsbpml.Feature values"); } if (Integer.parseInt(startpos) < 1) {
+		 * throw new SBOLValidationException("startpos < 0 rsbpml.Feature
+		 * values"); }
+		 */
 
-        if (title != null && title.startsWith("BBa_")) {
-            feature = assignPartFeature(biobrick);
-        } else {
-            feature = assignNotPartFeature();
-        }
+		newAnnotation.setBioStart(Integer.parseInt(startpos));
+		newAnnotation.setBioEnd(Integer.parseInt(endpos));
+		if (direction != null) {
+			if (direction.equals("forward")) {
+				newAnnotation.setStrand(StrandType.POSITIVE);
+			}
+			if (direction.equals("reverse")) {
+				newAnnotation.setStrand(StrandType.NEGATIVE);
+			}
+		}
+		return newAnnotation;
+	}
 
-        SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
-        if (feature != null) {
-            newAnnotation.setSubComponent(feature);
-            newAnnotation = assignAnnotation(newAnnotation);
-        }
-        biobrick.addAnnotation(newAnnotation);
-        return biobrick;
-    }
+	@Override
+	// need to edit this later to reflect changes
+	public String toString() {
+		return "\nfeature [\n"
+				+ (title != null ? "title: " + title + ", \n" : "")
+				+ (types != null ? "types: " + types + ", \n" : "")
+				+ (direction != null ? "direction: " + direction + ", \n" : "");
+	}
+
+	public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick,
+			Rsbpml rsbpmlData, int position) {
+		SequenceAnnotation newFeatureSA = SBOLFactory
+				.createSequenceAnnotation();
+
+		if (title != null && title.startsWith("BBa_")) {
+			biobrick = assignPartFeature(biobrick); // either a new featureSA is
+													// created or biobrick is
+													// updated
+
+		} else {
+			PartsRegistryDnaComponent featDC = assignNotPartFeature(); // a new
+																		// feature
+																		// is
+																		// created
+			newFeatureSA.setSubComponent(featDC);
+			newFeatureSA = assignAnnotation(newFeatureSA);
+			biobrick.addAnnotation(newFeatureSA);
+		}
+
+		return biobrick;
+	}
 }
