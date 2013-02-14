@@ -16,6 +16,7 @@ import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 import org.sbolstandard.core.DnaSequence;
+import org.sbolstandard.core.SBOLValidationException;
 import org.sbolstandard.core.SequenceAnnotation;
 
 @XmlRootElement(name = "part")
@@ -190,7 +191,7 @@ public class Part {
                 if (Vocabulary.SO_MAP.get(aType) != null) {
                     biobrick.addType(Vocabulary.SO_MAP.get(aType));
                 }
-                biobrick.addRegistry_types(PartsRegistrySBOLVocabulary.uri(aType));
+                biobrick.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
             }
         }
         
@@ -200,7 +201,7 @@ public class Part {
 
             for (String aSeq : seq_data) {
                 if (!aSeq.isEmpty()) {
-                    sequenceObject.setNucleotides(aSeq);
+                    sequenceObject.setNucleotides(aSeq.replaceAll("\\s+", ""));
                     sequenceObject.setURI(URI.create("http://partsregistry.org/seq/partseq_" + part_id)); //Need to make dynamic
                     biobrick.setDnaSequence(sequenceObject);
                 }
@@ -219,7 +220,7 @@ public class Part {
                 biobrick.addAnnotation(revSAList.get(i));
             }
         }
-
+        /* Specified Subparts are always! duplicates of specified subscars - they only provide a non-scar view of Parts 
         if (specified_subparts != null) {
             SequenceAnnotation nextSA = null;
             List<SequenceAnnotation> revSAList = new ArrayList<>();
@@ -232,7 +233,7 @@ public class Part {
                 biobrick.addAnnotation(revSAList.get(i));
             }
         }
-
+        */
         if (specified_subscars != null) {
             SequenceAnnotation nextSA = null;
             List<SequenceAnnotation> revSAList = new ArrayList<>();

@@ -14,6 +14,7 @@
  */
 package com.clarkparsia.sbol;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
@@ -52,7 +53,7 @@ public class SBOLRDFWriter extends SBOLAbstractWriter {
     }
 
     @Override
-    protected SBOLVisitor createWriter(OutputStream out) {
+    protected SBOLVisitor<RDFHandlerException> createWriter(OutputStream out) {
         return new Writer(factory.getWriter(out));
     }
 
@@ -70,29 +71,21 @@ public class SBOLRDFWriter extends SBOLAbstractWriter {
             this.out = out;
         }
 
-        @Override
-        public void visit(SBOLDocument doc) {
-            try {
-                out.startRDF();
-                out.handleNamespace("s", SBOLVocabulary.NAMESPACE);
-                out.handleNamespace("rdf", RDF.NAMESPACE);
-                out.handleNamespace("xsd", XMLSchema.NAMESPACE);
-                out.handleNamespace("so", "http://purl.obolibrary.org/obo/");
+        public void visit(SBOLDocument doc) throws RDFHandlerException {
 
-                super.visit(doc);
+            out.startRDF();
+            out.handleNamespace("s", SBOLVocabulary.NAMESPACE);
+            out.handleNamespace("rdf", RDF.NAMESPACE);
+            out.handleNamespace("xsd", XMLSchema.NAMESPACE);
+            out.handleNamespace("so", "http://purl.obolibrary.org/obo/");
 
-                out.endRDF();
-            } catch (RDFHandlerException e) {
-                throw new RuntimeException(e);
-            }
+            super.visit(doc);
+
+            out.endRDF();
         }
 
-        protected void write(Resource subj, URI pred, Value obj) {
-            try {
-                out.handleStatement(FACTORY.createStatement(subj, pred, obj));
-            } catch (RDFHandlerException e) {
-                throw new RuntimeException(e);
-            }
+        protected void write(Resource subj, URI pred, Value obj) throws RDFHandlerException {
+            out.handleStatement(FACTORY.createStatement(subj, pred, obj));
         }
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Title BBa_ Already A SubPart Feature-->
+<rsbpml>
+    <part_list>
+        <part>
+            <part_id>1</part_id>
+            <part_name>DC1</part_name>
+            <part_nickname>DnaComponent1</part_nickname>
+            <part_short_desc>Title BBa_ Already A SubPart Feature</part_short_desc>
+            <deep_subparts>
+                <subpart>
+                    <part_id>2</part_id>
+                    <part_name>BBa_title</part_name>
+                    <part_nickname>DnaComponent2</part_nickname>
+                    <part_short_desc>This part is also a Feature</part_short_desc>
+                </subpart>
+            </deep_subparts>
+            <features>
+                <feature>
+                    <id>1</id>
+                    <title>BBa_title</title>
+                    <direction>forward</direction>
+                    <startpos>1</startpos>
+                    <endpos>2</endpos>
+                </feature>
+            </features>	    
+        </part>
+    </part_list>
+</rsbpml>

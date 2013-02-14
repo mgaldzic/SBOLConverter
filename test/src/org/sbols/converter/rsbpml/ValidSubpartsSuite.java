@@ -20,7 +20,6 @@ import org.sbols.converter.rsbpml.subparts.*;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     Valid_DeepSubpartTest.class,
-    Valid_FeaturesTest.class,
     Valid_MultiDeepSubpartsTest.class,
     Valid_SpecifiedSubpartsSubscarsTest.class, 
     Valid_SpecifiedSubpartsTest.class,

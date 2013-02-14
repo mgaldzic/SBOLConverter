@@ -12,24 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.sbols.converter.sbol;
 
+import org.sbolstandard.core.SequenceAnnotation;
 import org.sbolstandard.core.util.SBOLBaseVisitor;
 
 /**
  * Base implements of extended REgistry visitor interface.
- * 
+ *
  * @author mgaldzic
  */
-public class PartsRegistrySBOLBaseVisitor extends SBOLBaseVisitor implements PartsRegistrySBOLVisitor {
 
+public class PartsRegistrySBOLBaseVisitor<T extends Throwable>
+        extends SBOLBaseVisitor<T>
+        implements PartsRegistrySBOLVisitor<T>
+{
 
-
-//	@Override
-    public void visit(PartsRegistryDnaComponent component) {
-			component.accept(this);
-
-		
+    @Override
+    public void visit(PartsRegistryDnaComponent component) throws T {
+        component.accept(this);
+        for (SequenceAnnotation sequenceAnnotation : component.getAnnotations()) {
+            visit(sequenceAnnotation);
         }
+        if (component.getDnaSequence() != null) {
+            visit(component.getDnaSequence());
+        }
+
+
+    }
 }

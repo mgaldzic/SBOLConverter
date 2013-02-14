@@ -1,0 +1,164 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--Parts from the MIT Registry of Standard Biological Parts-->
+<rsbpml>
+    <part_list>
+        <part>
+            <part_id>7644</part_id>
+            <part_name>BBa_J28031</part_name>
+            <part_short_name>J28031</part_short_name>
+            <part_short_desc>lux autoinducer</part_short_desc>
+            <part_type>Signalling</part_type>
+            <part_status>Available</part_status>
+            <part_results>None</part_results>
+            <part_nickname></part_nickname>
+            <part_rating>1</part_rating>
+            <part_url>http://partsregistry.org/Part:BBa_J28031</part_url>
+            <part_entered>2006-10-24</part_entered>
+            <part_author>Cambridge iGEM 2006 Team</part_author>
+            <best_quality>None</best_quality>
+            <deep_subparts></deep_subparts>
+            <specified_subparts></specified_subparts>
+            <specified_subscars></specified_subscars>
+            <sequences>
+                <seq_data>tataaacgcagaaaggcccacccgaaggtgagccagtgtgactctagtagagagcgttcaccgacaaacaacagataaaa
+                    cgaaaggcccagtctttcgactgagcctttcgttttatttgatgcctggtgcatgcgttattagtttttgaaatacgggc
+                    aatcgatcgcaccggtcaggatagctttgctgatagattgacaacgattcgtggtgttcagtttcatctgcgcgttggtc
+                    agatggaaagttacggtgcgttcagagcaacccagaattttggagatgtcccaagaggacttaccttcgcacgcccatgc
+                    caggcattctttctcgcgtttggtcaggtcgttgttgcttttgttattggcaatgttaatcttgcgatagttatcaacca
+                    gggacggaacgatcagaggaatgttcatgcacgcgtgcaggaacagagaatcgatgtagttgtctttttcggagtgcgca
+                    aaagacagcataccgaagccgttgttcgcggtatgaatcgggaagctgaaaccggtgatcagaccgctggtttttgcttc
+                    tttgataacgtttggggactttttgttaaccgcgttgttctcaaagatattccagttaatcggggaatggttagagttag
+                    agtaatctacgatcggatcgtacttgatcaggttggcgtcatcatagtactgacgccatttttttgggtagttatccaga
+                    atagaaatatcggattttaccatgctgtgcggataaatgatggccagcagataatattcacagtgaaccattttggtcat
+                    atcagacaggcattggttaatatcgttgttagaacgacacgctttgattttgttaatgatacggtaggtgtcgtccgcgt
+                    tgatgtttttcatctagtatttctcctcttttggatccgtgtgctcagtatcttgttatccgctcacaatgtcaattgtt
+                    atccgctcacaattttcatgagacctgtaggatcgtacaggtttacgcaagaaaatggtttgttatagtcgaataaatgt
+                    cgacgaaagaggagaaatactagatgaccattatgatcaagaaatctgacttcctggccatcccgtccgaagaatacaaa
+                    ggcatcctgtctctgcgctaccaggttttcaaacagcgtctggaatgggacctggtggttgaaaacaacctggaatctga
+                    cgagtatgataattccaacgcagaatacatctatgcgtgtgatgatactgaaaacgtttctggttgttggcgtctgctgc
+                    ctaccacgggcgattatatgctgaagtccgtatttccggagctgctgggtcagcagtccgcgccgaaagacccgaacatt
+                    gtagaactgtctcgcttcgcggttggcaagaacagctctaaaatcaacaactccgcaagcgaaattaccatgaaactgtt
+                    cgaagctatttataaacacgcggtttcccagggtatcaccgaatacgtgaccgtcactagcaccgctatcgagcgcttcc
+                    tgaaacgtatcaaggttccgtgccaccgtatcggtgacaaagaaatccacgtactgggtgataccaagagcgtcgtgctg
+                    tccatgccgattaacgagcagtttaagaaagctgtgctgaacgccgctaacgacgaaaactacgcgctggtggcgtaata
+                    a
+                </seq_data>
+            </sequences>
+            <features>
+                <feature>
+                    <id>1904937</id>
+                    <title>BBa_J28031</title>
+                    <type>BioBrick</type>
+                    <direction>reverse</direction>
+                    <startpos>1</startpos>
+                    <endpos>1681</endpos>
+                </feature>
+                <feature>
+                    <id>1904926</id>
+                    <title>BBa_B0015</title>
+                    <type>stem_loop</type>
+                    <direction>reverse</direction>
+                    <startpos>1</startpos>
+                    <endpos>129</endpos>
+                </feature>
+                <feature>
+                    <id>1904927</id>
+                    <title>SphI restriction site</title>
+                    <type>misc</type>
+                    <direction>forward</direction>
+                    <startpos>131</startpos>
+                    <endpos>136</endpos>
+                </feature>
+                <feature>
+                    <id>1904928</id>
+                    <title>BBa_C0062 (luxR), codons optimised for E. coli</title>
+                    <type>cds</type>
+                    <direction>reverse</direction>
+                    <startpos>138</startpos>
+                    <endpos>893</endpos>
+                </feature>
+                <feature>
+                    <id>1904929</id>
+                    <title>BBa_B0034</title>
+                    <type>rbs</type>
+                    <direction>reverse</direction>
+                    <startpos>900</startpos>
+                    <endpos>911</endpos>
+                </feature>
+                <feature>
+                    <id>1904930</id>
+                    <title>BamHI restriction site</title>
+                    <type>misc</type>
+                    <direction>forward</direction>
+                    <startpos>913</startpos>
+                    <endpos>918</endpos>
+                </feature>
+                <feature>
+                    <id>1904931</id>
+                    <title>BBa_R0011 (lac, lambda cI hybrid)</title>
+                    <type>promoter</type>
+                    <direction>reverse</direction>
+                    <startpos>920</startpos>
+                    <endpos>974</endpos>
+                </feature>
+                <feature>
+                    <id>1904932</id>
+                    <title>BspHI restriction site</title>
+                    <type>misc</type>
+                    <direction>forward</direction>
+                    <startpos>976</startpos>
+                    <endpos>981</endpos>
+                </feature>
+                <feature>
+                    <id>1904933</id>
+                    <title>BBa_R0062 (lux pR)</title>
+                    <type>promoter</type>
+                    <direction>forward</direction>
+                    <startpos>983</startpos>
+                    <endpos>1037</endpos>
+                </feature>
+                <feature>
+                    <id>1904934</id>
+                    <title>SalI restriction site</title>
+                    <type>misc</type>
+                    <direction>forward</direction>
+                    <startpos>1039</startpos>
+                    <endpos>1044</endpos>
+                </feature>
+                <feature>
+                    <id>1904935</id>
+                    <title>BBa_B0034</title>
+                    <type>rbs</type>
+                    <direction>forward</direction>
+                    <startpos>1046</startpos>
+                    <endpos>1057</endpos>
+                </feature>
+                <feature>
+                    <id>1904936</id>
+                    <title>BBa_C0061 (luxI), codons optimised for E. coli</title>
+                    <type>cds</type>
+                    <direction>forward</direction>
+                    <startpos>1064</startpos>
+                    <endpos>1681</endpos>
+                </feature>
+            </features>
+            <parameters>
+<!-- NOTE: Currently, each parameter name can have only one value.-->
+<!--This will change as we fully support the context of a parameter. RDR 4/2010 -->
+            </parameters>
+            <categories>
+                <category>//iGEM2006/Cambridge/favorite</category>
+            </categories>
+            <samples>
+<!--Samples have been turned off for now - rdr 4/2010-->
+            </samples>
+            <references>
+<!--References are not available yet - rdr 4/2010-->
+            </references>
+            <groups>
+<!-- Group access information is not yet available - rdr 4/2010-->
+            </groups>
+        </part>
+    </part_list>
+</rsbpml>

@@ -30,8 +30,8 @@ public class SBOLConverter {
     }
 
     public static void main(String[] args) throws Exception {
-        String fileName = null;
-        String outputName = null;
+        String inputFileName = null;
+        String outputFileName = null;
 
         if (args.length < 2 || args.length > 3) {
             usage();
@@ -44,35 +44,46 @@ public class SBOLConverter {
         }
 
         if (quiet && args.length == 3) {
-            fileName = args[quiet ? 2 : 1];
+            inputFileName = args[1];
+            outputFileName = args[2];
         }
 
         if (!quiet && args.length == 2) {
-            outputName = args[quiet ? 1 : 0];
+            inputFileName = args[0];
+            outputFileName = args[1];
+
         }
 
         try { //Can we enter this with fileName and outputName being null? Need to make sure
 
-            Rsbpml rsbpmlData = ReadRSBPML.file(fileName + ".xml");
-            FileOutputStream out = new FileOutputStream(outputName + ".txt");
+            Rsbpml rsbpmlData = ReadRSBPML.file(inputFileName);
+            FileOutputStream out = new FileOutputStream(outputFileName);
 
-            System.out.println(rsbpmlData);
-
+            //System.out.println(rsbpmlData);
+            System.out.println("in: " + inputFileName + " out: " + outputFileName);
+           
             SBOLDocument Doc = convert(rsbpmlData);
 
             SBOLFactory.write(Doc, out);
-
         } catch (IOException e) {
-            System.err.println("I/O ERROR: " + e.getMessage());
+            System.err.println("I/O ERROR: in: " + inputFileName + " out: " + outputFileName + ", " + e.getMessage());
         } catch (SBOLValidationException e) {
-            System.err.println("Validation failed, error: " + e.getMessage());
+            System.err.println("Validation failed " + inputFileName + ", error: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Exception " + inputFileName + ", error: " + e.getClass().getName()+" "+ e.getMessage());
         }
+        System.out.println("Processed in: " + inputFileName + " out: " + outputFileName);
+        
     }
-    public static SBOLDocument convert(Rsbpml rsbpmlData){
+
+    public static SBOLDocument convert(Rsbpml rsbpmlData) throws SBOLValidationException {
         PartsRegistryDnaComponent biobrick = PartsRegistrySBOLFactory.createDnaComponent();
         SBOLDocument SbolDoc = SBOLFactory.createDocument();
-        SbolDoc.addContent(rsbpmlData.toSbol(biobrick, rsbpmlData));
-        return SbolDoc;
+        biobrick = rsbpmlData.toSbol(biobrick, rsbpmlData);
+        SbolDoc.addContent(biobrick);
         
+        PartsRegistrySBOLFactory.validate(SbolDoc);
+        return SbolDoc;
+
     }
 }

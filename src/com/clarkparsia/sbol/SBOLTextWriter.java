@@ -22,6 +22,7 @@ import java.util.List;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
+import org.openrdf.rio.RDFHandlerException;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLObject;
 import org.sbolstandard.core.SBOLValidationException;
@@ -63,10 +64,10 @@ public class SBOLTextWriter extends SBOLAbstractWriter {
 		}
 		
 		@Override
-		public void visit(SBOLDocument doc) {
+		public void visit(SBOLDocument doc) throws RDFHandlerException {
 			startBlock("SBOLDocument");
-			super.visit(doc);
-			endBlock();
+            super.visit(doc);
+            endBlock();
 		}
 
 		@Override

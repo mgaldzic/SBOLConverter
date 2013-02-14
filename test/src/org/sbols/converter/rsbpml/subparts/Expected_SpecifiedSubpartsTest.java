@@ -7,6 +7,8 @@ package org.sbols.converter.rsbpml.subparts;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -20,6 +22,7 @@ import org.sbolstandard.core.SBOLDocument;
  */
 public class Expected_SpecifiedSubpartsTest {
 
+	@Ignore //SpecifiedSubparts are duplicates of Subscars - no longer considered needed
     @Test
     public void Expected_SpecifiedSubpartsTest() throws JAXBException, IOException {
         System.out.println("Expected_SpecifiedSubpartsTest");
