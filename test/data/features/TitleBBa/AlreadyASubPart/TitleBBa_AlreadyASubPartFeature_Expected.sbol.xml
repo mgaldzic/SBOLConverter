@@ -16,9 +16,6 @@
                 <s:strand>+</s:strand>
                 <s:subComponent>
                     <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_title">
-                        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
-                        <rdf:type rdf:resource="http://partsregistry.org/type/rbs"/>
-                        <rdf:type rdf:resource="http://partsregistry.org/type/nonsotype"/>
                         <s:displayId>BBa_title</s:displayId>
                         <s:name>DnaComponent2</s:name>
                         <s:description>This part is also a Feature</s:description>

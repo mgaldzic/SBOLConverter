@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--Title BBa_Already A SpecifiedSubpart W NewTypes Feature_Test-->
 <rsbpml>
@@ -7,7 +6,7 @@
             <part_id>1</part_id>
             <part_name>DC1</part_name>
             <part_nickname>DnaComponent1</part_nickname>
-            <part_short_desc>TitleBBa_AlreadyASpecifiedSubpartWNewTypesFeature_Test</part_short_desc>
+            <part_short_desc>TitleBBa_AlreadyASubpartWNewTypesFeature_Test</part_short_desc>
             <specified_subparts>
                 <subpart>
                     <part_id>2</part_id>

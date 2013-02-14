@@ -8,27 +8,21 @@
     <s:DnaComponent rdf:about="http://partsregistry.org/part/DC1">
         <s:displayId>DC1</s:displayId>
         <s:name>DnaComponent1</s:name>
-        <s:description>Title BBa_ Already a SpecfiedSubscarSubPart Feature_Test</s:description>
+        <s:description>TitleBBa_AlreadyASubpartWNewTypesFeature_Test</s:description>
         <s:annotation>
             <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_1_2_1">
-                <s:subComponent>
-                    <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_title">
-                        <s:displayId>BBa_title</s:displayId>
-                        <s:name>DnaComponent2</s:name>
-                        <s:description>This part is also a Feature</s:description>
-                        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
-                        <rdf:type rdf:resource="http://partsregistry.org/type/rbs"/>
-                        <rdf:type rdf:resource="http://partsregistry.org/type/nonsotype"/>
-                    </s:DnaComponent>
-                </s:subComponent>
-            </s:SequenceAnnotation>
-        </s:annotation>
-        <s:annotation>
-            <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/f_1">
                 <s:bioStart>1</s:bioStart>
                 <s:bioEnd>2</s:bioEnd>
                 <s:strand>+</s:strand>
                 <s:subComponent>
+                    <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_title">
+                        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
+                        <rdf:type rdf:resource="http://partsregistry.org/type/rbs"/>
+                        <rdf:type rdf:resource="http://partsregistry.org/type/nonsotype"/>
+                        <s:displayId>BBa_title</s:displayId>
+                        <s:name>DnaComponent2</s:name>
+                        <s:description>This part is also a Feature</s:description>
+                    </s:DnaComponent>
                 </s:subComponent>
             </s:SequenceAnnotation>
         </s:annotation>
