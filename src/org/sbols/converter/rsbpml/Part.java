@@ -220,7 +220,7 @@ public class Part {
                 biobrick.addAnnotation(revSAList.get(i));
             }
         }
-
+        /* Specified Subparts are always! duplicates of specified subscars - they only provide a non-scar view of Parts 
         if (specified_subparts != null) {
             SequenceAnnotation nextSA = null;
             List<SequenceAnnotation> revSAList = new ArrayList<>();
@@ -233,7 +233,7 @@ public class Part {
                 biobrick.addAnnotation(revSAList.get(i));
             }
         }
-
+        */
         if (specified_subscars != null) {
             SequenceAnnotation nextSA = null;
             List<SequenceAnnotation> revSAList = new ArrayList<>();
