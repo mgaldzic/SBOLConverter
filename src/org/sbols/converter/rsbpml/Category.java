@@ -1,5 +1,6 @@
 package org.sbols.converter.rsbpml;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,6 +10,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+
+
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 
@@ -70,9 +74,15 @@ public class Category {
 	
 	private PartsRegistryDnaComponent addCatTypeToDC(String cat, PartsRegistryDnaComponent biobrick){
 		if (Vocabulary.SO_MAP.get(cat) != null) {
-            biobrick.addType(Vocabulary.SO_MAP.get(cat));
+			URI uri = Vocabulary.SO_MAP.get(cat);
+			if(!biobrick.getTypes().contains(uri)) {
+				biobrick.addType(uri);
+			}
         }
-        biobrick.addRegistry_type(PartsRegistrySBOLVocabulary.uri(cat));
+		URI puri= PartsRegistrySBOLVocabulary.uri(cat);
+		if(!biobrick.getRegistry_types().contains(puri)) {
+			biobrick.addRegistry_type(puri);
+		}
 		return biobrick;
 	}
 

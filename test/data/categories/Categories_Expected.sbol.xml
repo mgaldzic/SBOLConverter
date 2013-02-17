@@ -8,6 +8,7 @@
 	<s:DnaComponent rdf:about="http://partsregistry.org/part/DC1">
 		<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000316"/>
         <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000155"/>
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
 		<s:displayId>DC1</s:displayId>
 		<rdf:type rdf:resource="http://partsregistry.org/type/biosafety"/>
 		<rdf:type rdf:resource="http://partsregistry.org/type/kill_switch_biosafety"/>
