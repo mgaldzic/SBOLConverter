@@ -17,13 +17,17 @@ import org.sbols.converter.rsbpml.basic.*;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	Expected_Basic_PartTest.class, 
     Expected_IdTest.class,
-    Expected_NonSOTypesTest.class, 
+    Expected_MixedCaseNonSOTypeTest.class,
+    Expected_MixedCaseSOTypeTest.class,
+    Expected_MultiSOTypesTest.class,
+    Expected_NicknameTest.class,
+    Expected_NonSOTypesTest.class,
+    Expected_SequenceTest.class,
     Expected_SOTypeTest.class, 
-    Expected_Basic_PartTest.class, 
-    Expected_SequenceTest.class, 
-    Expected_NicknameTest.class, 
-    Expected_MultiSOTypesTest.class})
+    Expected_SplitLineSequence_Test.class
+    })
 public class ExpectedBasicPartSuite {
 
     @BeforeClass
