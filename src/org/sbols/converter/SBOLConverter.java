@@ -7,6 +7,7 @@ package org.sbols.converter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import org.sbols.converter.rsbpml.Rsbpml;
+import org.sbols.converter.rsbpml.RsbpmlException;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
@@ -53,27 +54,40 @@ public class SBOLConverter {
             outputFileName = args[1];
 
         }
+        convertInToOut(inputFileName,outputFileName);
 
+    }
+    
+    public static void convertInToOut(String inputFileName, String outputFileName) throws Exception{
         try { //Can we enter this with fileName and outputName being null? Need to make sure
+        	System.out.println("Converting in: " + inputFileName + " out: " + outputFileName);
+        	run_convert(inputFileName,outputFileName);
 
-            Rsbpml rsbpmlData = ReadRSBPML.file(inputFileName);
-            FileOutputStream out = new FileOutputStream(outputFileName);
-
-            //System.out.println(rsbpmlData);
-            System.out.println("in: " + inputFileName + " out: " + outputFileName);
-           
-            SBOLDocument Doc = convert(rsbpmlData);
-
-            SBOLFactory.write(Doc, out);
+            
         } catch (IOException e) {
             System.err.println("I/O ERROR: in: " + inputFileName + " out: " + outputFileName + ", " + e.getMessage());
         } catch (SBOLValidationException e) {
             System.err.println("Validation failed " + inputFileName + ", error: " + e.getMessage());
+        } catch (RsbpmlException e) {
+        	System.err.println("RsbpmlError " + inputFileName + ", error: " + e.getMessage());
         } catch (Exception e) {
             System.err.println("Exception " + inputFileName + ", error: " + e.getClass().getName()+" "+ e.getMessage());
         }
-        System.out.println("Processed in: " + inputFileName + " out: " + outputFileName);
         
+        System.out.println("Processed  in: " + inputFileName + " out: " + outputFileName);
+    }
+    
+    public static void run_convert(String inputFileName, String outputFileName) throws Exception{
+    	
+    Rsbpml rsbpmlData = ReadRSBPML.file(inputFileName);
+    FileOutputStream out = new FileOutputStream(outputFileName);
+
+    //System.out.println(rsbpmlData);
+    
+   
+    SBOLDocument Doc = convert(rsbpmlData);
+
+    SBOLFactory.write(Doc, out);
     }
 
     public static SBOLDocument convert(Rsbpml rsbpmlData) throws SBOLValidationException {
