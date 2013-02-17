@@ -210,7 +210,7 @@ public class Feature {
 	public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick,	Rsbpml rsbpmlData, int position) {
 		SequenceAnnotation newFeatureSA = SBOLFactory.createSequenceAnnotation();
 
-		if (title != null && title.startsWith("BBa_")) {
+		if (title != null && title.startsWith("BBa_") && title.split("\\s+").length == 1) {
 			biobrick = assignPartFeature(biobrick); // either a new featureSA is created or biobrick is updated
 
 		} else {
