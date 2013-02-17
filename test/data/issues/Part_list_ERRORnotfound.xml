@@ -1,8 +1,0 @@
-<?xml version="1.0" standalone="yes" ?>
-
-<!--Part not found mimics BBa_B0079.xml-->
-<rsbpml>
-    <part_list>
-        <ERROR>Part name not found - BBa_something</ERROR>
-    </part_list>
-</rsbpml>
