@@ -49,7 +49,10 @@ public class Category {
         Collections.reverse(list);
         Iterator<String> it = list.iterator();
         final StringBuilder type = new StringBuilder(it.next());
-        while (it.hasNext()) { type.append("_"); type.append(it.next()); }
+        while (it.hasNext()) { 
+        	type.append("_");
+        	type.append(it.next()); 
+        }
         
 		return type.toString();
 	}
