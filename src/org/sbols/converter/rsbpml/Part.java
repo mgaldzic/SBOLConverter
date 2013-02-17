@@ -39,6 +39,7 @@ public class Part {
     private List<SpecifiedSubscar> specified_subscars;
     private List<Feature> features;
     private List<String> seq_data = new ArrayList<>();
+    private List<Category> categories;
     //features
     //paramters
     //categories  
@@ -142,9 +143,22 @@ public class Part {
         }
         return features;
     }
-
+    
     public void setFeatures(List<Feature> features) {
         this.features = features;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    @XmlElementWrapper(name = "categories")
+    @XmlElement(name = "category")
+    public List<Category> getCategories() {
+        if (categories == null) {
+        	categories = new ArrayList<>();
+        }
+        return categories;
     }
 
     /*
@@ -253,6 +267,15 @@ public class Part {
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
             }
         }
+        if (categories != null) {
+            int i = 0;
+            
+            for (Category aCategory : categories) {
+                i++;
+                biobrick = aCategory.toSbol(biobrick, rsbpmlData, i);
+            }
+        }        
+        
         return biobrick;
     }
 }
