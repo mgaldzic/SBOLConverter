@@ -33,36 +33,55 @@ public class Category {
 		return "\ncategory ["
 				+ (category != null ? category + "] \n" : "");
 	}
-	private String parse_category(){
+	private List<String> parse_category(){
 		String t = category.toLowerCase();
 		t = t.replaceAll("^ +", ""); // leading spaces
 		//t = t.replaceAll("\\N", "");
 		t = t.replaceAll("^//", ""); //leading '//' do not delim
-        t = t.replaceAll("/","_");
         t = t.replaceAll("\\s+", "");
         t = t.replaceAll("\\t+", "");
         t = t.replaceAll("\\cM", ""); // \015 #any ctrl-M
         t = t.replaceAll("]", "");
         t = t.replaceAll("\\[", "");
 
-        List<String> list = Arrays.asList(t.split("_"));
-        Collections.reverse(list);
-        Iterator<String> it = list.iterator();
+        List<String> list = Arrays.asList(t.split("/"));
+        
+        return list;
+	}
+	
+	private String build_DirectType(List<String> list){
+		
+		List<String> listcp = new ArrayList<String>(list);
+	    Collections.reverse(listcp);
+        Iterator<String> it = listcp.iterator();   
         final StringBuilder type = new StringBuilder(it.next());
         while (it.hasNext()) { 
         	type.append("_");
         	type.append(it.next()); 
         }
-        
 		return type.toString();
+	}
+	
+	private String build_SuperType(List<String> list){
+		Iterator<String> it= list.iterator();
+		String type = it.next();
+		return type;
+	}
+	
+	private PartsRegistryDnaComponent addCatTypeToDC(String cat, PartsRegistryDnaComponent biobrick){
+		if (Vocabulary.SO_MAP.get(cat) != null) {
+            biobrick.addType(Vocabulary.SO_MAP.get(cat));
+        }
+        biobrick.addRegistry_type(PartsRegistrySBOLVocabulary.uri(cat));
+		return biobrick;
 	}
 
 	public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick,	Rsbpml rsbpmlData, int position) {
-		String aType = parse_category();
-        if (Vocabulary.SO_MAP.get(aType) != null) {
-            biobrick.addType(Vocabulary.SO_MAP.get(aType));
-        }
-        biobrick.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
+
+		List<String> cat_list = parse_category();
+		biobrick = addCatTypeToDC(build_DirectType(cat_list), biobrick);
+		biobrick = addCatTypeToDC(build_SuperType(cat_list), biobrick);
+        
 		return biobrick;
 	}
 
