@@ -1,0 +1,11 @@
+java -jar ../../../dist/SBOLConverter.jar BBa_B0079.xml ../rdfout/issues/B0079.sbol
+java -jar ../../../dist/SBOLConverter.jar BBa_E71204.xml ../rdfout/issues/E71204.sbol
+java -jar ../../../dist/SBOLConverter.jar BBa_G0002.xml ../rdfout/issues/G0002.sbol
+java -jar ../../../dist/SBOLConverter.jar BBa_I11101.xml ../rdfout/issues/BBa_I11101.sbol
+java -jar ../../../dist/SBOLConverter.jar BBa_J04800.xml ../rdfout/issues/J04800.sbol
+java -jar ../../../dist/SBOLConverter.jar BBa_J28031.xml ../rdfout/issues/J28031.sbol
+java -jar ../../../dist/SBOLConverter.jar BBa_K624053.xml ../rdfout/issues/K624053.sbol
+java -jar ../../../dist/SBOLConverter.jar BBa_K743014.xml ../rdfout/issues/K743014.sbol
+java -jar ../../../dist/SBOLConverter.jar ParsingOtherChars.xml ../rdfout/issues/ParsingOtherChars.sbol
+java -jar ../../../dist/SBOLConverter.jar Part_list_ERRORnotfound.xml ../rdfout/issues/Part_list_ERRORnotfound
+java -jar ../../../dist/SBOLConverter.jar TitleBBa_AndExtraText.xml ../rdfout/issues/TitleBBa_AndExtraText
