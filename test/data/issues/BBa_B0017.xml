@@ -1,0 +1,86 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--Parts from the MIT Registry of Standard Biological Parts -->
+<rsbpml>
+	<part_list>
+		<part>
+			<part_id>3381</part_id>
+			<part_name>BBa_B0017</part_name>
+			<deep_subparts>
+				<subpart>
+					<part_id>603</part_id>
+					<part_name>BBa_B0010</part_name>
+					<part_short_desc>T1 from E. coli rrnB</part_short_desc>
+					<part_type>Terminator</part_type>
+					<part_nickname></part_nickname>
+				</subpart>
+				<subpart>
+					<part_id>603</part_id>
+					<part_name>BBa_B0010</part_name>
+					<part_short_desc>T1 from E. coli rrnB</part_short_desc>
+					<part_type>Terminator</part_type>
+					<part_nickname></part_nickname>
+				</subpart>
+			</deep_subparts>
+			<specified_subscars>
+				<subpart>
+					<part_id>603</part_id>
+					<part_name>BBa_B0010</part_name>
+					<part_short_desc>T1 from E. coli rrnB</part_short_desc>
+					<part_type>Terminator</part_type>
+					<part_nickname></part_nickname>
+				</subpart>
+				<scar>
+					<scar_id>1</scar_id>
+					<scar_standard>10</scar_standard>
+					<scar_type>Scar</scar_type>
+					<scar_name>RFC[10]</scar_name>
+					<scar_nickname>[10]</scar_nickname>
+					<scar_comments></scar_comments>
+					<scar_sequence>tactagag</scar_sequence>
+				</scar>
+				<subpart>
+					<part_id>603</part_id>
+					<part_name>BBa_B0010</part_name>
+					<part_short_desc>T1 from E. coli rrnB</part_short_desc>
+					<part_type>Terminator</part_type>
+					<part_nickname></part_nickname>
+				</subpart>
+			</specified_subscars>
+			<features>
+				<feature>
+					<id>939331</id>
+					<title>BBa_B0010</title>
+					<type>BioBrick</type>
+					<direction>forward</direction>
+					<startpos>1</startpos>
+					<endpos>80</endpos>
+				</feature>
+				<feature>
+					<id>939332</id>
+					<title></title>
+					<type>stem_loop</type>
+					<direction>forward</direction>
+					<startpos>12</startpos>
+					<endpos>55</endpos>
+				</feature>
+				<feature>
+					<id>939337</id>
+					<title>BBa_B0010</title>
+					<type>BioBrick</type>
+					<direction>forward</direction>
+					<startpos>89</startpos>
+					<endpos>168</endpos>
+				</feature>
+				<feature>
+					<id>939338</id>
+					<title></title>
+					<type>stem_loop</type>
+					<direction>forward</direction>
+					<startpos>100</startpos>
+					<endpos>143</endpos>
+				</feature>
+			</features>
+		</part>
+	</part_list>
+</rsbpml>
