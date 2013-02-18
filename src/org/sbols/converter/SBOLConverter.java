@@ -60,7 +60,7 @@ public class SBOLConverter {
     
     public static void convertInToOut(String inputFileName, String outputFileName) throws Exception{
         try { //Can we enter this with fileName and outputName being null? Need to make sure
-        	System.out.println("Converting in: " + inputFileName + " out: " + outputFileName);
+        	//System.out.println("Converting in: " + inputFileName + " out: " + outputFileName);
         	run_convert(inputFileName,outputFileName);
 
             
