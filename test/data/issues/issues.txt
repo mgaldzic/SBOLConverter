@@ -5,3 +5,4 @@ ok BBa_E71204.xml Exception javax.xml.bind.UnmarshalException null
    BBa_J04800.xml Validation startpos < 0 rsbpml.Feature values Start = 0 should be already tested?
 
    BBa_A340620 repeated subcomponents
+   BBa_B0017 - inconsitent rel pos
