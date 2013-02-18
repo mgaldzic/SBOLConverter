@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!-- DC and Feature are the Same - self referential causes duplicate URIs -->
+<rsbpml>
+	<part_list>
+		<part>
+			<part_id>1</part_id>
+			<part_name>BBa_title</part_name>
+			<features>
+				<feature>
+					<id>2</id>
+					<title>BBa_title</title>
+					<direction>forward</direction>
+					<startpos>1</startpos>
+					<endpos>2</endpos>
+				</feature>
+			</features>
+		</part>
+	</part_list>
+</rsbpml>
