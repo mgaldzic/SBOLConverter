@@ -190,7 +190,7 @@ public class Feature {
 	
 	private boolean isAnnotationValid(SequenceAnnotation anot){
 		boolean isValid = true;
-		System.out.println("a "+anot.getSubComponent().getDisplayId());
+		
 		Integer expectedLength = anot.getBioEnd() - anot.getBioStart() + 1;
 		if (!(expectedLength > 0)) { 
 			isValid = false;
