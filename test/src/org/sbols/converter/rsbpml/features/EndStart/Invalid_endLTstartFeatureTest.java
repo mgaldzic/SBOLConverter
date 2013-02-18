@@ -6,6 +6,8 @@ package org.sbols.converter.rsbpml.features.EndStart;
 
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.fail;
 import org.sbols.converter.SBOLConverter;
@@ -20,6 +22,7 @@ import org.sbolstandard.core.SBOLValidationException;
  */
 public class Invalid_endLTstartFeatureTest {
 
+	@Ignore
     @Test(expected = SBOLValidationException.class)
     public void Invalid_endLTstartFeatureTest() throws JAXBException, IOException {
         System.out.println("Invalid_endLTstartFeatureTest");
