@@ -4,4 +4,4 @@ ok BBa_E71204.xml Exception javax.xml.bind.UnmarshalException null
    BBa_I11101.xml No idea! Validation org.xml.sax.SAXParseException; lineNumber: 0; columnNumber: 0; cvc-complex-type.2.4.b: The content of element 's:DnaComponent' is not complete. One of '{"http://www.w3.org/1999/02/22-rdf-syntax-ns#":type, "http://sbols.org/v1#":displayId}' is expected.
    BBa_J04800.xml Validation startpos < 0 rsbpml.Feature values Start = 0 should be already tested?
 
-   
+   BBa_A340620 repeated subcomponents

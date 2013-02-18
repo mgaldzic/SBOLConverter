@@ -1,0 +1,64 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--Parts from the MIT Registry of Standard Biological Parts -->
+<rsbpml>
+	<part_list>
+		<part>
+			<part_id>5148</part_id>
+			<part_name>BBa_A340620</part_name>
+			<specified_subscars>
+				<scar>
+					<scar_id>34</scar_id>
+					<scar_standard>10</scar_standard>
+					<scar_type>Scar</scar_type>
+					<scar_name>RFC[10.1]</scar_name>
+					<scar_nickname>[10.1]</scar_nickname>
+					<scar_comments>When the next part begins AT</scar_comments>
+					<scar_sequence>tactag</scar_sequence>
+				</scar>
+				<subpart>
+					<part_id>161</part_id>
+					<part_name>BBa_C0062</part_name>
+					<part_short_desc>luxR repressor/activator, (no LVA?)
+					</part_short_desc>
+					<part_type>Coding</part_type>
+					<part_nickname>luxr</part_nickname>
+				</subpart>
+				<barcode></barcode>
+				<scar>
+					<scar_id>1</scar_id>
+					<scar_standard>10</scar_standard>
+					<scar_type>Scar</scar_type>
+					<scar_name>RFC[10]</scar_name>
+					<scar_nickname>[10]</scar_nickname>
+					<scar_comments></scar_comments>
+					<scar_sequence>tactagag</scar_sequence>
+				</scar>
+				<subpart>
+					<part_id>202</part_id>
+					<part_name>BBa_B0015</part_name>
+					<part_short_desc>double terminator (B0010-B0012)</part_short_desc>
+					<part_type>Terminator</part_type>
+					<part_nickname></part_nickname>
+				</subpart>
+				<scar>
+					<scar_id>1</scar_id>
+					<scar_standard>10</scar_standard>
+					<scar_type>Scar</scar_type>
+					<scar_name>RFC[10]</scar_name>
+					<scar_nickname>[10]</scar_nickname>
+					<scar_comments></scar_comments>
+					<scar_sequence>tactagag</scar_sequence>
+				</scar>
+				<subpart>
+					<part_id>192</part_id>
+					<part_name>BBa_R0062</part_name>
+					<part_short_desc>Promoter (luxR &amp; HSL regulated -- lux pR)
+					</part_short_desc>
+					<part_type>Regulatory</part_type>
+					<part_nickname>lux pR</part_nickname>
+				</subpart>
+			</specified_subscars>
+		</part>
+	</part_list>
+</rsbpml>
