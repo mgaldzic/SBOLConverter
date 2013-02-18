@@ -6,6 +6,8 @@ package org.sbols.converter.rsbpml.features.EndStart;
 
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -19,6 +21,7 @@ import org.sbolstandard.core.SBOLValidationException;
  */
 public class Invalid_startLToneFeatureTest {
 
+	@Ignore
     @Test(expected = SBOLValidationException.class)
     public void Expected_startLToneFeatureTest() throws JAXBException, IOException {
         System.out.println("Expected_startLToneFeatureTest");

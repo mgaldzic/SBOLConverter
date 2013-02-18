@@ -16,6 +16,7 @@ import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SBOLValidationException;
 import org.sbolstandard.core.SequenceAnnotation;
 import org.sbolstandard.core.StrandType;
+import org.sbolstandard.core.impl.SBOLValidatorImpl;
 
 @XmlRootElement(name = "feature")
 public class Feature {
@@ -173,17 +174,6 @@ public class Feature {
 
 	private SequenceAnnotation assignAnnotation(SequenceAnnotation newAnnotation) {
 		newAnnotation.setURI(URI.create("http://partsregistry.org/anot/f_" + id));
-		/*
-		 * Integer expectedLength = Integer.parseInt(endpos) -
-		 * Integer.parseInt(startpos) + 1;
-		 * 
-		 * 
-		 * if (!(expectedLength > 0)) { throw new
-		 * SBOLValidationException("Inconsistent startpos and endpos
-		 * rsbpml.Feature values"); } if (Integer.parseInt(startpos) < 1) {
-		 * throw new SBOLValidationException("startpos < 0 rsbpml.Feature
-		 * values"); }
-		 */
 
 		newAnnotation.setBioStart(Integer.parseInt(startpos));
 		newAnnotation.setBioEnd(Integer.parseInt(endpos));
@@ -196,6 +186,21 @@ public class Feature {
 			}
 		}
 		return newAnnotation;
+	}
+	
+	private boolean isAnnotationValid(SequenceAnnotation anot){
+		boolean isValid = true;
+		System.out.println("a "+anot.getSubComponent().getDisplayId());
+		Integer expectedLength = anot.getBioEnd() - anot.getBioStart() + 1;
+		if (!(expectedLength > 0)) { 
+			isValid = false;
+			//throw new SBOLValidationException("Inconsistent startpos and endpos rsbpml.Feature values"); 
+		} 
+		if (Integer.parseInt(startpos) < 1) {
+			isValid = false;
+			//throw new SBOLValidationException("startpos < 0 rsbpml.Feature values"); 
+		}
+		return isValid;
 	}
 
 	@Override
@@ -210,14 +215,21 @@ public class Feature {
 	public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick,	Rsbpml rsbpmlData, int position) {
 		SequenceAnnotation newFeatureSA = SBOLFactory.createSequenceAnnotation();
 
-		if (title != null && title.startsWith("BBa_")) {
+		if (title != null && title.startsWith("BBa_") && title.split("\\s+").length == 1) {
 			biobrick = assignPartFeature(biobrick); // either a new featureSA is created or biobrick is updated
 
 		} else {
 			PartsRegistryDnaComponent featDC = assignNotPartFeature(); // a new featureDC is created
 			newFeatureSA.setSubComponent(featDC);
 			newFeatureSA = assignAnnotation(newFeatureSA);
+			//System.out.println("f: "+newFeatureSA);
 			biobrick.addAnnotation(newFeatureSA);
+			
+		}
+		
+		//throw away the feature if its invalid, the rest of  the DC may be good
+		if (newFeatureSA.getURI() != null && !isAnnotationValid(newFeatureSA)){
+			biobrick.removeAnnotation(newFeatureSA);
 		}
 
 		return biobrick;

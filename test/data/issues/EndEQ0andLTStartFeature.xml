@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--End EQ 0 and LT start Feature (toss the feature, keep the DC )-->
+<rsbpml>
+    <part_list>
+        <part>
+            <part_id>1</part_id>
+            <part_name>DC1</part_name>
+            <features>
+                <feature>
+                    <id>2</id>
+                    <title>invalid_feature</title>
+                    <direction>forward</direction>
+                    <startpos>1</startpos>
+                    <endpos>0</endpos>
+                </feature>
+            </features>
+        </part>
+    </part_list>
+</rsbpml>
