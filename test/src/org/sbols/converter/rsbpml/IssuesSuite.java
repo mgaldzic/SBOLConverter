@@ -14,7 +14,8 @@ import org.sbols.converter.rsbpml.issues.*;
 @Suite.SuiteClasses({ 
 	ErrorPartNotFound_Test.class,
 	TitleBBa_AndExtraText_Test.class,
-	EndEQ0andLTStartFeature_Test.class
+	EndEQ0andLTStartFeature_Test.class,
+	DCandFeatureSame_Test.class
     })
 public class IssuesSuite {
 

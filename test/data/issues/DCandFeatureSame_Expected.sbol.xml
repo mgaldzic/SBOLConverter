@@ -5,8 +5,7 @@
   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
   xmlns:so="http://purl.obolibrary.org/obo/"
  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
- <s:DnaComponent rdf:about="http://partsregistry.org/part/DC1">
-  <s:displayId>DC1</s:displayId>
-  <s:name>BBa_title</s:name>
+ <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_title">
+  <s:displayId>BBa_title</s:displayId>
  </s:DnaComponent>
 </rdf:RDF>

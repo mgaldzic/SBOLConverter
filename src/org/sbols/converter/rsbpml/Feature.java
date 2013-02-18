@@ -156,6 +156,12 @@ public class Feature {
 			newFeatureSA.setSubComponent(newDCFeature);
 			biobrick.addAnnotation(newFeatureSA);
 		}
+		
+		//throw away the feature if it is the parent DC itself - self referencing annotation
+		if (newFeatureSA.getURI() != null && newFeatureSA.getSubComponent().getURI().equals(biobrick.getURI())){
+			biobrick.removeAnnotation(newFeatureSA);
+		}
+		
 		return biobrick;
 	}
 
@@ -231,6 +237,7 @@ public class Feature {
 		if (newFeatureSA.getURI() != null && !isAnnotationValid(newFeatureSA)){
 			biobrick.removeAnnotation(newFeatureSA);
 		}
+
 
 		return biobrick;
 	}

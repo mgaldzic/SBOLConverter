@@ -30,7 +30,7 @@ public class DCandFeatureSame_Test {
 		String actual = ReadFile.sbolDocToString(SbolDoc);
 
 		// Sometimes we generate the expected results using the test - cheating
-		WriteFile.toPath(SbolDoc, "test/data/rdfout/DCandFeatureSame_Out.sbol.xml");
+		WriteFile.toPath(SbolDoc, "test/data/rdfout/issues/DCandFeatureSame_Out.sbol.xml");
 
 		// Get expected result
 		String expected = ReadFile.fromPath("test/data/issues/DCandFeatureSame_Expected.sbol.xml");
