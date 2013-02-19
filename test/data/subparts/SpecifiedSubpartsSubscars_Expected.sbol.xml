@@ -27,9 +27,9 @@
 			<s:subComponent>
 				<s:DnaComponent rdf:about="http://partsregistry.org/part/RFC_10">
 					<s:displayId>RFC_10</s:displayId>
-					<s:name>[10]</s:name>
+					<s:name>RFC_10</s:name>
 					<s:dnaSequence>
-						<s:DnaSequence rdf:about="http://partsregistry.org/seq/scarseq_1">
+						<s:DnaSequence rdf:about="http://partsregistry.org/seq/scarseq_RFC_10">
 							<s:nucleotides>tactagag</s:nucleotides>
 						</s:DnaSequence>
 					</s:dnaSequence>
