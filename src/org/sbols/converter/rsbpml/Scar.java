@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
+import org.sbols.converter.util.IdentifierUtils;
 import org.sbolstandard.core.DnaSequence;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SequenceAnnotation;
@@ -93,14 +94,25 @@ public class Scar extends SpecifiedSubscar{
     @Override
     protected SequenceAnnotation getNewSA (Rsbpml rsbpmlData, int index){
         DnaSequence scarSequence = SBOLFactory.createDnaSequence();
-        scarSequence.setURI(URI.create("http://partsregistry.org/seq/scarseq_" + scar_id)); //TODO is this unique?
+        String id = "";
+        if (scar_name.startsWith("RFC")){
+        	id = scar_name.replaceAll("[\\[\\]\\.]", "_");
+        	id = id.replaceAll("_$", "");
+        } else {
+        	System.out.println("s "+scar_sequence);
+        	id = IdentifierUtils.encryptSHA(scar_sequence);
+        }
+        //System.out.println("id "+id);
+        scarSequence.setURI(URI.create("http://partsregistry.org/seq/scarseq_" + id)); //TODO is this unique?
         scarSequence.setNucleotides(scar_sequence);
         PartsRegistryDnaComponent SubDnaComponent = PartsRegistrySBOLFactory.createDnaComponent();
-        SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/RFC_" + scar_standard));
-        SubDnaComponent.setDisplayId("RFC_"+scar_standard);
-        SubDnaComponent.setName(scar_nickname);
+        
+
+        SubDnaComponent.setURI(URI.create("http://partsregistry.org/part/" + id));
+        SubDnaComponent.setDisplayId(id);
+        SubDnaComponent.setName(scar_name.replaceAll("[\\[\\]\\.]", "_").replaceAll("_$", ""));
         SubDnaComponent.setDnaSequence(scarSequence);
-        SubDnaComponent.addRegistry_type(URI.create("http://partsregistry.org/type/scar"));
+        SubDnaComponent.addRegistry_type(URI.create("http://partsregistry.org/type/"+scar_type.toLowerCase()));
         SequenceAnnotation newAnnotation = SBOLFactory.createSequenceAnnotation();
         newAnnotation.setSubComponent(SubDnaComponent);
         
