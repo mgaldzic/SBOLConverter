@@ -23,8 +23,6 @@ public class ReadRSBPML {
 
         return rsbpmlData;
     }
-<<<<<<< HEAD
-=======
     
     /**
      * This method ensures that the output String has only
@@ -76,5 +74,4 @@ public class ReadRSBPML {
         }
         return out.toString();
     }
->>>>>>> refs/heads/newlibSBOLj
 }
