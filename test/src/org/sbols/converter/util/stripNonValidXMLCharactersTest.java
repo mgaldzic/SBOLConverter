@@ -12,6 +12,7 @@ import java.io.InputStream;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -26,6 +27,7 @@ import com.atlassian.xmlcleaner.XmlCleaner;
  */
 public class stripNonValidXMLCharactersTest {
 
+	@Ignore
 	@Test
 	public void stripNonValidXMLCharactersTest() throws Exception {
 		System.out.println("stripNonValidXMLCharactersTest");
