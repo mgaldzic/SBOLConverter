@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rdf:RDF xmlns:s="http://sbols.org/v1#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:so="http://purl.obolibrary.org/obo/">
+    <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_E71204">
+        <s:displayId>BBa_E71204</s:displayId>
+        <s:name></s:name>
+        <s:description>Dedicated Systems Reporter (�-&gt;GFP)</s:description>
+        <s:dnaSequence>
+            <s:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_7561">
+                <s:nucleotides>tcatacgactcactatagggagatactagagcaccactactagatgcgtaaaggagaagaacttttcactggagttgtcccaattcttgttgaattagatggtgatgttaatgggcacaaattttctgtcagtggagagggtgaaggtgatgcaacatacggaaaacttacccttaaatttatttgcactactggaaaactacctgttccatggccaacacttgtcactactttcggttatggtgttcaatgctttgcgagatacccagatcatatgaaacagcatgactttttcaagagtgccatgcccgaaggttatgtacaggaaagaactatatttttcaaagatgacgggaactacaagacacgtgctgaagtcaagtttgaaggtgatacccttgttaatagaatcgagttaaaaggtattgattttaaagaagatggaaacattcttggacacaaattggaatacaactataactcacacaatgtatacatcatggcagacaaacaaaagaatggaatcaaagttaacttcaaaattagacacaacattgaagatggaagcgttcaactagcagaccattatcaacaaaatactccaattggcgatggccctgtccttttaccagacaaccattacctgtccacacaatctgccctttcgaaagatcccaacgaaaagagagaccacatggtccttcttgagtttgtaacagctgctgggattacacatggcatggatgaactatacaaataataatactagagctagcataaccccttggggcctctaaacgggtcttgaggggttttttg</s:nucleotides>
+            </s:DnaSequence>
+        </s:dnaSequence>
+        <s:annotation>
+            <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_7561_6137_1">
+                <s:precedes rdf:resource="http://partsregistry.org/anot/sc_7561_1_2"/>
+                <s:bioStart>1</s:bioStart>
+                <s:bioEnd>23</s:bioEnd>
+                <s:strand>+</s:strand>
+                <s:subComponent>
+                    <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_R0183">
+                        <rdf:type rdf:resource="http://partsregistry.org/type/biobrick"/>
+                        <s:displayId>BBa_R0183</s:displayId>
+                        <s:name></s:name>
+                        <s:description>T7 RNAP promoter</s:description>
+                    </s:DnaComponent>
+                </s:subComponent>
+            </s:SequenceAnnotation>
+        </s:annotation>
+        <s:annotation>
+            <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/sc_7561_1_2">
+                <s:precedes rdf:resource="http://partsregistry.org/anot/an_7561_6626_3"/>
+                <s:subComponent>
+                    <s:DnaComponent rdf:about="http://partsregistry.org/part/RFC_10">
+                        <s:displayId>RFC_10</s:displayId>
+                        <s:name>RFC_10</s:name>
+                        <s:dnaSequence>
+                            <s:DnaSequence rdf:about="http://partsregistry.org/seq/scarseq_RFC_10">
+<s:nucleotides>tactagag</s:nucleotides>
+                            </s:DnaSequence>
+                        </s:dnaSequence>
+                    </s:DnaComponent>
+                </s:subComponent>
+            </s:SequenceAnnotation>
+        </s:annotation>
+        <s:annotation>
+            <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_7561_6626_3">
+                <s:precedes rdf:resource="http://partsregistry.org/anot/sc_7561_34_4"/>
+                <s:bioStart>32</s:bioStart>
+                <s:bioEnd>37</s:bioEnd>
+                <s:strand>+</s:strand>
+                <s:subComponent>
+                    <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0072">
+                        <rdf:type rdf:resource="http://partsregistry.org/type/biobrick"/>
+                        <s:displayId>BBa_B0072</s:displayId>
+                        <s:name></s:name>
+                        <s:description>orthogonal RBS</s:description>
+                    </s:DnaComponent>
+                </s:subComponent>
+            </s:SequenceAnnotation>
+        </s:annotation>
+        <s:annotation>
+            <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/sc_7561_34_4">
+                <s:precedes rdf:resource="http://partsregistry.org/anot/an_7561_5309_5"/>
+                <s:subComponent>
+                    <s:DnaComponent rdf:about="http://partsregistry.org/part/RFC_10_1">
+                        <s:displayId>RFC_10_1</s:displayId>
+                        <s:name>RFC_10_1</s:name>
+                        <s:dnaSequence>
+                            <s:DnaSequence rdf:about="http://partsregistry.org/seq/scarseq_RFC_10_1">
+<s:nucleotides>tactag</s:nucleotides>
+                            </s:DnaSequence>
+                        </s:dnaSequence>
+                    </s:DnaComponent>
+                </s:subComponent>
+            </s:SequenceAnnotation>
+        </s:annotation>
+        <s:annotation>
+            <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_7561_5309_5">
+                <s:precedes rdf:resource="http://partsregistry.org/anot/sc_7561_1_6"/>
+                <s:bioStart>44</s:bioStart>
+                <s:bioEnd>763</s:bioEnd>
+                <s:strand>+</s:strand>
+                <s:subComponent>
+                    <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_E0040">
+                        <rdf:type rdf:resource="http://partsregistry.org/type/biobrick"/>
+                        <s:displayId>BBa_E0040</s:displayId>
+                        <s:name>GFP</s:name>
+                        <s:description>green fluorescent protein derived from jellyfish Aequeora victoria wild-type GFP (SwissProt: P42212</s:description>
+                    </s:DnaComponent>
+                </s:subComponent>
+            </s:SequenceAnnotation>
+        </s:annotation>
+        <s:annotation>
+            <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/sc_7561_1_6">
+                <s:precedes rdf:resource="http://partsregistry.org/anot/an_7561_2915_7"/>
+                <s:subComponent>
+                    <s:DnaComponent rdf:about="http://partsregistry.org/part/RFC_10">
+                        <s:displayId>RFC_10</s:displayId>
+                        <s:name>RFC_10</s:name>
+                        <s:dnaSequence>
+                            <s:DnaSequence rdf:about="http://partsregistry.org/seq/scarseq_RFC_10">
+<s:nucleotides>tactagag</s:nucleotides>
+                            </s:DnaSequence>
+                        </s:dnaSequence>
+                    </s:DnaComponent>
+                </s:subComponent>
+            </s:SequenceAnnotation>
+        </s:annotation>
+        <s:annotation>
+            <s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_7561_2915_7">
+                <s:bioStart>772</s:bioStart>
+                <s:bioEnd>819</s:bioEnd>
+                <s:strand>+</s:strand>
+                <s:subComponent>
+                    <s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0016">
+                        <rdf:type rdf:resource="http://partsregistry.org/type/biobrick"/>
+                        <s:displayId>BBa_B0016</s:displayId>
+                        <s:name></s:name>
+                        <s:description>Terminator (T7 RNAP specific, T_Phi)</s:description>
+                    </s:DnaComponent>
+                </s:subComponent>
+            </s:SequenceAnnotation>
+        </s:annotation>
+    </s:DnaComponent>
+</rdf:RDF>

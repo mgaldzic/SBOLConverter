@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--Bad ChacteR in short_desc-->
+<rsbpml>
+<part_list>
+<part>
+<part_id>7561</part_id>
+<part_name>BBa_E71204</part_name>
+<part_short_name>E71204</part_short_name>
+<part_short_desc>Dedicated Systems Reporter (ø-&gt;GFP)</part_short_desc>
+</part></part_list></rsbpml>
