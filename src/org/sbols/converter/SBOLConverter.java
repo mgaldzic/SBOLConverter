@@ -79,15 +79,12 @@ public class SBOLConverter {
     
     public static void run_convert(String inputFileName, String outputFileName) throws Exception{
     	
-    Rsbpml rsbpmlData = ReadRSBPML.file(inputFileName);
-    FileOutputStream out = new FileOutputStream(outputFileName);
+	    Rsbpml rsbpmlData = ReadRSBPML.file(inputFileName);
 
-    //System.out.println(rsbpmlData);
-    
-   
-    SBOLDocument Doc = convert(rsbpmlData);
-
-    SBOLFactory.write(Doc, out);
+	    SBOLDocument doc = convert(rsbpmlData);
+	    
+	    FileOutputStream out = new FileOutputStream(outputFileName);
+	    SBOLFactory.write(doc, out);
     }
 
     public static SBOLDocument convert(Rsbpml rsbpmlData) throws SBOLValidationException {

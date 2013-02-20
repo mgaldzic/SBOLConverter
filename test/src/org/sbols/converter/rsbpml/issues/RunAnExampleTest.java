@@ -26,11 +26,11 @@ public class RunAnExampleTest {
 	public void RunAnExampleTest() throws Exception {
 		System.out.println("RunAnExampleTest");
 
-		String infile = "test/data/issues/BBa_B0017.xml";
-		String outfile = "test/data/rdfout/issues/BBa_B0017.sbol.xml";
-		String expectedfile = "test/data/issues/DCandFeatureSame_Expected.sbol.xml";
-		//SBOLConverter.run_convert(infile, outfile);
-		// Get input for test
+		String infile = "test/data/issues/BBa_NotFound.xml";
+		String outfile = "test/data/rdfout/issues/BBa_NotFound.sbol.xml";
+		//String expectedfile = "test/data/issues/DCandFeatureSame_Expected.sbol.xml";
+		SBOLConverter.run_convert(infile, outfile);
+/*		// Get input for test
 		Rsbpml rsbpmlData = ReadRSBPML.file(infile);
 
 		// Do the test
@@ -45,5 +45,6 @@ public class RunAnExampleTest {
 
 		// Compare
 		assertTrue("Diffs found: ", ReadFile.compare(expected, actual));
+		*/
 	}
 }
