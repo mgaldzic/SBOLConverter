@@ -10,31 +10,29 @@ import org.sbols.converter.util.ReadFile;
 import org.sbols.converter.util.ReadRSBPML;
 import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
-import org.sbolstandard.core.SBOLValidationException;
 
-/**
- * Tests the converter successfully converts the simplest dna component,
- * containing just a name.
- * 
- * @author mgaldzic
- */
-public class RepeatedScarSubComponentsTest {
+public class TwoFeaturesAndTwoSubPartsMerge_Test {
 
 	@Test
-	public void RepeatedScarSubComponents() throws JAXBException, IOException, SBOLValidationException {
-		System.out.println("RepeatedScarSubComponents");
+	public void TwoFeaturesAndTwoSubPartsMerge_Test() throws Exception {
+		System.out.println("TwoFeaturesAndTwoSubPartsMerge_Test");
+
+		String infile = "test/data/issues/TwoFeaturesAndTwoSubPartsMerge_Test.xml";
+		String outfile = "test/data/rdfout/issues/TwoFeaturesAndTwoSubPartsMerge_Out.sbol.xml";
+		String expectedfile = "test/data/issues/TwoFeaturesAndTwoSubPartsMerge_Expected.sbol.xml";
+		// SBOLConverter.run_convert(infile, outfile);
 		// Get input for test
-		Rsbpml rsbpmlData = ReadRSBPML.file("test/data/issues/RepeatedScarSubComponents.xml");
+		Rsbpml rsbpmlData = ReadRSBPML.file(infile);
 
 		// Do the test
 		SBOLDocument SbolDoc = SBOLConverter.convert(rsbpmlData);
 		String actual = ReadFile.sbolDocToString(SbolDoc);
 
 		// Sometimes we generate the expected results using the test - cheating
-		WriteFile.toPath(SbolDoc,"test/data/rdfout/issues/RepeatedScarSubComponents_Out.sbol.xml");
+		WriteFile.toPath(SbolDoc, outfile);
 
 		// Get expected result
-		String expected = ReadFile.fromPath("test/data/issues/RepeatedScarSubComponents_Expected.sbol.xml");
+		String expected = ReadFile.fromPath(expectedfile);
 
 		// Compare
 		assertTrue("Diffs found: ", ReadFile.compare(expected, actual));

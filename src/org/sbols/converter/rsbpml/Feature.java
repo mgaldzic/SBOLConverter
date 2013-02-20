@@ -103,49 +103,62 @@ public class Feature {
 		}
 		return feature;
 	}
+    
+	private void mergeSAPart(SequenceAnnotation oldPartSA){
+    	
+			// SA gets new position
+			// TODO likely Features in reverse will incorrectly be assigned as fwd
+    	oldPartSA.setBioStart(Integer.parseInt(startpos));
+    	oldPartSA.setBioEnd(Integer.parseInt(endpos));
+			// if direction fwd then
+			// subpartSA.setStrand(StrandType.POSITIVE); 
+			//if rev then NEGATIVE (What if conflict?)
+    	oldPartSA.setStrand(StrandType.POSITIVE); // this is a hack (ultimately it should be done by checking)
 
-	private PartsRegistryDnaComponent assignPartFeature(PartsRegistryDnaComponent biobrick) {
+		for (String aType : types) {  //Doing it this way allows us to add a SO and non SO type to a non PR DC.. 
+			aType = aType.toLowerCase();
+			if (Vocabulary.SO_MAP.get(aType) != null) {
+				oldPartSA.getSubComponent().addType(Vocabulary.SO_MAP.get(aType));
+			}
+			oldPartSA.getSubComponent().getTypes().add(PartsRegistrySBOLVocabulary.uri(aType));
+		}
+		
+	}
+	private SequenceAnnotation makeNewFeatureSAPart(URI featureuri){
 		SequenceAnnotation newFeatureSA = PartsRegistrySBOLFactory.createSequenceAnnotation();
+		PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory.createDnaComponent();
+		newFeatureSA = assignAnnotation(newFeatureSA);
+		newDCFeature.setURI(featureuri);
+		newDCFeature.setDisplayId(title);
+		newDCFeature = assignType(newDCFeature);
+		newFeatureSA.setSubComponent(newDCFeature);
+		return newFeatureSA;
+	}
+	
+	private PartsRegistryDnaComponent assignPartFeature(PartsRegistryDnaComponent biobrick) { 
+		
 		URI featureuri = URI.create("http://partsregistry.org/part/" + title);
-
-		if (biobrick.getAnnotations().size() > 0) { // Actual annotations already exist
-			boolean isAlreadySubPart = false;
-			for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { // for any of them
-				if (!featureuri.equals(subpartSA.getSubComponent().getURI())) { // NOT Already a *Subpart
-					isAlreadySubPart = false;
-
-					PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory.createDnaComponent();
-					newDCFeature.setURI(featureuri);
-					newDCFeature.setDisplayId(title);
-					newDCFeature = assignType(newDCFeature);
-					newFeatureSA.setSubComponent(newDCFeature);
-					newFeatureSA = assignAnnotation(newFeatureSA);
-
-				} else { // Already a *SubPart
-					isAlreadySubPart = true;
-					// SA gets new position
-					// TODO likely Features in reverse will incorrectly be assigned as fwd
-					subpartSA.setBioStart(Integer.parseInt(startpos));
-					subpartSA.setBioEnd(Integer.parseInt(endpos));
-					// if direction fwd then
-					// subpartSA.setStrand(StrandType.POSITIVE); 
-					//if rev then NEGATIVE (What if conflict?)
-					subpartSA.setStrand(StrandType.POSITIVE); // this is a hack
-																// (ultimately it
-																// should be
-																// done by
-																// checking)
-
-					for (String aType : types) {  //Doing it this way allows us to add a SO and non SO type to a non PR DC.. 
-						aType = aType.toLowerCase();
-						if (Vocabulary.SO_MAP.get(aType) != null) {
-							subpartSA.getSubComponent().addType(Vocabulary.SO_MAP.get(aType));
-						}
-						subpartSA.getSubComponent().getTypes().add(PartsRegistrySBOLVocabulary.uri(aType));
-					}
+		SequenceAnnotation oldPartSA = null;
+		if (biobrick.getAnnotations().size() > 0) { // Annotations already exist
+			for (SequenceAnnotation subpartSA : biobrick.getAnnotations()) { // for all of them
+				if (featureuri.equals(subpartSA.getSubComponent().getURI()) // Already a *Subpart 
+						&& subpartSA.getBioEnd() == null                    // Subpart has not been merged
+						&& subpartSA.getBioStart() == null) { 
+					oldPartSA = subpartSA;
+					break;
 				}
 			}
-			if (!isAlreadySubPart) biobrick.addAnnotation(newFeatureSA);
+		}
+		if (oldPartSA != null) { 
+			//the SA has not already been merged it is the one that matches to this (next) feature
+			mergeSAPart(oldPartSA);
+		} else if (!featureuri.equals(biobrick.getURI())) { 
+			// NOT Already a *SubPart or not a Part so make a new SA
+			// unless its a is the parent DC itself - self referencing annotation
+			biobrick.addAnnotation(makeNewFeatureSAPart(featureuri));
+		}
+		
+		/*
 		} else { // Only features, these features are not Parts, no parts exist: create a new one
 
 			PartsRegistryDnaComponent newDCFeature = PartsRegistrySBOLFactory.createDnaComponent();
@@ -156,12 +169,7 @@ public class Feature {
 			newFeatureSA.setSubComponent(newDCFeature);
 			biobrick.addAnnotation(newFeatureSA);
 		}
-		
-		//throw away the feature if it is the parent DC itself - self referencing annotation
-		if (newFeatureSA.getURI() != null && newFeatureSA.getSubComponent().getURI().equals(biobrick.getURI())){
-			biobrick.removeAnnotation(newFeatureSA);
-		}
-		
+		*/
 		return biobrick;
 	}
 

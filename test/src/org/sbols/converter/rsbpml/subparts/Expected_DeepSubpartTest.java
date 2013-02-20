@@ -7,6 +7,8 @@ package org.sbols.converter.rsbpml.subparts;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -21,6 +23,7 @@ import org.sbolstandard.core.SBOLDocument;
  */
 public class Expected_DeepSubpartTest {
 
+	@Ignore
     @Test
     public void Expected_DeepSubpartTest() throws JAXBException, IOException {
         System.out.println("Expected_DeepSubpartTest");

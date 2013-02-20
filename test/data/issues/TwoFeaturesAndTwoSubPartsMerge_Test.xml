@@ -8,23 +8,6 @@
 			<part_name>BBa_B0017</part_name>
 			<part_short_name>B0017</part_short_name>
 			<part_short_desc>double terminator (B0010-B0010)</part_short_desc>
-			<part_type>Terminator</part_type>
-			<deep_subparts>
-				<subpart>
-					<part_id>10</part_id>
-					<part_name>BBa_B0010</part_name>
-					<part_short_desc>T1 from E. coli rrnB</part_short_desc>
-					<part_type>Terminator</part_type>
-					<part_nickname></part_nickname>
-				</subpart>
-				<subpart>
-					<part_id>10</part_id>
-					<part_name>BBa_B0010</part_name>
-					<part_short_desc>T1 from E. coli rrnB</part_short_desc>
-					<part_type>Terminator</part_type>
-					<part_nickname></part_nickname>
-				</subpart>
-			</deep_subparts>
 			<specified_subscars>
 				<subpart>
 					<part_id>10</part_id>
@@ -50,12 +33,6 @@
 					<part_nickname></part_nickname>
 				</subpart>
 			</specified_subscars>
-			<sequences>
-				<seq_data>ccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctc
-					tactagagccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtga
-					acgctctc
-				</seq_data>
-			</sequences>
 			<features>
 				<feature>
 					<id>31</id>

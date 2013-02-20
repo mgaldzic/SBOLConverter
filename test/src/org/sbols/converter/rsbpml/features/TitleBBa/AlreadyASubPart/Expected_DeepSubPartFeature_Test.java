@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -15,6 +16,7 @@ import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
 
 public class Expected_DeepSubPartFeature_Test {
+	@Ignore
     @Test
     public void Expected_TitleBBa_AlreadyADeepSubPartFeature_Test() throws JAXBException, IOException {
         System.out.println("Expected_TitleBBa_AlreadyADeepSubPartFeature_Test");

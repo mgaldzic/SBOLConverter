@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:s="http://sbols.org/v1#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:so="http://purl.obolibrary.org/obo/"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0017">
+	<s:displayId>BBa_B0017</s:displayId>
+	<s:description>double terminator (B0010-B0010)</s:description>
+	<s:annotation>
+		<s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_17_10_1">
+			<s:precedes rdf:resource="http://partsregistry.org/anot/sc_17_1_2"/>
+			<s:bioStart>1</s:bioStart>
+			<s:bioEnd>80</s:bioEnd>
+			<s:strand>+</s:strand>
+			<s:subComponent>
+				<s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0010">
+					<rdf:type rdf:resource="http://partsregistry.org/type/biobrick"/>
+					<s:displayId>BBa_B0010</s:displayId>
+					<s:name></s:name>
+					<s:description>T1 from E. coli rrnB</s:description>
+				</s:DnaComponent>
+			</s:subComponent>
+		</s:SequenceAnnotation>
+	</s:annotation>
+	<s:annotation>
+		<s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/sc_17_1_2">
+			<s:precedes rdf:resource="http://partsregistry.org/anot/an_17_10_3"/>
+			<s:subComponent>
+				<s:DnaComponent rdf:about="http://partsregistry.org/part/RFC_10">
+					<s:displayId>RFC_10</s:displayId>
+					<s:name>RFC_10</s:name>
+					<s:dnaSequence>
+						<s:DnaSequence rdf:about="http://partsregistry.org/seq/scarseq_RFC_10">
+							<s:nucleotides>tactagag</s:nucleotides>
+						</s:DnaSequence>
+					</s:dnaSequence>
+					<rdf:type rdf:resource="http://partsregistry.org/type/scar"/>
+				</s:DnaComponent>
+			</s:subComponent>
+		</s:SequenceAnnotation>
+	</s:annotation>
+	<s:annotation>
+		<s:SequenceAnnotation rdf:about="http://partsregistry.org/anot/an_17_10_3">
+			<s:bioStart>89</s:bioStart>
+			<s:bioEnd>168</s:bioEnd>
+			<s:strand>+</s:strand>
+			<s:subComponent>
+				<s:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0010">
+					<rdf:type rdf:resource="http://partsregistry.org/type/biobrick"/>
+					<s:displayId>BBa_B0010</s:displayId>
+					<s:name></s:name>
+					<s:description>T1 from E. coli rrnB</s:description>
+				</s:DnaComponent>
+			</s:subComponent>
+		</s:SequenceAnnotation>
+	</s:annotation>
+</s:DnaComponent>
+
+</rdf:RDF>

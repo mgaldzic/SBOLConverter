@@ -3,6 +3,8 @@ package org.sbols.converter.rsbpml.issues;
 import java.io.IOException;
 import javax.xml.bind.JAXBException;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.sbols.converter.SBOLConverter;
 import org.sbols.converter.rsbpml.Rsbpml;
@@ -19,6 +21,7 @@ import org.sbolstandard.core.SBOLDocument;
  */
 public class RunAnExampleTest {
 
+	@Ignore
 	@Test
 	public void RunAnExampleTest() throws Exception {
 		System.out.println("RunAnExampleTest");
@@ -26,7 +29,7 @@ public class RunAnExampleTest {
 		String infile = "test/data/issues/BBa_B0017.xml";
 		String outfile = "test/data/rdfout/issues/BBa_B0017.sbol.xml";
 		String expectedfile = "test/data/issues/DCandFeatureSame_Expected.sbol.xml";
-		SBOLConverter.run_convert(infile, outfile);
+		//SBOLConverter.run_convert(infile, outfile);
 		// Get input for test
 		Rsbpml rsbpmlData = ReadRSBPML.file(infile);
 

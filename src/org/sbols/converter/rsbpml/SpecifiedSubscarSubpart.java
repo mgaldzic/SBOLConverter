@@ -87,6 +87,7 @@ public class SpecifiedSubscarSubpart extends SpecifiedSubscar {
         int position = index + 1;
         String parent_id = rsbpmlData.getPart_list().getPart().getPart_id();
         newAnnotation.setURI(URI.create("http://partsregistry.org/anot/an_" + parent_id + "_" + part_id + "_" + position));
+        
         return newAnnotation;
     }
 }

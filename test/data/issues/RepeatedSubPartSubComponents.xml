@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!--Parts from the MIT Registry of Standard Biological Parts -->
+<rsbpml>
+	<part_list>
+		<part>
+			<part_id>3381</part_id>
+			<part_name>BBa_B0017</part_name>
+			<deep_subparts>
+				<subpart>
+					<part_id>603</part_id>
+					<part_name>BBa_B0010</part_name>
+					<part_short_desc>T1 from E. coli rrnB</part_short_desc>
+					<part_type>Terminator</part_type>
+					<part_nickname></part_nickname>
+				</subpart>
+				<subpart>
+					<part_id>603</part_id>
+					<part_name>BBa_B0010</part_name>
+					<part_short_desc>T1 from E. coli rrnB</part_short_desc>
+					<part_type>Terminator</part_type>
+					<part_nickname></part_nickname>
+				</subpart>
+			</deep_subparts>
+			<features>
+				<feature>
+					<id>939337</id>
+					<title>BBa_B0010</title>
+					<type>BioBrick</type>
+					<direction>forward</direction>
+					<startpos>89</startpos>
+					<endpos>168</endpos>
+				</feature>
+			</features>
+		</part>
+	</part_list>
+</rsbpml>

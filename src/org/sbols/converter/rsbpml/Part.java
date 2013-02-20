@@ -222,18 +222,6 @@ public class Part {
             }
         }
 
-        if (deep_subparts != null) {
-            SequenceAnnotation nextSA = null;
-            List<SequenceAnnotation> revSAList = new ArrayList<>();
-            for (int i = deep_subparts.size() - 1; i >= 0; i--) {
-                SequenceAnnotation thisSA = deep_subparts.get(i).toSbol(biobrick, rsbpmlData, i, nextSA);
-                revSAList.add(thisSA);
-                nextSA = thisSA;
-            }
-            for (int i = revSAList.size() - 1; i >= 0; i--) {
-                biobrick.addAnnotation(revSAList.get(i));
-            }
-        }
         /* Specified Subparts are always! duplicates of specified subscars - they only provide a non-scar view of Parts 
         if (specified_subparts != null) {
             SequenceAnnotation nextSA = null;
@@ -267,6 +255,29 @@ public class Part {
                 biobrick = aSubpart.toSbol(biobrick, rsbpmlData, i);
             }
         }
+        
+        /* Duplicate deep parts cause the specified subscar precedes relationships to be inconsistent 
+         * because deep subparts include some specified subscar subparts. Duplicates need to be skipped 
+         * and precedes need to be reconnected. 
+         */ /*
+        if (deep_subparts != null) {
+        	SequenceAnnotation nextSA = null;
+            List<SequenceAnnotation> revSAList = new ArrayList<>();
+            for (int i = deep_subparts.size() - 1; i >= 0; i--) {
+            	SequenceAnnotation thisSA = deep_subparts.get(i).toSbol(biobrick, rsbpmlData, i, nextSA);
+            	for (SequenceAnnotation subpartSA: biobrick.getAnnotations()){
+            		if (thisSA.getSubComponent().getURI().equals(subpartSA.getSubComponent().getURI())){
+            			//there is atleat one deep subpart that matches an already existing annotation
+            		}
+            	}
+                revSAList.add(thisSA);
+                nextSA = thisSA;
+            }
+            for (int i = revSAList.size() - 1; i >= 0; i--) {
+            	biobrick.addAnnotation(revSAList.get(i));
+            }
+        }
+        */
         if (categories != null) {
             int i = 0;
             

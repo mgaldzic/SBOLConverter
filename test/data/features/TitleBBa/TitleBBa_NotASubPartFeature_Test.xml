@@ -7,14 +7,14 @@
             <part_name>DC1</part_name>
             <part_nickname>DnaComponent1</part_nickname>
             <part_short_desc>Title BBa_ Not a SubPart Feature</part_short_desc>
-            <deep_subparts>
+            <specified_subscars>
                 <subpart>
                     <part_id>2</part_id>
                     <part_name>NotABBa_title</part_name>
                     <part_nickname>DnaComponent2</part_nickname>
                     <part_short_desc>This part is not a Feature</part_short_desc>
                 </subpart>
-            </deep_subparts>
+            </specified_subscars>
             <features>
                 <feature>
                     <id>1</id>
