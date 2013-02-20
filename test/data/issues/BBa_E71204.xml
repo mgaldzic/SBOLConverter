@@ -2,200 +2,169 @@
 
 <!--Parts from the MIT Registry of Standard Biological Parts-->
 <rsbpml>
-    <part_list>
-        <part>
-            <part_id>7561</part_id>
-            <part_name>BBa_E71204</part_name>
-            <part_short_name>E71204</part_short_name>
-            <part_short_desc>Dedicated Systems Reporter (ï¿½-&gt;GFP)</part_short_desc>
-            <part_type>Reporter</part_type>
-            <part_status>Planning</part_status>
-            <part_results></part_results>
-            <part_nickname></part_nickname>
-            <part_rating></part_rating>
-            <part_url>http://partsregistry.org/Part:BBa_E71204</part_url>
-            <part_entered>2006-10-16</part_entered>
-            <part_author>Bartholomew Canton</part_author>
-            <best_quality>None</best_quality>
-            <deep_subparts>
-                <subpart>
-                    <part_id>6137</part_id>
-                    <part_name>BBa_R0183</part_name>
-                    <part_short_desc>T7 RNAP promoter</part_short_desc>
-                    <part_type>Regulatory</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-                <subpart>
-                    <part_id>6626</part_id>
-                    <part_name>BBa_B0072</part_name>
-                    <part_short_desc>orthogonal RBS</part_short_desc>
-                    <part_type>RBS</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-                <subpart>
-                    <part_id>5309</part_id>
-                    <part_name>BBa_E0040</part_name>
-                    <part_short_desc> green fluorescent protein derived from jellyfish Aequeora victoria wild-type GFP (SwissProt: P42212</part_short_desc>
-                    <part_type>Coding</part_type>
-                    <part_nickname>GFP</part_nickname>
-                </subpart>
-                <subpart>
-                    <part_id>2915</part_id>
-                    <part_name>BBa_B0016</part_name>
-                    <part_short_desc>Terminator (T7 RNAP specific, T_Phi)</part_short_desc>
-                    <part_type>Terminator</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-            </deep_subparts>
-            <specified_subparts>
-                <subpart>
-                    <part_id>6137</part_id>
-                    <part_name>BBa_R0183</part_name>
-                    <part_short_desc>T7 RNAP promoter</part_short_desc>
-                    <part_type>Regulatory</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-                <subpart>
-                    <part_id>6626</part_id>
-                    <part_name>BBa_B0072</part_name>
-                    <part_short_desc>orthogonal RBS</part_short_desc>
-                    <part_type>RBS</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-                <subpart>
-                    <part_id>5309</part_id>
-                    <part_name>BBa_E0040</part_name>
-                    <part_short_desc> green fluorescent protein derived from jellyfish Aequeora victoria wild-type GFP (SwissProt: P42212</part_short_desc>
-                    <part_type>Coding</part_type>
-                    <part_nickname>GFP</part_nickname>
-                </subpart>
-                <subpart>
-                    <part_id>2915</part_id>
-                    <part_name>BBa_B0016</part_name>
-                    <part_short_desc>Terminator (T7 RNAP specific, T_Phi)</part_short_desc>
-                    <part_type>Terminator</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-            </specified_subparts>
-            <specified_subscars>
-                <subpart>
-                    <part_id>6137</part_id>
-                    <part_name>BBa_R0183</part_name>
-                    <part_short_desc>T7 RNAP promoter</part_short_desc>
-                    <part_type>Regulatory</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-                <scar>
-                    <scar_id>1</scar_id>
-                    <scar_standard>10</scar_standard>
-                    <scar_type>Scar</scar_type>
-                    <scar_name>RFC[10]</scar_name>
-                    <scar_nickname>[10]</scar_nickname>
-                    <scar_comments></scar_comments>
-                    <scar_sequence>tactagag</scar_sequence>
-                </scar>
-                <subpart>
-                    <part_id>6626</part_id>
-                    <part_name>BBa_B0072</part_name>
-                    <part_short_desc>orthogonal RBS</part_short_desc>
-                    <part_type>RBS</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-                <scar>
-                    <scar_id>34</scar_id>
-                    <scar_standard>10</scar_standard>
-                    <scar_type>Scar</scar_type>
-                    <scar_name>RFC[10.1]</scar_name>
-                    <scar_nickname>[10.1]</scar_nickname>
-                    <scar_comments>When the next part begins AT</scar_comments>
-                    <scar_sequence>tactag</scar_sequence>
-                </scar>
-                <subpart>
-                    <part_id>5309</part_id>
-                    <part_name>BBa_E0040</part_name>
-                    <part_short_desc> green fluorescent protein derived from jellyfish Aequeora victoria wild-type GFP (SwissProt: P42212</part_short_desc>
-                    <part_type>Coding</part_type>
-                    <part_nickname>GFP</part_nickname>
-                </subpart>
-                <scar>
-                    <scar_id>1</scar_id>
-                    <scar_standard>10</scar_standard>
-                    <scar_type>Scar</scar_type>
-                    <scar_name>RFC[10]</scar_name>
-                    <scar_nickname>[10]</scar_nickname>
-                    <scar_comments></scar_comments>
-                    <scar_sequence>tactagag</scar_sequence>
-                </scar>
-                <subpart>
-                    <part_id>2915</part_id>
-                    <part_name>BBa_B0016</part_name>
-                    <part_short_desc>Terminator (T7 RNAP specific, T_Phi)</part_short_desc>
-                    <part_type>Terminator</part_type>
-                    <part_nickname></part_nickname>
-                </subpart>
-            </specified_subscars>
-            <sequences>
-                <seq_data>tcatacgactcactatagggagatactagagcaccactactagatgcgtaaaggagaagaacttttcactggagttgtcc
-                    caattcttgttgaattagatggtgatgttaatgggcacaaattttctgtcagtggagagggtgaaggtgatgcaacatac
-                    ggaaaacttacccttaaatttatttgcactactggaaaactacctgttccatggccaacacttgtcactactttcggtta
-                    tggtgttcaatgctttgcgagatacccagatcatatgaaacagcatgactttttcaagagtgccatgcccgaaggttatg
-                    tacaggaaagaactatatttttcaaagatgacgggaactacaagacacgtgctgaagtcaagtttgaaggtgataccctt
-                    gttaatagaatcgagttaaaaggtattgattttaaagaagatggaaacattcttggacacaaattggaatacaactataa
-                    ctcacacaatgtatacatcatggcagacaaacaaaagaatggaatcaaagttaacttcaaaattagacacaacattgaag
-                    atggaagcgttcaactagcagaccattatcaacaaaatactccaattggcgatggccctgtccttttaccagacaaccat
-                    tacctgtccacacaatctgccctttcgaaagatcccaacgaaaagagagaccacatggtccttcttgagtttgtaacagc
-                    tgctgggattacacatggcatggatgaactatacaaataataatactagagctagcataaccccttggggcctctaaacg
-                    ggtcttgaggggttttttg
-                </seq_data>
-            </sequences>
-            <features>
-                <feature>
-                    <id>1903263</id>
-                    <title>BBa_R0183</title>
-                    <type>BioBrick</type>
-                    <direction>reverse</direction>
-                    <startpos>1</startpos>
-                    <endpos>23</endpos>
-                </feature>
-                <feature>
-                    <id>1903264</id>
-                    <title>BBa_B0072</title>
-                    <type>BioBrick</type>
-                    <direction>reverse</direction>
-                    <startpos>32</startpos>
-                    <endpos>37</endpos>
-                </feature>
-                <feature>
-                    <id>1903265</id>
-                    <title>BBa_E0040</title>
-                    <type>BioBrick</type>
-                    <direction>reverse</direction>
-                    <startpos>44</startpos>
-                    <endpos>763</endpos>
-                </feature>
-                <feature>
-                    <id>1903266</id>
-                    <title>BBa_B0016</title>
-                    <type>BioBrick</type>
-                    <direction>reverse</direction>
-                    <startpos>772</startpos>
-                    <endpos>819</endpos>
-                </feature>
-            </features>
-            <parameters>
+<part_list>
+<part>
+<part_id>7561</part_id>
+<part_name>BBa_E71204</part_name>
+<part_short_name>E71204</part_short_name>
+<part_short_desc>Dedicated Systems Reporter (ø-&gt;GFP)</part_short_desc>
+<part_type>Reporter</part_type>
+<part_status>Planning</part_status>
+<part_results></part_results>
+<part_nickname></part_nickname>
+<part_rating></part_rating>
+<part_url>http://partsregistry.org/Part:BBa_E71204</part_url>
+<part_entered>2006-10-16</part_entered>
+<part_author>Bartholomew Canton</part_author>
+<best_quality>None</best_quality>
+<deep_subparts>
+<subpart>
+<part_id>6137</part_id>
+<part_name>BBa_R0183</part_name>
+<part_short_desc>T7 RNAP promoter</part_short_desc>
+<part_type>Regulatory</part_type>
+<part_nickname></part_nickname></subpart>
+<subpart>
+<part_id>6626</part_id>
+<part_name>BBa_B0072</part_name>
+<part_short_desc>orthogonal RBS</part_short_desc>
+<part_type>RBS</part_type>
+<part_nickname></part_nickname></subpart>
+<subpart>
+<part_id>5309</part_id>
+<part_name>BBa_E0040</part_name>
+<part_short_desc> green fluorescent protein derived from jellyfish Aequeora victoria wild-type GFP (SwissProt: P42212</part_short_desc>
+<part_type>Coding</part_type>
+<part_nickname>GFP</part_nickname></subpart>
+<subpart>
+<part_id>2915</part_id>
+<part_name>BBa_B0016</part_name>
+<part_short_desc>Terminator (T7 RNAP specific, T_Phi)</part_short_desc>
+<part_type>Terminator</part_type>
+<part_nickname></part_nickname></subpart></deep_subparts>
+<specified_subparts>
+<subpart>
+<part_id>6137</part_id>
+<part_name>BBa_R0183</part_name>
+<part_short_desc>T7 RNAP promoter</part_short_desc>
+<part_type>Regulatory</part_type>
+<part_nickname></part_nickname></subpart>
+<subpart>
+<part_id>6626</part_id>
+<part_name>BBa_B0072</part_name>
+<part_short_desc>orthogonal RBS</part_short_desc>
+<part_type>RBS</part_type>
+<part_nickname></part_nickname></subpart>
+<subpart>
+<part_id>5309</part_id>
+<part_name>BBa_E0040</part_name>
+<part_short_desc> green fluorescent protein derived from jellyfish Aequeora victoria wild-type GFP (SwissProt: P42212</part_short_desc>
+<part_type>Coding</part_type>
+<part_nickname>GFP</part_nickname></subpart>
+<subpart>
+<part_id>2915</part_id>
+<part_name>BBa_B0016</part_name>
+<part_short_desc>Terminator (T7 RNAP specific, T_Phi)</part_short_desc>
+<part_type>Terminator</part_type>
+<part_nickname></part_nickname></subpart></specified_subparts>
+<specified_subscars>
+<subpart>
+<part_id>6137</part_id>
+<part_name>BBa_R0183</part_name>
+<part_short_desc>T7 RNAP promoter</part_short_desc>
+<part_type>Regulatory</part_type>
+<part_nickname></part_nickname></subpart>
+<scar>
+<scar_id>1</scar_id>
+<scar_standard>10</scar_standard>
+<scar_type>Scar</scar_type>
+<scar_name>RFC[10]</scar_name>
+<scar_nickname>[10]</scar_nickname>
+<scar_comments></scar_comments>
+<scar_sequence>tactagag</scar_sequence></scar>
+<subpart>
+<part_id>6626</part_id>
+<part_name>BBa_B0072</part_name>
+<part_short_desc>orthogonal RBS</part_short_desc>
+<part_type>RBS</part_type>
+<part_nickname></part_nickname></subpart>
+<scar>
+<scar_id>34</scar_id>
+<scar_standard>10</scar_standard>
+<scar_type>Scar</scar_type>
+<scar_name>RFC[10.1]</scar_name>
+<scar_nickname>[10.1]</scar_nickname>
+<scar_comments>When the next part begins AT</scar_comments>
+<scar_sequence>tactag</scar_sequence></scar>
+<subpart>
+<part_id>5309</part_id>
+<part_name>BBa_E0040</part_name>
+<part_short_desc> green fluorescent protein derived from jellyfish Aequeora victoria wild-type GFP (SwissProt: P42212</part_short_desc>
+<part_type>Coding</part_type>
+<part_nickname>GFP</part_nickname></subpart>
+<scar>
+<scar_id>1</scar_id>
+<scar_standard>10</scar_standard>
+<scar_type>Scar</scar_type>
+<scar_name>RFC[10]</scar_name>
+<scar_nickname>[10]</scar_nickname>
+<scar_comments></scar_comments>
+<scar_sequence>tactagag</scar_sequence></scar>
+<subpart>
+<part_id>2915</part_id>
+<part_name>BBa_B0016</part_name>
+<part_short_desc>Terminator (T7 RNAP specific, T_Phi)</part_short_desc>
+<part_type>Terminator</part_type>
+<part_nickname></part_nickname></subpart></specified_subscars>
+<sequences>
+<seq_data>tcatacgactcactatagggagatactagagcaccactactagatgcgtaaaggagaagaacttttcactggagttgtcc
+caattcttgttgaattagatggtgatgttaatgggcacaaattttctgtcagtggagagggtgaaggtgatgcaacatac
+ggaaaacttacccttaaatttatttgcactactggaaaactacctgttccatggccaacacttgtcactactttcggtta
+tggtgttcaatgctttgcgagatacccagatcatatgaaacagcatgactttttcaagagtgccatgcccgaaggttatg
+tacaggaaagaactatatttttcaaagatgacgggaactacaagacacgtgctgaagtcaagtttgaaggtgataccctt
+gttaatagaatcgagttaaaaggtattgattttaaagaagatggaaacattcttggacacaaattggaatacaactataa
+ctcacacaatgtatacatcatggcagacaaacaaaagaatggaatcaaagttaacttcaaaattagacacaacattgaag
+atggaagcgttcaactagcagaccattatcaacaaaatactccaattggcgatggccctgtccttttaccagacaaccat
+tacctgtccacacaatctgccctttcgaaagatcccaacgaaaagagagaccacatggtccttcttgagtttgtaacagc
+tgctgggattacacatggcatggatgaactatacaaataataatactagagctagcataaccccttggggcctctaaacg
+ggtcttgaggggttttttg
+</seq_data></sequences>
+<features>
+<feature>
+<id>1903263</id>
+<title>BBa_R0183</title>
+<type>BioBrick</type>
+<direction>reverse</direction>
+<startpos>1</startpos>
+<endpos>23</endpos></feature>
+<feature>
+<id>1903264</id>
+<title>BBa_B0072</title>
+<type>BioBrick</type>
+<direction>reverse</direction>
+<startpos>32</startpos>
+<endpos>37</endpos></feature>
+<feature>
+<id>1903265</id>
+<title>BBa_E0040</title>
+<type>BioBrick</type>
+<direction>reverse</direction>
+<startpos>44</startpos>
+<endpos>763</endpos></feature>
+<feature>
+<id>1903266</id>
+<title>BBa_B0016</title>
+<type>BioBrick</type>
+<direction>reverse</direction>
+<startpos>772</startpos>
+<endpos>819</endpos></feature></features>
+<parameters>
 <!-- NOTE: Currently, each parameter name can have only one value.-->
-<!--This will change as we fully support the context of a parameter. RDR 4/2010 -->
-            </parameters>
-            <categories></categories>
-            <samples>
-<!--Samples have been turned off for now - rdr 4/2010-->
-            </samples>
-            <references>
-<!--References are not available yet - rdr 4/2010-->
-            </references>
-            <groups>
-<!-- Group access information is not yet available - rdr 4/2010-->
-            </groups>
-        </part>
-    </part_list>
-</rsbpml>
+<!--This will change as we fully support the context of a parameter. RDR 4/2010 --></parameters>
+<categories></categories>
+<samples>
+<!--Samples have been turned off for now - rdr 4/2010--></samples>
+<references>
+<!--References are not available yet - rdr 4/2010--></references>
+<groups>
+<!-- Group access information is not yet available - rdr 4/2010--></groups></part></part_list></rsbpml>
