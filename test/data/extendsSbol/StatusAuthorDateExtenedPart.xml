@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Basic Part with custom <creator> element and 1 deep_subpart-->
+<rsbpml>
+	<part_list>
+		<part>
+			<part_name>DC1</part_name>
+			<part_nickname>DnaComponent1</part_nickname>
+			<part_short_desc>DnaComponent with only name and description</part_short_desc>
+			<part_status>Available</part_status>
+			<part_entered>2003-01-31</part_entered>
+			<part_author>John Doe</part_author>
+		</part>
+	</part_list>
+</rsbpml>
