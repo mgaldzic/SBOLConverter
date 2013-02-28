@@ -32,6 +32,7 @@ import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.rio.RDFHandlerException;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLVisitor;
+import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
 import org.sbolstandard.core.*;
 import org.sbolstandard.core.impl.SBOLValidatorImpl;
 import org.sbolstandard.core.util.SBOLBaseVisitor;
@@ -140,6 +141,7 @@ public abstract class SBOLAbstractWriter implements SBOLWriter {
                 endProp();
             }
             writeProp(RDF.TYPE, component.getRegistry_types());
+            writeProp(PartsRegistrySBOLVocabulary.status, component.getStatus());
             endSubj();
         }
 

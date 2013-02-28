@@ -27,7 +27,7 @@ public class Part {
     //short_name
     private String part_short_desc;
     private List<String> part_types = new ArrayList<>();
-    //status
+    private String part_status;
     //results
     private String part_nickname;
     //url
@@ -81,6 +81,15 @@ public class Part {
 
     public void setPartTypes(List<String> newPartTypes) {
         this.part_types = newPartTypes;
+    }
+    
+    @XmlElement(name = "part_status")
+    public String getPartStatus () {
+    	return part_status;
+    }
+    
+    public void setPartStatus(String part_status) {
+    	this.part_status = part_status;
     }
 
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -207,6 +216,10 @@ public class Part {
                 }
                 biobrick.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
             }
+        }
+        
+        if ((part_status != null) && !part_status.isEmpty()){
+        	biobrick.setStatus(part_status);
         }
         
         if ((seq_data != null) && !seq_data.isEmpty()) {

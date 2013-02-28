@@ -16,6 +16,7 @@ import org.sbolstandard.core.impl.DnaComponentImpl;
  */
 public class PartsRegistryDnaComponent extends DnaComponentImpl {
     protected final List<URI> registry_types = new ArrayList<URI>();
+    protected String status;
 
     public PartsRegistryDnaComponent() {
     }
@@ -34,5 +35,13 @@ public class PartsRegistryDnaComponent extends DnaComponentImpl {
 
 	public void addRegistry_type(URI registry_type) {
     	getRegistry_types().add(registry_type);
+    }
+	
+    public String getStatus() {
+    	return this.status;
+    }
+
+    public void setStatus(String status) {
+    	this.status = status;
     }
 }
