@@ -79,6 +79,7 @@ public class SBOLRDFWriter extends SBOLAbstractWriter {
             out.handleNamespace("xsd", XMLSchema.NAMESPACE);
             out.handleNamespace("so", "http://purl.obolibrary.org/obo/");
             out.handleNamespace("pr", "http://partsregistry.org/rsbpml/");
+            out.handleNamespace("dc", "http://purl.org/dc/elements/1.1/");
 
             super.visit(doc);
 

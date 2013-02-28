@@ -79,7 +79,7 @@ public class Category {
 				biobrick.addType(uri);
 			}
         }
-		URI puri= PartsRegistrySBOLVocabulary.uri(cat);
+		URI puri= PartsRegistrySBOLVocabulary.typeUri(cat);
 		if(!biobrick.getRegistry_types().contains(puri)) {
 			biobrick.addRegistry_type(puri);
 		}

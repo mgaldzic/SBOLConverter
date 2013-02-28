@@ -98,7 +98,7 @@ public class Feature {
 				if (Vocabulary.SO_MAP.get(aType) != null) {
 					feature.addType(Vocabulary.SO_MAP.get(aType));
 				}
-				feature.addRegistry_type(PartsRegistrySBOLVocabulary.uri(aType));
+				feature.addRegistry_type(PartsRegistrySBOLVocabulary.typeUri(aType));
 			}
 		}
 		return feature;
@@ -120,7 +120,7 @@ public class Feature {
 			if (Vocabulary.SO_MAP.get(aType) != null) {
 				oldPartSA.getSubComponent().addType(Vocabulary.SO_MAP.get(aType));
 			}
-			oldPartSA.getSubComponent().getTypes().add(PartsRegistrySBOLVocabulary.uri(aType));
+			oldPartSA.getSubComponent().getTypes().add(PartsRegistrySBOLVocabulary.typeUri(aType));
 		}
 		
 	}
