@@ -38,7 +38,7 @@ public class ExpectStatusAuthorDateExtenedPart_Test {
 		String actual =	ReadFile.sbolDocToString(SbolDoc);
 		 
 		// Sometimes we generate the expected results using the test - cheating 
-		WriteFile.toPath(SbolDoc, outfile);
+		//WriteFile.toPath(SbolDoc, outfile);
 		  
 		 // Get expected result 
 		String expected = ReadFile.fromPath(expectedfile);

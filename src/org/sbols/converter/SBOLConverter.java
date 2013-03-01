@@ -11,6 +11,7 @@ import org.sbols.converter.rsbpml.RsbpmlException;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.util.ReadRSBPML;
+import org.sbols.converter.util.WriteFile;
 import org.sbolstandard.core.SBOLDocument;
 import org.sbolstandard.core.SBOLFactory;
 import org.sbolstandard.core.SBOLValidationException;
@@ -83,13 +84,12 @@ public class SBOLConverter {
 
 	    SBOLDocument doc = convert(rsbpmlData);
 	    
-	    FileOutputStream out = new FileOutputStream(outputFileName);
-	    SBOLFactory.write(doc, out);
+	    WriteFile.toPath(doc,outputFileName);
     }
 
     public static SBOLDocument convert(Rsbpml rsbpmlData) throws SBOLValidationException {
         PartsRegistryDnaComponent biobrick = PartsRegistrySBOLFactory.createDnaComponent();
-        SBOLDocument SbolDoc = SBOLFactory.createDocument();
+        SBOLDocument SbolDoc = PartsRegistrySBOLFactory.createDocument();
         biobrick = rsbpmlData.toSbol(biobrick, rsbpmlData);
         SbolDoc.addContent(biobrick);
         

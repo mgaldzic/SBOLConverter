@@ -1,74 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- You may freely edit this file. See commented blocks below for -->
-<!-- some examples of how to customize the build. -->
-<!-- (If you delete it and reopen the project it will be recreated.) -->
-<!-- By default, only the Clean and Build commands use this build script. -->
-<!-- Commands such as Run, Debug, and Test only use this build script if -->
-<!-- the Compile on Save feature is turned off for the project. -->
-<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
-<!-- in the project's Project Properties dialog box.-->
-<project name="SBOL_Converter" default="default" basedir=".">
-    <description>Builds, tests, and runs the project SBOL Converter.</description>
-    <import file="nbproject/build-impl.xml"/>
-    <!--
 
-    There exist several targets which are by default empty and which can be 
-    used for execution of your tasks. These targets are usually executed 
-    before and after some main targets. They are: 
+<project name="SBOL_Converter" default="jar" basedir=".">
+	<description>Builds, tests, and runs the project SBOL Converter.</description>
+	<!-- <import file="nbproject/build-impl.xml"/> -->
 
-      -pre-init:                 called before initialization of project properties
-      -post-init:                called after initialization of project properties
-      -pre-compile:              called before javac compilation
-      -post-compile:             called after javac compilation
-      -pre-compile-single:       called before javac compilation of single file
-      -post-compile-single:      called after javac compilation of single file
-      -pre-compile-test:         called before javac compilation of JUnit tests
-      -post-compile-test:        called after javac compilation of JUnit tests
-      -pre-compile-test-single:  called before javac compilation of single JUnit test
-      -post-compile-test-single: called after javac compilation of single JUunit test
-      -pre-jar:                  called before JAR building
-      -post-jar:                 called after JAR building
-      -post-clean:               called after cleaning build products
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	<property name="classes" location="${build}/classes" />
+	<property name="src" location="src" />
 
-    (Targets beginning with '-' are not intended to be called on their own.)
+	<path id="classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
 
-    Example of inserting an obfuscator after compilation could look like this:
+	<target name="build" depends="compile">
+		<jar jarfile="${build}/${short-plugin-name}-${plugin-version}.jar">
+			<fileset dir="${classes}" />
+			<zipgroupfileset dir="lib" includes="*.jar" />
+		</jar>
+	</target>
 
-        <target name="-post-compile">
-            <obfuscate>
-                <fileset dir="${build.classes.dir}"/>
-            </obfuscate>
-        </target>
+	<target name="jar" depends="compile" description="Builds the jar">
+		<jar jarfile="${dist}/SBOLConverter.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.sbols.converter.SBOLConverter" />
+			</manifest>
+			<fileset dir="${classes}" />
+			<zipgroupfileset dir="lib" includes="*.jar" />
+		</jar>
+	</target>
 
-    For list of available properties check the imported 
-    nbproject/build-impl.xml file. 
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src}" destdir="${classes}" debug="true" target="1.7">
+			<classpath refid="classpath" />
+			<src path="${src}" />
+		</javac>
+	</target>
 
+	<target name="prepare">
+		<mkdir dir="${build}" />
+		<mkdir dir="${classes}" />
+		<mkdir dir="${dist}" />
+	</target>
 
-    Another way to customize the build is by overriding existing main targets.
-    The targets of interest are: 
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete dir="${classes}" />
+		<delete dir="${dist}" />
+	</target>
 
-      -init-macrodef-javac:     defines macro for javac compilation
-      -init-macrodef-junit:     defines macro for junit execution
-      -init-macrodef-debug:     defines macro for class debugging
-      -init-macrodef-java:      defines macro for class execution
-      -do-jar-with-manifest:    JAR building (if you are using a manifest)
-      -do-jar-without-manifest: JAR building (if you are not using a manifest)
-      run:                      execution of project 
-      -javadoc-build:           Javadoc generation
-      test-report:              JUnit report generation
-
-    An example of overriding the target for project execution could look like this:
-
-        <target name="run" depends="SBOL_Converter-impl.jar">
-            <exec dir="bin" executable="launcher.exe">
-                <arg file="${dist.jar}"/>
-            </exec>
-        </target>
-
-    Notice that the overridden target depends on the jar target and not only on 
-    the compile target as the regular run target does. Again, for a list of available 
-    properties which you can use, check the target you are overriding in the
-    nbproject/build-impl.xml file. 
-
-    -->
 </project>
