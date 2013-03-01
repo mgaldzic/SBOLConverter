@@ -23,12 +23,14 @@ public class PartsRegistrySBOLVocabulary {
 	private static final URI uri(String ns, String localName) {
 		return FACTORY.createURI(ns + localName);
 	}
-    
+	
+	public static final String DC_NAMESPACE = "http://purl.org/dc/elements/1.1/";
     public static final String REGISTRY_NAMESPACE = "http://partsregistry.org/rsbpml/";
     public static final java.net.URI TYPE_NAMESPACE = java.net.URI.create("http://partsregistry.org/type/");
     
     public static final URI status = uri(REGISTRY_NAMESPACE, "status");
-    //public static final URI author = rsbpmlUri(REGISTRY_NAMESPACE, "author");
+    public static final URI creator = uri(DC_NAMESPACE, "creator");
+    public static final URI date = uri(DC_NAMESPACE, "date");
     
 }
 

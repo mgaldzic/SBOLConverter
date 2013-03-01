@@ -5,6 +5,7 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
 	xmlns:so="http://purl.obolibrary.org/obo/"
 	xmlns:pr="http://partsregistry.org/rsbpml/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 <s:DnaComponent rdf:about="http://partsregistry.org/part/DC1">
 	<s:displayId>DC1</s:displayId>
@@ -12,7 +13,7 @@
 	<s:description>DnaComponent with only name and description</s:description>
 	<pr:status>Available</pr:status>
 	<dc:creator>John Doe</dc:creator>
-	<dc:date>2003-01-31</dc:date>
+	<dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2003-01-31T00:00:00.000-08:00</dc:date>
 </s:DnaComponent>
 
 </rdf:RDF>

@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="test/data"/>
 	<classpathentry kind="src" path="test/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/mgaldzic/Documents/GitHub/SBOLConverter/lib/libSBOLj-0.7.0-mgaldzic.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mgaldzic/Documents/GitHub/SBOLConverter/lib/libSBOLj-0.7.0-mgaldzic.jar" sourcepath="/libSBOLj/src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/openrdf-sesame-2.6.9-onejar.jar"/>
 	<classpathentry kind="lib" path="lib/atlassian-xml-cleaner-0.1.jar"/>

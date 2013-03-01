@@ -6,6 +6,10 @@ package org.sbols.converter.util;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -73,5 +77,21 @@ public class ReadRSBPML {
 
         }
         return out.toString();
+    }
+    
+    public static Date parse_date(String strDate) throws ParseException{
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = formatter.parse(strDate);
+            String formattedDate = formatter.format(date);
+            
+            //System.out.println("yyyy-MM-dd date is ==>"+formattedDate);
+            
+            Date date1 = formatter.parse(formattedDate);
+
+            //formatter = new SimpleDateFormat("dd-MMM-yyyy");
+            //formattedDate = formatter.format(date1);
+            //System.out.println("date: " + formattedDate);
+            return date1;
     }
 }

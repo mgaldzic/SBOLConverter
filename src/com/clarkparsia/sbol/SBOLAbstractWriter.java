@@ -142,6 +142,8 @@ public abstract class SBOLAbstractWriter implements SBOLWriter {
             }
             writeProp(RDF.TYPE, component.getRegistry_types());
             writeProp(PartsRegistrySBOLVocabulary.status, component.getStatus());
+            writeProp(PartsRegistrySBOLVocabulary.creator, component.getCreator());
+            writeProp(PartsRegistrySBOLVocabulary.date, component.getDate());
             endSubj();
         }
 

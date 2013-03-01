@@ -4,6 +4,7 @@
 package org.sbols.converter.rsbpml;
 
 import java.net.URI;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
@@ -15,6 +16,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.sbols.converter.sbol.PartsRegistryDnaComponent;
 import org.sbols.converter.sbol.PartsRegistrySBOLFactory;
 import org.sbols.converter.sbol.PartsRegistrySBOLVocabulary;
+import org.sbols.converter.util.ReadRSBPML;
 import org.sbolstandard.core.DnaSequence;
 import org.sbolstandard.core.SBOLValidationException;
 import org.sbolstandard.core.SequenceAnnotation;
@@ -31,8 +33,8 @@ public class Part {
     //results
     private String part_nickname;
     //url
-    //entered
-    //author
+    private String part_entered;
+    private String part_author;
     //quality
     private List<DeepSubpart> deep_subparts;
     private List<SpecifiedSubpart> specified_subparts;
@@ -100,6 +102,25 @@ public class Part {
 
     public void setPart_nickname(String part_nickname) {
         this.part_nickname = part_nickname;
+    }
+    
+    @XmlElement(name= "part_entered")
+    public String getPartEntered(){
+    	return part_entered;
+    }
+    
+    public void setPartEntered(String part_entered){
+    	this.part_entered = part_entered;
+    	
+    }
+    
+    @XmlElement(name = "part_author")
+    public String getPartAuthor() {
+    	return part_author;
+    }
+    
+    public void setPartAuthor(String part_author) {
+    	this.part_author = part_author;
     }
 
     @XmlElementWrapper(name = "deep_subparts")
@@ -201,7 +222,7 @@ public class Part {
 
     }
 
-    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData) {
+    public PartsRegistryDnaComponent toSbol(PartsRegistryDnaComponent biobrick, Rsbpml rsbpmlData){
         biobrick.setURI(URI.create("http://partsregistry.org/part/" + part_name)); //Need to make dynamic
         biobrick.setDisplayId(part_name);
         biobrick.setDescription(part_short_desc);
@@ -220,6 +241,22 @@ public class Part {
         
         if ((part_status != null) && !part_status.isEmpty()){
         	biobrick.setStatus(part_status);
+        }
+        
+        if ((part_entered !=null) && !part_entered.isEmpty()){
+
+        	try {
+				biobrick.setDate(ReadRSBPML.parse_date(part_entered));
+			} catch (ParseException e) {
+				throw new RsbpmlException(e.getMessage());
+				
+			}
+
+        }
+        
+        
+        if ((part_author !=null) && !part_author.isEmpty()){
+        	biobrick.setCreator(part_author);
         }
         
         if ((seq_data != null) && !seq_data.isEmpty()) {
